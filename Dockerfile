@@ -8,8 +8,6 @@ RUN npm ci
 
 COPY . .
 
-RUN npm run lint
-RUN npm run test-headless
 RUN npm run build
 
 EXPOSE 80:3000
