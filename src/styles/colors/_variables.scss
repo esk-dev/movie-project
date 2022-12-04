@@ -1,0 +1,12 @@
+@use "sass:map";
+@use "@angular/material" as mat;
+$light-primary: (
+  default: mat.$blue-grey-palette.800,
+  light: mat.$blue-grey-palette.600,
+  dark: mat.$blue-grey-palette.900
+);
+$dark-primary: (
+  default: mat.$gray-palette.400,
+  light: mat.$gray-palette.200,
+  dark: mat.$gray-palette.600
+);
