@@ -8,7 +8,7 @@ import { ThemeManagerService } from './services/theme-manager.service';
 export class AppComponent {
   title = 'movie-project';
 
-  public isDark = this.themeManager.isDark;
+  public isDark: boolean = this.themeManager.isDark;
 
   constructor(public themeManager: ThemeManagerService) {}
 
