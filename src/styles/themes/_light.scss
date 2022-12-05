@@ -1,0 +1,16 @@
+@use "sass:map";
+@use "@angular/material" as mat;
+
+$light-primary: mat.define-palette(mat.$blue-grey-palette, 800, 600, 900 );
+$light-accent: mat.define-palette(mat.$red-palette, A200, A100, A400);
+$light-warn: mat.define-palette(mat.$blue-palette, 200, 100, 300);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$light-theme: mat.define-light-theme((
+  color: (
+    primary: $light-primary,
+    accent: $light-accent ,
+    warn: $light-warn,
+  )
+));
