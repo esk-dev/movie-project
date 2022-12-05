@@ -6,7 +6,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [ThemeToggleComponent],
-  imports: [CommonModule, BrowserAnimationsModule, FontAwesomeModule, MatButtonModule],
+  imports: [
+    CommonModule,
+    BrowserAnimationsModule,
+    FontAwesomeModule,
+    MatButtonModule,
+  ],
   exports: [ThemeToggleComponent],
 })
 export class ThemeModule {}

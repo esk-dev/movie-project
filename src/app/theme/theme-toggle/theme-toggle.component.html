@@ -1,4 +1,14 @@
 <button mat-icon-button (click)="toggleTheme()">
-    <fa-icon class='fa-icon' @fadeSlideInOut [icon]="faMoon" *ngIf='(isDark$ | async)'></fa-icon>
-    <fa-icon class='fa-icon' @fadeSlideInOut [icon]="faSun" *ngIf='!(isDark$ | async)'></fa-icon>
+  <fa-icon
+    class="fa-icon"
+    @fadeSlideInOut
+    [icon]="faMoon"
+    *ngIf="(isDark$ | async) === true"
+  ></fa-icon>
+  <fa-icon
+    class="fa-icon"
+    @fadeSlideInOut
+    [icon]="faSun"
+    *ngIf="(isDark$ | async) === false"
+  ></fa-icon>
 </button>
