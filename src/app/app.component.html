@@ -1,9 +1,4 @@
 <section class="mat-body">
-  <div>
-    <button mat-raised-button color="primary">Example primary</button>
-    <button mat-raised-button color="accent">Example accent</button>
-    <button mat-raised-button color="warn">Example warn</button>
-  </div>
   <mat-card class="example-card">
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>
@@ -23,11 +18,12 @@
       </p>
     </mat-card-content>
     <mat-card-actions>
-      <button (click)="toggleDarkTheme()" color="accent" mat-button>
+      <button color="accent" mat-button>
         LIKE
       </button>
-      <button color="primary" mat-button>SHARE</button>
+      <app-theme-toggle></app-theme-toggle>
     </mat-card-actions>
   </mat-card>
 </section>
+
 <router-outlet></router-outlet>

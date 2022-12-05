@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+// Feature Modules
+import { ThemeModule } from './theme/theme.module';
+// Pages Modules
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -14,6 +17,7 @@ import { MatCardModule } from '@angular/material/card';
     BrowserAnimationsModule,
     MatButtonModule,
     MatCardModule,
+    ThemeModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
