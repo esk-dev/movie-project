@@ -1,0 +1,64 @@
+@use "sass:map";
+@use "../../../styles/mixins/media-query" as media-mixins;
+@use "../../../styles/colors/variables" as colors;
+
+:host {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  width: 100%;
+
+  @include media-mixins.media-tablet() {
+  }
+
+  @include media-mixins.media-handset() {
+    flex-direction: column;
+  }
+}
+
+.header {
+  height: 7vh;
+  background: map-get(colors.$light-primary, default);
+
+  @include media-mixins.media-tablet() {
+  }
+}
+
+main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background: map-get(colors.$light-primary, dark);
+  & > * {
+    width: 100%;
+  }
+
+  @include media-mixins.media-handset() {
+    // height: 86vh;
+    overflow-y: auto;
+  }
+
+  @include media-mixins.media-tablet() {
+    // height: 86vh;
+    overflow-y: auto;
+    flex-direction: row;
+
+    .sidebar {
+      width: 7vw;
+      // height: 86vh;
+      background: map-get(colors.$dark-primary, dark);
+    }
+
+    .outlet {
+      width: 93vw;
+      // height: 86vh;
+    }
+  }
+}
+
+.footer {
+  height: 7vh;
+  background: map-get(colors.$light-primary, light);
+}
