@@ -1,9 +1,19 @@
 <mat-toolbar>
   <span>Movie Project</span>
-  <nav>
+  <ng-container
+    *ngTemplateOutlet="
+      navigationBar;
+      context: { $implicit: links, platformType: platformType$ }
+    "
+  ></ng-container>
+
+  <app-theme-toggle></app-theme-toggle>
+</mat-toolbar>
+
+<ng-template #navigationBar let-links let-platformType="platformType">
+  <nav *ngIf="(platformType | async) === breakpoints.Web">
     <ng-container *ngFor="let link of links">
       <app-link [link]="link"></app-link>
     </ng-container>
   </nav>
-  <app-theme-toggle></app-theme-toggle>
-</mat-toolbar>
+</ng-template>

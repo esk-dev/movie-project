@@ -1,9 +1,6 @@
-<app-header class="header"></app-header>
+<app-header class="header" [platformType$]="platformType"></app-header>
 <ng-container
-  *ngTemplateOutlet="
-    MainTemplate;
-    context: { $implicit: (platformType | async) }
-  "
+  *ngTemplateOutlet="MainTemplate; context: { $implicit: platformType }"
 >
 </ng-container>
 <footer class="footer"></footer>
@@ -12,7 +9,7 @@
   <main>
     <section
       class="sidebar"
-      *ngIf="platformType === breakpoints.Tablet"
+      *ngIf="(platformType | async) === breakpoints.Tablet"
     ></section>
     <ng-content #routes></ng-content>
   </main>
