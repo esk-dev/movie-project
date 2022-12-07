@@ -9,7 +9,7 @@
     "watch": "ng build --watch --configuration development",
     "lint": "ng lint --fix",
     "test": "ng test",
-    "test-headless": "ng test --browsers=ChromeHeadless --code-coverage",
+    "test-headless": "ng test --no-watch --browsers=ChromeHeadless --code-coverage",
     "prepare": "husky install"
   },
   "private": true,
