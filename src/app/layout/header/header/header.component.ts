@@ -12,8 +12,8 @@ interface Link {
 export class HeaderComponent {
   public links: Link[] = [
     { path: `/`, name: 'default' },
-    { path: '/#', name: 'default 2' },
-    { path: '/#', name: 'default 3' },
-    { path: '/#', name: 'default 4' },
+    { path: '/', name: 'default 2' },
+    { path: '/', name: 'default 3' },
+    { path: '/', name: 'default 4' },
   ];
 }

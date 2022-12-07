@@ -1,6 +1,8 @@
 import { Injectable, Renderer2, RendererFactory2 } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class ThemeManagerService {
   private renderer: Renderer2;
 

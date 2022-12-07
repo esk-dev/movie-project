@@ -34,7 +34,6 @@ import { Observable } from 'rxjs';
       ]),
     ]),
   ],
-  providers: [ThemeManagerService],
 })
 export class ThemeToggleComponent {
   public faMoon: IconDefinition = faMoon;
