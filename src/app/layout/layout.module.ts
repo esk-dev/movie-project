@@ -4,7 +4,10 @@ import { MainComponent } from './main/main.component';
 import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+
 import { ThemeModule } from './theme/theme.module';
+import { HeaderModule } from './header/header.module';
+
 @NgModule({
   declarations: [MainComponent],
   imports: [
@@ -13,6 +16,7 @@ import { ThemeModule } from './theme/theme.module';
     RouterModule,
     MatButtonModule,
     MatCardModule,
+    HeaderModule,
   ],
   exports: [MainComponent],
 })

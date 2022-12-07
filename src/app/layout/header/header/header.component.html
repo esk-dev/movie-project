@@ -1,0 +1,9 @@
+<mat-toolbar>
+  <span>Movie Project</span>
+  <nav>
+    <ng-container *ngFor="let link of links">
+      <app-link [link]="link"></app-link>
+    </ng-container>
+  </nav>
+  <app-theme-toggle></app-theme-toggle>
+</mat-toolbar>

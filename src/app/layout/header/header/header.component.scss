@@ -1,0 +1,16 @@
+@use "sass:map";
+@use "../../../../styles/mixins/media-query" as media-mixins;
+@use "../../../../styles/colors/variables" as colors;
+
+:host {
+  display: flex;
+  backdrop-filter: blur(10px);
+}
+
+mat-toolbar {
+  justify-content: space-between;
+}
+
+.mat-toolbar-single-row {
+  height: auto;
+}

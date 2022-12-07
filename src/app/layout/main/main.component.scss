@@ -18,7 +18,6 @@
 
 .header {
   height: 7vh;
-  background: map-get(colors.$light-primary, default);
 
   @include media-mixins.media-tablet() {
   }
@@ -55,5 +54,4 @@ main {
 
 .footer {
   height: 7vh;
-  background: map-get(colors.$light-primary, light);
 }
