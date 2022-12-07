@@ -1,8 +1,19 @@
 <header class="header"></header>
-<main>
-  <section class="sidebar"></section>
-  <div class="outlet">
-    <ng-content #routes></ng-content>
-  </div>
-</main>
+<ng-container
+  *ngTemplateOutlet="
+    MainTemplate;
+    context: { $implicit: (platformType | async) }
+  "
+>
+</ng-container>
 <footer class="footer"></footer>
+
+<ng-template #MainTemplate let-platformType>
+  <main>
+    <section
+      class="sidebar"
+      *ngIf="platformType === breakpoints.Tablet"
+    ></section>
+    <ng-content #routes></ng-content>
+  </main>
+</ng-template>

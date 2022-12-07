@@ -41,7 +41,7 @@ export class BreakpointsService {
       .pipe(
         tap((result: BreakpointState) => {
           let type;
-          for (const query of Object.keys(result.breakpoints)) {
+          for (let query of Object.keys(result.breakpoints)) {
             if (result.breakpoints[query]) {
               type = LAYOUT_SHORT_TYPES_MAP[query];
               break;
