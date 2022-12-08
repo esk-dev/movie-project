@@ -1,11 +1,9 @@
 import { Breakpoints } from '@angular/cdk/layout';
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Observable } from 'rxjs';
-// import { BreakpointsService } from '../../services/breakpoints.service';
-interface Link {
-  path: string;
-  name: string;
-}
+import { RoutesService } from '../../services/routes.service';
+import { Link } from '../../interfaces/link.interface';
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -13,12 +11,9 @@ interface Link {
   // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
-  public links: Link[] = [
-    { path: `/`, name: 'default' },
-    { path: '/', name: 'default 2' },
-    { path: '/', name: 'default 3' },
-    { path: '/', name: 'default 4' },
-  ];
+  constructor(private readonly routes: RoutesService) {}
+
+  public links: Observable<Link[]> = this.routes.links$;
 
   readonly breakpoints = Breakpoints;
 
