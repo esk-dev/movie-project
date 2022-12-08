@@ -15,6 +15,6 @@ import { ThemeModule } from '../theme/theme.module';
     ThemeModule,
     MatButtonModule,
   ],
-  exports: [HeaderComponent],
+  exports: [HeaderComponent, LinkComponent],
 })
 export class HeaderModule {}
