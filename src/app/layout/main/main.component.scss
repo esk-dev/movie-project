@@ -29,10 +29,9 @@ main {
   flex-direction: column;
   height: 100%;
   width: 100%;
-  background: map-get(colors.$light-primary, dark);
-  & > * {
-    width: 100%;
-  }
+  // & > * {
+  //   width: 100%;
+  // }
 
   @include media-mixins.media-handset() {
     // height: 86vh;
@@ -43,12 +42,6 @@ main {
     // height: 86vh;
     overflow-y: auto;
     flex-direction: row;
-  }
-
-  .sidebar {
-    width: 7vw;
-    // height: 86vh;
-    background: map-get(colors.$dark-primary, dark);
   }
 }
 

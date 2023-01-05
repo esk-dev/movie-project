@@ -7,7 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 
 import { ThemeModule } from './theme/theme.module';
 import { HeaderModule } from './header/header.module';
-
+import { DynamicIslandModule } from './dynamic-island/dynamic-island.module';
 @NgModule({
   declarations: [MainComponent],
   imports: [
@@ -17,6 +17,7 @@ import { HeaderModule } from './header/header.module';
     MatButtonModule,
     MatCardModule,
     HeaderModule,
+    DynamicIslandModule,
   ],
   exports: [MainComponent],
 })

@@ -14,3 +14,10 @@ mat-toolbar {
 .mat-toolbar-single-row {
   height: auto;
 }
+
+.header__navigation-links {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  column-gap: 15px;
+}

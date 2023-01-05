@@ -7,10 +7,12 @@
 
 <ng-template #MainTemplate let-platformType>
   <main>
-    <section
-      class="sidebar"
-      *ngIf="(platformType | async) === breakpoints.Tablet"
-    ></section>
     <ng-content #routes></ng-content>
+    <!-- <aside
+      
+      *ngIf="(platformType | async) === breakpoints.Handset"
+    > -->
+    <app-wrapper class="dynamic-island" *ngIf="(platformType | async) === breakpoints.Handset"></app-wrapper>
+    <!-- </aside> -->
   </main>
 </ng-template>

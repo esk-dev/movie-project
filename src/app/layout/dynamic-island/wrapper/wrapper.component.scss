@@ -1,0 +1,12 @@
+@use 'sass:map';
+@use '../../../../styles/colors/variables' as colors;
+
+:host {
+    background: map-get(colors.$dark-primary, default);
+    position: absolute;
+    width: 100%;
+    bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

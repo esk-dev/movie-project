@@ -11,7 +11,7 @@
 </mat-toolbar>
 
 <ng-template #navigationBar let-links let-platformType="platformType">
-  <nav *ngIf="(platformType | async) === breakpoints.Web">
+  <nav class='header__navigation-links' *ngIf="(platformType | async) === breakpoints.Web">
     <ng-container *ngFor="let link of links | async">
       <app-link [link]="link"></app-link>
     </ng-container>

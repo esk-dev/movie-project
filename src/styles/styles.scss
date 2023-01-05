@@ -15,7 +15,7 @@
 
 .dark-theme {
   @include mat.core-color(dark.$dark-theme);
-  @include mat.all-component-themes(dark.$dark-theme);
+  @include mat.all-component-colors(dark.$dark-theme);
 }
 
 html,
