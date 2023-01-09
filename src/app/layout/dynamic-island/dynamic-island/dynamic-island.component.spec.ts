@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WrapperComponent } from './wrapper.component';
+import { DynamicIslandComponent } from './dynamic-island.component';
 
-describe('WrapperComponent', () => {
-  let component: WrapperComponent;
-  let fixture: ComponentFixture<WrapperComponent>;
+describe('DynamicIslandComponent', () => {
+  let component: DynamicIslandComponent;
+  let fixture: ComponentFixture<DynamicIslandComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ WrapperComponent ]
+      declarations: [ DynamicIslandComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(WrapperComponent);
+    fixture = TestBed.createComponent(DynamicIslandComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

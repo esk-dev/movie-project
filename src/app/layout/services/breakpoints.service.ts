@@ -12,7 +12,7 @@ export const LAYOUT_SHORT_TYPES_MAP = {
   [Breakpoints.HandsetLandscape]: Breakpoints.Handset,
   [Breakpoints.Tablet]: Breakpoints.Tablet,
   [Breakpoints.TabletPortrait]: Breakpoints.Tablet,
-  [Breakpoints.TabletLandscape]: Breakpoints.Tablet,
+  [Breakpoints.TabletLandscape]: Breakpoints.Web,
   [Breakpoints.Web]: Breakpoints.Web,
   [Breakpoints.WebPortrait]: Breakpoints.Web,
   [Breakpoints.WebLandscape]: Breakpoints.Web,

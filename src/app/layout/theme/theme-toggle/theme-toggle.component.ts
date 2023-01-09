@@ -7,10 +7,7 @@ import {
   IconDefinition,
 } from '@fortawesome/free-solid-svg-icons';
 import { Observable } from 'rxjs';
-// TODO
-// Дебаг анимации иконки
-// Иконка ререндерится позже чем срабатывает анимация
-// Что пробовал: stagger && query
+
 @Component({
   selector: 'app-theme-toggle',
   templateUrl: './theme-toggle.component.html',

@@ -11,9 +11,9 @@ import { Link } from '../../interfaces/link.interface';
   // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
-  constructor(private readonly routes: RoutesService) {}
+  constructor(private readonly routesLinks: RoutesService) {}
 
-  public links: Observable<Link[]> = this.routes.links$;
+  public links: Observable<Link[]> = this.routesLinks.links$;
 
   readonly breakpoints = Breakpoints;
 
