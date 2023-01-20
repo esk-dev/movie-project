@@ -8,6 +8,9 @@
 <ng-template #MainTemplate let-platformType>
   <main>
     <ng-content #routes></ng-content>
-    <app-dynamic-island class="dynamic-island" *ngIf="(platformType | async) === breakpoints.Handset"></app-dynamic-island>
+    <app-dynamic-island
+      class="dynamic-island"
+      *ngIf="(platformType | async) === breakpoints.Handset"
+    ></app-dynamic-island>
   </main>
 </ng-template>

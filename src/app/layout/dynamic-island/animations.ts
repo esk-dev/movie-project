@@ -1,10 +1,8 @@
 import {
-  animation,
   style,
   animate,
   trigger,
   transition,
-  useAnimation,
   state,
   query,
   stagger,

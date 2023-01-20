@@ -8,9 +8,8 @@ describe('DynamicIslandComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DynamicIslandComponent ]
-    })
-    .compileComponents();
+      declarations: [DynamicIslandComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(DynamicIslandComponent);
     component = fixture.componentInstance;
