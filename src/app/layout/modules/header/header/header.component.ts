@@ -1,8 +1,8 @@
 import { Breakpoints } from '@angular/cdk/layout';
 import { Component, Input } from '@angular/core';
 import { Observable } from 'rxjs';
-import { RoutesService } from '../../services/routes.service';
-import { Link } from '../../interfaces/link.interface';
+import { RoutesService } from '../../../services/routes.service';
+import { Link } from '../../../interfaces/link.interface';
 
 @Component({
   selector: 'app-header',

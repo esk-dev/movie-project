@@ -4,9 +4,9 @@ import { MainComponent } from './main/main.component';
 import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { ThemeModule } from './theme/theme.module';
-import { HeaderModule } from './header/header.module';
-import { DynamicIslandModule } from './dynamic-island/dynamic-island.module';
+import { ThemeModule } from './modules';
+import { HeaderModule } from './modules';
+import { DynamicIslandModule } from './modules';
 @NgModule({
   declarations: [MainComponent],
   imports: [

@@ -1,9 +1,5 @@
-<nav
-  [@openClose]="stateVisible"
-  class="dynamic-island-container"
-  (click)="toggle()"
->
-  <ng-container *ngIf="show | async">
+<nav [@openClose]="animationTrigger" class="dynamic-island-container">
+  <ng-container *ngIf="show$ | async">
     <div class="dynamic-island" @showHide>
       <ng-container *ngFor="let link of links | async">
         <app-link [link]="link"></app-link>

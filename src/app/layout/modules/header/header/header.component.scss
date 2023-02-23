@@ -1,6 +1,6 @@
 @use "sass:map";
-@use "../../../../styles/mixins/media-query" as media-mixins;
-@use "../../../../styles/colors/variables" as colors;
+@use "src/styles/mixins/media-query" as media-mixins;
+@use "src/styles/colors/variables" as colors;
 
 :host {
   display: flex;

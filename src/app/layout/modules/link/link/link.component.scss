@@ -1,6 +1,6 @@
 @use "sass:map";
-@use "../../../../styles/mixins/media-query" as media-mixins;
-@use "../../../../styles/colors/variables" as colors;
+@use "src/styles/mixins/media-query" as media-mixins;
+@use "src/styles/colors/variables" as colors;
 
 :host {
   display: inline-block;
@@ -17,7 +17,7 @@
   position: relative;
   padding: 10px;
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     width: 100%;
     transform: scaleX(0);
@@ -39,13 +39,11 @@
 }
 
 .active {
+  transform: scaleX(1);
+  background-color: map-get(colors.$light-accent, light);
+
+  &::after {
     transform: scaleX(1);
-    background-color: map-get(colors.$light-accent, light);
-     
-    &::after {
-      transform: scaleX(1);
-      transform-origin: center;
+    transform-origin: center;
   }
 }
-
-
