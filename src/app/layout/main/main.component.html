@@ -9,8 +9,6 @@
   <main>
     <ng-content #routes></ng-content>
     <app-dynamic-island
-      (click)="toggle()"
-      [expanded$]="expanded$"
       class="dynamic-island"
       *ngIf="(platformType | async) === breakpoints.Handset"
     ></app-dynamic-island>
