@@ -1,6 +1,6 @@
 import { Breakpoints } from '@angular/cdk/layout';
 import { Component } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { BreakpointsService } from '../services/breakpoints.service';
 @Component({
   selector: 'app-main',
