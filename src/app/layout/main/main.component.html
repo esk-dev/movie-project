@@ -15,6 +15,10 @@
     <app-dynamic-island
       class="dynamic-island"
       *ngIf="(platformType | async) === breakpoints.Handset"
-    ></app-dynamic-island>
+    >
+      <ng-container *ngFor="let link of links | async">
+        <app-link [link]="link"></app-link>
+      </ng-container>
+    </app-dynamic-island>
   </main>
 </ng-template>

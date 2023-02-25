@@ -8,6 +8,8 @@ import { ThemeModule } from './modules';
 import { HeaderModule } from './modules';
 import { DynamicIslandModule } from './modules';
 import { SearchBarModule } from 'src/app/features/search-bar/search-bar.module';
+import { LinkModule } from './modules';
+
 @NgModule({
   declarations: [MainComponent],
   imports: [
@@ -19,6 +21,7 @@ import { SearchBarModule } from 'src/app/features/search-bar/search-bar.module';
     HeaderModule,
     DynamicIslandModule,
     SearchBarModule,
+    LinkModule,
   ],
   exports: [MainComponent],
 })

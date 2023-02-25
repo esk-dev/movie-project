@@ -4,9 +4,7 @@ import {
   OnDestroy,
   OnInit,
 } from '@angular/core';
-import { Observable, BehaviorSubject, tap, Subject, takeUntil } from 'rxjs';
-import { RoutesService } from '../../../services/routes.service';
-import { Link } from '../../../interfaces/link.interface';
+import { BehaviorSubject, tap, Subject, takeUntil } from 'rxjs';
 import { openCloseAnimtaion } from '../animations';
 
 @Component({
@@ -19,9 +17,9 @@ import { openCloseAnimtaion } from '../animations';
 export class DynamicIslandComponent implements OnInit, OnDestroy {
   private isExpand: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
-  public expanded$ = this.isExpand.asObservable();
-
   private destroy$: Subject<boolean> = new Subject<boolean>();
+
+  public expanded$ = this.isExpand.asObservable();
 
   public show$: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
@@ -34,8 +32,6 @@ export class DynamicIslandComponent implements OnInit, OnDestroy {
   get animationTrigger(): string {
     return this.visibleState$.getValue();
   }
-
-  public links: Observable<Link[]> = this.routesLinks.links$;
 
   public toggle(): void {
     this.isExpand.next(!this.isExpand.getValue());
@@ -65,6 +61,4 @@ export class DynamicIslandComponent implements OnInit, OnDestroy {
     this.destroy$.next(true);
     this.destroy$.complete();
   }
-
-  constructor(private readonly routesLinks: RoutesService) {}
 }

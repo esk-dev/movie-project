@@ -1,8 +1,6 @@
 <nav [@openClose]="animationTrigger" class="dynamic-island-container">
   <div class="dynamic-island-divider" (click)="toggle()"></div>
   <div *ngIf="show$ | async" class="dynamic-island">
-    <ng-container *ngFor="let link of links | async">
-      <app-link (click)="toggle()" [link]="link"></app-link>
-    </ng-container>
+    <ng-content></ng-content>
   </div>
 </nav>
