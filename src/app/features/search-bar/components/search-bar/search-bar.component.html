@@ -1,0 +1,12 @@
+<div class="form__field" appearance="outline">
+  <!-- <label class="form__label" for="search-field">Search</label> -->
+  <fa-icon class="form__input-icon" [icon]="faSearch"></fa-icon>
+  <input
+    class="form__input"
+    [formControl]="searchField"
+    id="search-field"
+    type="text"
+    placeholder="Search"
+  />
+</div>
+<button class="button-warn" (click)="onSubmit()">Search</button>

@@ -7,6 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 import { ThemeModule } from './modules';
 import { HeaderModule } from './modules';
 import { DynamicIslandModule } from './modules';
+import { SearchBarModule } from 'src/app/features/search-bar/search-bar.module';
 @NgModule({
   declarations: [MainComponent],
   imports: [
@@ -17,6 +18,7 @@ import { DynamicIslandModule } from './modules';
     MatCardModule,
     HeaderModule,
     DynamicIslandModule,
+    SearchBarModule,
   ],
   exports: [MainComponent],
 })

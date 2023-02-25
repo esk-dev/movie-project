@@ -1,0 +1,67 @@
+@use "sass:map";
+@use "src/styles/colors/variables" as colors;
+
+:host {
+  display: flex;
+  column-gap: 15px;
+  justify-content: flex-start;
+  max-height: inherit;
+  align-items: center;
+
+  button {
+    height: 100%;
+    width: 120px;
+    border-radius: 4px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+  }
+
+  .form__field {
+    width: 100%;
+    height: 5vh;
+    max-height: 36px;
+    margin: 1vh auto;
+    position: relative;
+  }
+
+  .form__input-icon {
+    position: absolute;
+    transform: translate(5px, 7px);
+  }
+
+  // label {
+  //   color: inherit;
+  //   font-weight: normal;
+  //   position: absolute;
+  //   pointer-events: none;
+  //   transform: translate(0 0);
+  //   transition: 0.2s ease transform;
+  // }
+
+  input {
+    background: rgba(
+      $color: map-get(colors.$light-primary, default),
+      $alpha: 0.1
+    );
+    font-size: 12px;
+    color: inherit;
+    padding: 5px 10px 5px 30px;
+    display: block;
+    max-width: 320px;
+    width: 100%;
+    border: none;
+    border-radius: 4px;
+    height: 100%;
+
+    &:focus {
+      outline: none;
+      // -webkit-box-shadow: 0px 2px 2px 0px rgba(34,d 60, 80, 0.2);
+      // -moz-box-shadow: 0px 2px 2px 0px rgba(34, 60, 80, 0.2);
+      box-shadow: 0px 2px 5px 0px
+        rgba($color: map-get(colors.$light-primary, default), $alpha: 0.5);
+    }
+    &:focus ~ label,
+    &:valid ~ label {
+    }
+  }
+}

@@ -1,4 +1,8 @@
-<app-header class="header" [platformType$]="platformType"></app-header>
+<app-header class="header" [platformType$]="platformType">
+  <app-search-bar
+    *ngIf="(platformType | async) !== breakpoints.Handset"
+  ></app-search-bar>
+</app-header>
 <ng-container
   *ngTemplateOutlet="MainTemplate; context: { $implicit: platformType }"
 >

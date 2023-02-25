@@ -3,7 +3,8 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BreakpointsService } from '../services/breakpoints.service';
 @Component({
-  selector: 'app-main',
+  // eslint-disable-next-line @angular-eslint/component-selector
+  selector: 'main-layout',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
 })
