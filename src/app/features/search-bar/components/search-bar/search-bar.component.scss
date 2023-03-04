@@ -9,11 +9,7 @@
   align-items: center;
 
   button {
-    height: 100%;
     width: 120px;
-    border-radius: 4px;
-    padding-top: 9px;
-    padding-bottom: 9px;
   }
 
   .form__field {
@@ -57,11 +53,10 @@
       outline: none;
       // -webkit-box-shadow: 0px 2px 2px 0px rgba(34,d 60, 80, 0.2);
       // -moz-box-shadow: 0px 2px 2px 0px rgba(34, 60, 80, 0.2);
+      
       box-shadow: 0px 2px 5px 0px
         rgba($color: map-get(colors.$light-primary, default), $alpha: 0.5);
-    }
-    &:focus ~ label,
-    &:valid ~ label {
+      background: transparent;
     }
   }
 }

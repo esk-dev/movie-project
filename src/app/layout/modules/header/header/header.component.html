@@ -1,13 +1,17 @@
 <mat-toolbar>
-  <span>Movie Project</span>
-  <nav
-    class="header__navigation-links"
-    *ngIf="(platformType$ | async) === breakpoints.Web"
-  >
-    <ng-container *ngFor="let link of links | async">
-      <app-link [link]="link"></app-link>
-    </ng-container>
-  </nav>
-  <ng-content></ng-content>
-  <app-theme-toggle></app-theme-toggle>
+  <div class="header__left-container">
+    <span>Movie Project</span>
+    <nav
+      class="header__navigation-links"
+      *ngIf="(platformType$ | async) === breakpoints.Web"
+    >
+      <ng-container *ngFor="let link of links | async">
+        <app-link [link]="link"></app-link>
+      </ng-container>
+    </nav>
+  </div>
+  <div class="header__right-container">
+    <ng-content></ng-content>
+    <app-theme-toggle></app-theme-toggle>
+  </div>
 </mat-toolbar>

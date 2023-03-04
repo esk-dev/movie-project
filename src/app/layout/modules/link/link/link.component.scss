@@ -20,7 +20,7 @@
     position: absolute;
     width: 100%;
     transform: scaleX(0);
-    height: 1.5px;
+    height: 2px;
     bottom: 10px;
     left: 0;
     background-color: map-get(colors.$light-accent, default);
@@ -42,6 +42,7 @@
   background-color: map-get(colors.$light-accent, light);
 
   &::after {
+    // height: 1.5px;
     transform: scaleX(1);
     transform-origin: center;
   }
