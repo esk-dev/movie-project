@@ -6,7 +6,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class RoutesService {
   private links: BehaviorSubject<Link[]> = new BehaviorSubject<Link[]>([
-    { path: '/', name: 'Main' },
+    { path: '/main', name: 'Main' },
     { path: '/movies', name: 'Movies' },
     { path: '/series', name: 'Series' },
     { path: '/cartoons', name: 'Cartoons' },
