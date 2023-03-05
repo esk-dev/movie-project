@@ -1,0 +1,10 @@
+<owl-carousel-o [options]="carouselOptions">
+  <ng-container *ngFor="let item of categoryItems | async">
+    <ng-template carouselSlide [width]="320" [id]="item.id">
+      <category-item
+        [owlRouterLink]="['/title', item.id]"
+        [categoryItem]="item"
+      ></category-item>
+    </ng-template>
+  </ng-container>
+</owl-carousel-o>

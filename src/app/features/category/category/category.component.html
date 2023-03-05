@@ -1,0 +1,14 @@
+<ng-container [ngSwitch]="platformType | async">
+  <ng-container *ngSwitchDefault>
+    <app-category-carousel
+      [categoryItems]="categoryItems"
+    ></app-category-carousel>
+  </ng-container>
+  <ng-container *ngSwitchCase="breakPoints.Handset">
+    <category-container>
+      <ng-container *ngFor="let item of categoryItems | async">
+        <category-item [categoryItem]="item"></category-item>
+      </ng-container>
+    </category-container>
+  </ng-container>
+</ng-container>

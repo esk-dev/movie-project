@@ -1,17 +1,17 @@
-export interface ITop {
-  items: [
-    {
-      id: 'string';
-      rank: 'string';
-      title: 'string';
-      fullTitle: 'string';
-      year: 'string';
-      image: 'string';
-      crew: 'string';
-      imDbRating: 'string';
-      imDbRatingCount: 'string';
-    }
-  ];
+export interface ITopItem {
+  id: 'string';
+  rank: 'string';
+  title: 'string';
+  fullTitle: 'string';
+  year: 'string';
+  image: 'string';
+  crew: 'string';
+  imDbRating: 'string';
+  imDbRatingCount: 'string';
+}
+
+interface ITop {
+  items: Array<ITopItem>;
   errorMessage: 'string';
 }
 

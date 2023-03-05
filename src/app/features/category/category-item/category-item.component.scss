@@ -1,0 +1,22 @@
+@use "src/styles/mixins/media-query" as media-mixins;
+
+:host {
+    flex: 1 1 auto;
+    aspect-ratio: 1/1.5;
+    margin: 10px 0;
+    &:hover {
+        cursor: pointer;
+        filter:blur(50%);
+    }
+    .category-item__card_container {
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        background-position: 100%;
+    }
+
+    @include media-mixins.media-tablet() {}
+
+    @include media-mixins.media-handset() {}
+}

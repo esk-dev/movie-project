@@ -8,6 +8,11 @@
 @use "./mixins/media-query" as media-mixins;
 @use "sass:map";
 
+//ngx-owl-carousel
+
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+
 @include mat.core(typography.$custom-typography);
 
 @include mat.core-theme(light.$light-theme);
@@ -31,49 +36,4 @@ body {
 
 * {
   box-sizing: border-box;
-}
-
-.button-warn {
-  align-items: center;
-  background: rgba($color: map-get(colors.$light-warn, default), $alpha: 1);
-  border: 1px solid
-    rgba($color: map-get(colors.$light-primary, default), $alpha: 0);
-  border-radius: 7px;
-  box-sizing: border-box;
-  cursor: pointer;
-  display: flex;
-  font-size: 14px;
-  justify-content: center;
-  max-width: 100%;
-  padding: 8px 15px;
-  text-decoration: none;
-  transition: all 0.2s;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  width: 100%;
-
-  &:active {
-    background: rgba($color: map-get(colors.$light-warn, default), $alpha: 0.5);
-  }
-  &:active,
-  &:hover {
-    outline: 0;
-  }
-
-  &:hover {
-    // background: rgba($color: map-get(colors.$light-warn, default), $alpha: 1);
-    border-color: rgba(
-      $color: map-get(colors.$light-primary, default),
-      $alpha: 0.5
-    );
-  }
-
-  @media (min-width: 768px) {
-    .button-primary {
-      font-size: 20px;
-      min-width: 200px;
-      padding: 5px 10px;
-    }
-  }
 }
