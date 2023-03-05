@@ -11,24 +11,24 @@ export class CategoryCarouselComponent {
   @Input() categoryItems!: Observable<ITopItem[]>;
 
   carouselOptions: OwlOptions = {
-    autoHeight: false,
-    autoWidth: false,
+    stagePadding: 20,
+    mouseDrag: false,
+    autoWidth: true,
+    margin: 20,
     loop: false,
-    mouseDrag: true,
-    touchDrag: false,
-    pullDrag: false,
-    dots: false,
     navSpeed: 700,
+    autoplayHoverPause: true,
+    dots: false,
     navText: ['', ''],
     responsive: {
       0: {
         items: 1,
       },
       740: {
-        items: 4,
+        items: 5,
       },
       940: {
-        items: 6,
+        items: 7,
       },
     },
     nav: true,

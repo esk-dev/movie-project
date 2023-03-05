@@ -2,5 +2,12 @@
   class="category-item__card_container"
   [ngStyle]="{ 'background-image': 'url(' + categoryItem.image + ')' }"
 >
-  <span>{{ categoryItem.rank }}</span>
+  <!-- *ngIf="canShowContent$ | async" -->
+  <div
+    [@inOutAnimation]
+    class="category-item__card_content"
+    *ngIf="canShowContent$ | async"
+  >
+    <div>{{ categoryItem.title }} {{ categoryItem.year }}</div>
+  </div>
 </div>

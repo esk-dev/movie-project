@@ -1,7 +1,19 @@
-::ng-deep .owl-carousel .owl-item {
-    aspect-ratio: 1/1.5;
-    &:hover {
-        cursor: pointer;
-        filter: blur(50%);
+::ng-deep .owl-carousel { 
+    
+    .owl-stage-outer {
+        overflow: visible;
     }
+    .owl-item {
+        padding: 5px;
+        aspect-ratio: 1/1.5;
+
+        &:hover {
+            // transform: scale(1.5);
+        }
+    }
+}
+
+category-item {
+    transform-origin: center;
+    position: relative;
 }
