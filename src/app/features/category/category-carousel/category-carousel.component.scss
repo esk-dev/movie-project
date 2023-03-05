@@ -1,19 +1,49 @@
 ::ng-deep .owl-carousel { 
-    
-    .owl-stage-outer {
-        overflow: visible;
-    }
     .owl-item {
-        padding: 5px;
+        padding: 20px;
         aspect-ratio: 1/1.5;
-
-        &:hover {
-            // transform: scale(1.5);
-        }
     }
 }
 
 category-item {
     transform-origin: center;
     position: relative;
+}
+:host {
+    width: 100%;
+    
+    &:hover {
+        .button {
+            opacity: 1;
+        }
+    }
+}
+
+.button {
+    width: 3.5vw;
+    height: 100%;
+    cursor: pointer;
+    color: rgb(212, 212, 212);
+    opacity: 0;
+    transform: scaleY(0.9);
+    background: rgba(0, 0, 0, 0.5);
+    transition: opacity 200ms ease 0s;
+    border: none;
+
+    &:hover {
+        color: white;
+    }
+    .fa-icon {
+        font-size: 32px;
+    }
+}
+.left, .right {
+    position: absolute;
+    height: 90.5%; // Исправить
+    z-index: 2;
+    top: 40px;
+}
+
+.right {
+    right: 0;
 }

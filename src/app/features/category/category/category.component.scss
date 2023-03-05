@@ -1,7 +1,7 @@
 @use "src/styles/mixins/media-query" as media-mixins;
 
 :host {
-    padding: 15px;
+    position: relative;
     @include media-mixins.media-tablet() {
         
     }
