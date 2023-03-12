@@ -2,14 +2,17 @@
 @use "src/styles/colors/variables" as colors;
 @use "sass:map";
 
-$shadow-color: map-get($map: colors.$light-primary, $key: default);
+$shadow-color: map-get($map: colors.$light-primary,
+        $key: default,
+    );
 
 :host {
-    flex: 1 1 auto;
+flex: 1 1 auto;
     aspect-ratio: 1/1.5;
     margin: 10px 0;
     position: relative;
-    .category-item__card_container {
+
+.category-item__card_container {
         transition: filter 0.25s ease-in-out 0.1s;
         border-radius: 2%;
         width: 100%;
@@ -18,29 +21,43 @@ $shadow-color: map-get($map: colors.$light-primary, $key: default);
         background-size: 100% 100%;
         background-position: 100%;
 
-        &:hover {
+    &:hover {
             filter: drop-shadow(2px 0px 10px $shadow-color);
         }
     }
-    .category-item__card_content {
-        transition: backdrop-filter 0.25s ease-in-out 0.1s;
-        color: white;
-        font-size: 14px;
-        font-weight: 600;
-        display: flex;
-        flex-flow: column nowrap;
-        justify-content:flex-end;
+
+  .category-item__card_content {
+      transition: backdrop-filter 0.25s ease-in-out 0.1s;
+      color: white;
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      flex-flow: column nowrap;
+    justify-content: flex-end;
         align-items: center;
         text-align: center;
         padding: 10px;
         height: 100%;
-        
-        &:hover {
+    &:hover,
+        &:active,
+        &:focus {
             cursor: pointer;
-            backdrop-filter: brightness(0.5);
+    backdrop-filter: brightness(0.5);
+    }
+    
+    @media (pointer: fine) {
+        &:hover {
+        backdrop-filter: brightness(0.5);
         }
     }
-    @include media-mixins.media-tablet() {}
+  }
+  }
 
-    @include media-mixins.media-handset() {}
+  @include media-mixins.media-tablet() {}
+
+@include media-mixins.media-handset() {
+    .category-item__card_content {
+        font-size: 12px;
+        padding: 5px;
+    }
 }

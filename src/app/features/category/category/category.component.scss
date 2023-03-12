@@ -2,6 +2,9 @@
 
 :host {
     position: relative;
+.category-header {
+        padding: 0px 10px;
+    }
     @include media-mixins.media-tablet() {
         
     }

@@ -4,11 +4,12 @@
 
 export const environment = {
   production: false,
-  API_KEY: 'k_uh02f834',
+  API_KEY: 'k_pzhascv1',
 };
 
-/*
+/* k_uh02f834
  * k_xtss02ao
+ * k_pzhascv1
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
  *

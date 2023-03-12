@@ -1,13 +1,6 @@
-/* eslint-disable @typescript-eslint/no-empty-function */
-/* eslint-disable @typescript-eslint/no-useless-constructor */
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {
-  ITopMovies,
-  ITopTvs,
-  IPopularTvs,
-  IPopularMovies,
-} from './../../models/index';
+import { ITopMovies } from './../../models/index';
 import { Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 const DB = {
@@ -411,5 +404,14 @@ export class HttpService {
     // return this.http.get<ITopMovies>(
     //   `https://imdb-api.com/en/API/Top250Movies/${environment.API_KEY}`
     // );
+  }
+
+  public resizeImage(size: string, imageUrl: string): Observable<Blob> {
+    // const headers = new HttpHeaders().set('Content-Type', 'image/jpeg');
+    return this.http.get(
+      `https://imdb-api.com/API/ResizeImage?apiKey=${environment.API_KEY}&size=${size}&url=
+        ${imageUrl}`,
+      { responseType: 'blob' }
+    );
   }
 }

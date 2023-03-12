@@ -7,12 +7,14 @@ import { CategoryContainerComponent } from './category-container/category-contai
 import { CategoryCarouselComponent } from './category-carousel/category-carousel.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatButtonModule } from '@angular/material/button';
+import { ResizePipe } from './pipes/resize.pipe';
 @NgModule({
   declarations: [
     CategoryComponent,
     CategoryItemComponent,
     CategoryContainerComponent,
     CategoryCarouselComponent,
+    ResizePipe,
   ],
   imports: [CommonModule, CarouselModule, FontAwesomeModule, MatButtonModule],
   exports: [CategoryComponent],

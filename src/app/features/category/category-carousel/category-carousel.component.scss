@@ -1,6 +1,6 @@
 ::ng-deep .owl-carousel { 
     .owl-item {
-        padding: 20px;
+        padding: 10px;
         aspect-ratio: 1/1.5;
     }
 }
@@ -10,8 +10,7 @@ category-item {
     position: relative;
 }
 :host {
-    width: 100%;
-    
+    position: relative;
     &:hover {
         .button {
             opacity: 1;
@@ -23,25 +22,25 @@ category-item {
     width: 3.5vw;
     height: 100%;
     cursor: pointer;
-    color: rgb(212, 212, 212);
+    color: rgb(199, 199, 199);
     opacity: 0;
-    transform: scaleY(0.9);
     background: rgba(0, 0, 0, 0.5);
-    transition: opacity 200ms ease 0s;
+    transition: all 0.15s ease-in-out;
     border: none;
 
     &:hover {
-        color: white;
+        color: rgb(255, 255, 255);
     }
     .fa-icon {
-        font-size: 32px;
+        // font-size: 2rem;
     }
 }
 .left, .right {
     position: absolute;
-    height: 90.5%; // Исправить
+    height: 100%; // Исправить
     z-index: 2;
-    top: 40px;
+    top: 0;
+        bottom: 0;
 }
 
 .right {

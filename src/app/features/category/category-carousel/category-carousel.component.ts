@@ -22,8 +22,9 @@ export class CategoryCarouselComponent {
   carouselOptions: OwlOptions = {
     stagePadding: 20,
     mouseDrag: false,
+    autoHeight: false,
     autoWidth: true,
-    margin: 20,
+    margin: 10,
     loop: false,
     navSpeed: 200,
     autoplayHoverPause: true,
