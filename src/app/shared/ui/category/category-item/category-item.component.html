@@ -1,0 +1,12 @@
+<div
+  class="category-item__card_container"
+  [style.background-image]="'url(' + categoryItem.image + ')'"
+>
+  <div
+    [@inOutAnimation]
+    class="category-item__card_content"
+    *ngIf="canShowContent$ | async"
+  >
+    <div>{{ categoryItem.title }} {{ categoryItem.year }}</div>
+  </div>
+</div>

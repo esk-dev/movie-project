@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CategoriesComponent } from './pages/categories/categories.component';
 import { MoviesRoutingModule } from './movies-routing.module';
-import { ContainerComponent } from './container/container.component';
-import { CategoryModule } from 'src/app/features/category/category.module';
-
+import { SharedModule } from './../../shared/shared.module';
 @NgModule({
-  declarations: [ContainerComponent],
-  imports: [CommonModule, CategoryModule, MoviesRoutingModule],
+  declarations: [CategoriesComponent],
+  imports: [CommonModule, MoviesRoutingModule, SharedModule],
 })
 export class MoviesModule {}
