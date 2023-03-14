@@ -2,7 +2,10 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  EventEmitter,
+  Input,
   OnDestroy,
+  Output,
   ViewChild,
 } from '@angular/core';
 import {
@@ -12,13 +15,18 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import KeenSlider, { KeenSliderInstance } from 'keen-slider';
 
+type PerView = number | 'auto';
 @Component({
   selector: 'app-shared-carousel',
   templateUrl: './shared-carousel.component.html',
   styleUrls: ['./shared-carousel.component.scss'],
 })
 export class SharedCarouselComponent implements AfterViewInit, OnDestroy {
+  // @Output() handleClick = new EventEmitter<any>();
+
   @ViewChild('sliderRef') sliderRef!: ElementRef<HTMLElement>;
+
+  @Input() public perView: PerView[] = [];
 
   public faArrowRight: IconDefinition = faArrowRight;
 
@@ -30,21 +38,29 @@ export class SharedCarouselComponent implements AfterViewInit, OnDestroy {
 
   initialSlide: number = 0;
 
-  onHover() {
-    console.log(this.slider.track);
-  }
-
   ngAfterViewInit() {
     this.slider = new KeenSlider(this.sliderRef.nativeElement, {
-      // breakpoints: {
-      //   '(max-width: 768px)': {
-      //     slides: { perView: 3, spacing: 10 },
-      //   },
-      // },
+      breakpoints: {
+        '(min-width: 0px and max-width: 768px)': {
+          slides: {
+            perView: this.perView[0],
+            spacing: 0,
+          },
+          mode: 'free-snap',
+        },
+        '(min-width: 769px and max-width: 1024px)': {
+          slides: {
+            perView: this.perView[1],
+            spacing: 2,
+          },
+          mode: 'free-snap',
+        },
+      },
+      mode: 'free-snap',
       initial: this.initialSlide,
       slides: {
-        perView: 5,
-        spacing: 15,
+        perView: this.perView[2],
+        spacing: 2,
       },
     });
 
@@ -55,10 +71,6 @@ export class SharedCarouselComponent implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.slider) this.slider.destroy();
-  }
-
-  public onClick() {
-    console.log('CLICK');
+    this.slider.destroy();
   }
 }

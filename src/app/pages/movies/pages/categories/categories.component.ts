@@ -24,4 +24,8 @@ export class CategoriesComponent implements OnInit {
   ngOnInit(): void {
     this.topMovies = this.moviesService.loadTopMovies();
   }
+
+  public onClick() {
+    console.log('click');
+  }
 }

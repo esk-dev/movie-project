@@ -1,7 +1,30 @@
-// :host {
-//     width: 100%;
-//     height: 100%;
-// }
-// .categories-container {
-//     padding: 20px 0;
-// }
+@use "src/styles/mixins/media-query" as media-mixins;
+@use "src/styles/colors/variables" as colors;
+@use "sass:map";
+
+$shadow-color: map-get($map: colors.$light-primary,
+        $key: default,
+    );
+
+    
+$transition: all 0.25s ease-in-out 0.1s;
+
+.custom-element {
+    aspect-ratio: 1/1.5;
+    transition: $transition;
+    border-radius: 2%;
+    cursor: pointer;
+    
+    .custom-element__image {
+        transition: $transition;
+        max-width: 100%;
+        height: 100%;
+    }
+
+    &:hover {
+        filter: drop-shadow(2px 0px 10px $shadow-color);
+        .custom-element__image {
+            filter: brightness(0.5);
+        }
+    }
+}
