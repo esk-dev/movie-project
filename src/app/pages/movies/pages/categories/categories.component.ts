@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { MoviesService } from '../../services/movies.service';
 import { ITopItem } from './../../../../models/index';
@@ -19,13 +20,13 @@ export class CategoriesComponent implements OnInit {
 
   public categoryTitles = MoviesCategotyTitles;
 
-  constructor(private moviesService: MoviesService) {}
+  constructor(private moviesService: MoviesService, private router: Router) {}
 
   ngOnInit(): void {
     this.topMovies = this.moviesService.loadTopMovies();
   }
 
-  public onClick() {
-    console.log('click');
+  public onClick(titleId: string) {
+    this.router.navigate(['/title/', titleId]);
   }
 }

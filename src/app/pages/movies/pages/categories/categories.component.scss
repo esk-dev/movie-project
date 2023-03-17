@@ -8,23 +8,36 @@ $shadow-color: map-get($map: colors.$light-primary,
 
     
 $transition: all 0.25s ease-in-out 0.1s;
+.block-container {
+    width: auto;
+    height: 30%;
+}
 
 .custom-element {
-    aspect-ratio: 1/1.5;
-    transition: $transition;
-    border-radius: 2%;
-    cursor: pointer;
-    
-    .custom-element__image {
-        transition: $transition;
-        max-width: 100%;
-        height: 100%;
-    }
-
-    &:hover {
-        filter: drop-shadow(2px 0px 10px $shadow-color);
-        .custom-element__image {
-            filter: brightness(0.5);
-        }
-    }
+    height: 30%;
 }
+.category-container {
+   h2 {
+    margin-left: 35px;
+   } 
+    margin-top: 20px;
+}
+// .custom-element {
+//     aspect-ratio: 1/1.5;
+//     transition: $transition;
+//     border-radius: 2%;
+//     cursor: pointer;
+    
+//     .custom-element__image {
+//         transition: $transition;
+//         max-width: 100%;
+//         height: 100%;
+//     }
+
+//     &:hover {
+//         filter: drop-shadow(2px 0px 10px $shadow-color);
+//         .custom-element__image {
+//             filter: brightness(0.5);
+//         }
+//     }
+// }

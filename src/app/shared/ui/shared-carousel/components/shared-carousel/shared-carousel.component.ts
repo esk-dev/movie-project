@@ -2,10 +2,8 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
-  EventEmitter,
   Input,
   OnDestroy,
-  Output,
   ViewChild,
 } from '@angular/core';
 import {
@@ -26,7 +24,7 @@ export class SharedCarouselComponent implements AfterViewInit, OnDestroy {
 
   @ViewChild('sliderRef') sliderRef!: ElementRef<HTMLElement>;
 
-  @Input() public perView: PerView[] = [];
+  @Input() public slidesPerView: PerView[] = [];
 
   public faArrowRight: IconDefinition = faArrowRight;
 
@@ -43,14 +41,14 @@ export class SharedCarouselComponent implements AfterViewInit, OnDestroy {
       breakpoints: {
         '(min-width: 0px and max-width: 768px)': {
           slides: {
-            perView: this.perView[0],
+            perView: this.slidesPerView[0],
             spacing: 0,
           },
           mode: 'free-snap',
         },
         '(min-width: 769px and max-width: 1024px)': {
           slides: {
-            perView: this.perView[1],
+            perView: this.slidesPerView[1],
             spacing: 2,
           },
           mode: 'free-snap',
@@ -59,7 +57,7 @@ export class SharedCarouselComponent implements AfterViewInit, OnDestroy {
       mode: 'free-snap',
       initial: this.initialSlide,
       slides: {
-        perView: this.perView[2],
+        perView: this.slidesPerView[2],
         spacing: 2,
       },
     });

@@ -1,15 +1,15 @@
-<app-shared-carousel [perView]="[1, 5, 7]">
-  <ng-container *ngFor="let item of topMovies | async">
-    <div
-      class="keen-slider__slide custom-element"
-      data-keen-slider-clickable="true"
-      (click)="onClick()"
-    >
-      <img
-        class="custom-element__image"
-        [src]="item.image"
-        [alt]="item.title"
-      />
-    </div>
-  </ng-container>
-</app-shared-carousel>
+<div class="block-container">
+  <div class="category-container">
+    <h2>Top movies</h2>
+    <app-shared-carousel [slidesPerView]="[1, 5, 7]">
+      <ng-container *ngFor="let item of topMovies | async">
+        <app-item-poster
+          [categoryItem]="item"
+          class="keen-slider__slide custom-element"
+          data-keen-slider-clickable="true"
+          (click)="onClick(item.id)"
+        ></app-item-poster>
+      </ng-container>
+    </app-shared-carousel>
+  </div>
+</div>

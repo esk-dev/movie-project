@@ -1,1 +1,12 @@
-<p>item-poster works!</p>
+<img
+  class="category-item__image"
+  [src]="categoryItem.image"
+  alt="categoryItem.title"
+/>
+<div
+  [@inOutAnimation]
+  class="category-item__card_content"
+  *ngIf="canShowContent$ | async"
+>
+  <div>{{ categoryItem.title }} {{ categoryItem.year }}</div>
+</div>

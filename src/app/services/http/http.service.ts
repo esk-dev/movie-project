@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ITopMovies } from './../../models/index';
+import { ITitleData, ITopMovies } from './../../models/index';
 import { Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 const DB = {
@@ -412,6 +412,12 @@ export class HttpService {
       `https://imdb-api.com/API/ResizeImage?apiKey=${environment.API_KEY}&size=${size}&url=
         ${imageUrl}`,
       { responseType: 'blob' }
+    );
+  }
+
+  public fetchTitleDetails(titelId: string): Observable<ITitleData> {
+    return this.http.get<ITitleData>(
+      `https://imdb-api.com/en/API/Title/${environment.API_KEY}/${titelId}/FullActor,FullCast,Posters,Images,Trailer,Ratings`
     );
   }
 }

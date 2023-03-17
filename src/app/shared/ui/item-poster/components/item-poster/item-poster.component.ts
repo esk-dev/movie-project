@@ -1,15 +1,52 @@
-import { Component, OnInit } from '@angular/core';
+import { trigger, transition, style, animate } from '@angular/animations';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  HostListener,
+  Input,
+  Output,
+} from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { ITopItem } from 'src/app/models';
 
 @Component({
   selector: 'app-item-poster',
   templateUrl: './item-poster.component.html',
-  styleUrls: ['./item-poster.component.scss']
+  styleUrls: ['./item-poster.component.scss'],
+  animations: [
+    trigger('inOutAnimation', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('0.25s 0.1s ease-in-out', style({ opacity: 1 })),
+      ]),
+      transition(':leave', [
+        style({ opacity: 1 }),
+        animate('0.25s 0.1s ease-in-out', style({ opacity: 0 })),
+      ]),
+    ]),
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ItemPosterComponent implements OnInit {
+export class ItemPosterComponent {
+  @Input() categoryItem!: ITopItem;
 
-  constructor() { }
+  @Output() handleClick = new EventEmitter();
 
-  ngOnInit(): void {
+  public canShowContent$: BehaviorSubject<boolean> =
+    new BehaviorSubject<boolean>(false);
+
+  @HostListener('mouseenter')
+  onMouseEnter() {
+    this.canShowContent$.next(true);
   }
 
+  @HostListener('mouseleave')
+  onMouseLeave() {
+    this.canShowContent$.next(false);
+  }
+
+  onCLick() {
+    this.handleClick.emit();
+  }
 }
