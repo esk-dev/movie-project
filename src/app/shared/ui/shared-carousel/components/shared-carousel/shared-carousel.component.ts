@@ -1,12 +1,12 @@
 import {
-  AfterContentInit,
   AfterViewChecked,
   AfterViewInit,
   Component,
   ElementRef,
+  EventEmitter,
   Input,
   OnDestroy,
-  OnInit,
+  Output,
   ViewChild,
 } from '@angular/core';
 import {
@@ -25,9 +25,9 @@ type PerView = number | 'auto';
 export class SharedCarouselComponent
   implements AfterViewInit, AfterViewChecked, OnDestroy
 {
-  // @Output() handleClick = new EventEmitter<any>();
-
   @ViewChild('sliderRef') sliderRef!: ElementRef<HTMLElement>;
+
+  @Output() public lastSlideEvent = new EventEmitter<void>();
 
   @Input() public slidesPerView: PerView[] = [];
 
@@ -35,49 +35,63 @@ export class SharedCarouselComponent
 
   public faArrowLeft: IconDefinition = faArrowLeft;
 
-  slider: KeenSliderInstance = {} as KeenSliderInstance;
+  public slider: KeenSliderInstance = {} as KeenSliderInstance;
 
-  currentSlide: number = 0;
+  public currentSlide: number = 0;
 
-  initialSlide: number = 1;
+  public initialSlide: number = 1;
 
-  ngAfterViewInit(): void {
+  public isLoad: boolean = false;
+
+  public ngAfterViewInit(): void {
     this.slider = new KeenSlider(this.sliderRef.nativeElement, {
-      breakpoints: {
-        '(min-width: 0px and max-width: 768px)': {
-          slides: {
-            perView: this.slidesPerView[0],
-            spacing: 0,
-          },
-          mode: 'free-snap',
-        },
-        '(min-width: 769px and max-width: 1024px)': {
-          slides: {
-            perView: this.slidesPerView[1],
-            spacing: 2,
-          },
-          mode: 'free-snap',
-        },
-      },
       initial: this.initialSlide,
       slides: {
-        perView: this.slidesPerView[2],
+        perView: this.slidesPerView[0],
         spacing: 2,
       },
-    });
-
-    this.slider.on('slideChanged', (e) => {
-      this.currentSlide = e.track.details.abs;
+      breakpoints: {
+        '(min-width: 768px)': {
+          slides: {
+            perView: this.slidesPerView[1],
+            spacing: 5,
+          },
+          mode: 'free-snap',
+        },
+        '(min-width: 1024px)': {
+          slides: {
+            perView: this.slidesPerView[2],
+            spacing: 5,
+          },
+          mode: 'free-snap',
+        },
+      },
+      slideChanged: (e) => {
+        this.currentSlide = e.track.details.abs;
+      },
+      animationEnded: (e) => {
+        this.handleEndOfSLider(e);
+      },
     });
   }
 
-  ngAfterViewChecked(): void {
+  public ngAfterViewChecked(): void {
     if (this.slider && !this.slider.slides.length) {
       this.slider.update();
     }
   }
 
-  ngOnDestroy() {
+  public ngOnDestroy() {
     this.slider.destroy();
+  }
+
+  private handleEndOfSLider(e: KeenSliderInstance): void {
+    const lastIdx = e.track.details.maxIdx;
+    const currIdx = e.track.details.abs;
+    const distance = lastIdx - currIdx;
+    if (distance <= 3) {
+      this.lastSlideEvent.emit();
+      this.slider.update();
+    }
   }
 }

@@ -47,8 +47,8 @@ $shadow-color: map-get(
   &:focus {
     filter: drop-shadow(2px 0px 10px $shadow-color);
 
-    .category-item__image {
-      filter: brightness(0.5);
+    .category-item__card_content {
+      backdrop-filter: brightness(0.5);
     }
   }
 }

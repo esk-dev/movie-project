@@ -1,6 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import {
+  BehaviorSubject,
+  Observable,
+  Subject,
+  switchMap,
+  takeUntil,
+} from 'rxjs';
 import { ITopMovie } from 'src/app/models/kinopoisk-base-api/kinopoisk-base-api.interface';
 import { MoviesService } from '../../services/movies.service';
 
@@ -9,22 +15,64 @@ import { MoviesService } from '../../services/movies.service';
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.scss'],
 })
-export class CategoriesComponent implements OnInit {
-  public topMovies$!: Observable<ITopMovie[]>;
+export class CategoriesComponent implements OnInit, OnDestroy {
+  public topMovies: ITopMovie[] = [];
 
-  public topOneThousandMovies$!: Observable<ITopMovie[]>;
+  public oneThousandMovies: ITopMovie[] = [];
 
-  public topAwaitMovies$!: Observable<ITopMovie[]>;
+  public awaitMovies: ITopMovie[] = [];
+
+  private currentMoviesPack$: BehaviorSubject<number> = new BehaviorSubject(1);
+
+  private currentOneThousandMoviesPack$: BehaviorSubject<number> =
+    new BehaviorSubject(1);
+
+  private currentAwaitMoviesPack$: BehaviorSubject<number> =
+    new BehaviorSubject(1);
+
+  private destroy$: Subject<boolean> = new Subject();
 
   constructor(private moviesService: MoviesService, private router: Router) {}
 
-  ngOnInit(): void {
-    this.topMovies$ = this.moviesService.loadTopMovies(1);
-    this.topOneThousandMovies$ = this.moviesService.loadTopOneThousandMovies(1);
-    this.topAwaitMovies$ = this.moviesService.loadTopAwaitMovies(1);
+  public loadMoreSlides() {
+    this.currentMoviesPack$.next(this.currentMoviesPack$.value + 1);
   }
 
   public onClick(titleId: number) {
     this.router.navigate(['/title/', titleId]);
+  }
+
+  ngOnInit(): void {
+    this.currentMoviesPack$
+      .pipe(
+        switchMap((numberOfPage: number) =>
+          this.moviesService.loadTopMovies(numberOfPage)
+        ),
+        takeUntil(this.destroy$)
+      )
+      .subscribe((data: ITopMovie[]) => this.topMovies.push(...data));
+
+    // this.currentOneThousandMoviesPack$
+    //   .pipe(
+    //     switchMap((numberOfPage: number) =>
+    //       this.moviesService.loadTopOneThousandMovies(numberOfPage)
+    //     ),
+    //     takeUntil(this.destroy$)
+    //   )
+    //   .subscribe((data: ITopMovie[]) => this.oneThousandMovies.push(...data));
+
+    // this.currentAwaitMoviesPack$
+    //   .pipe(
+    //     switchMap((numberOfPage: number) =>
+    //       this.moviesService.loadTopAwaitMovies(numberOfPage)
+    //     ),
+    //     takeUntil(this.destroy$)
+    //   )
+    //   .subscribe((data: ITopMovie[]) => this.awaitMovies.push(...data));
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next(true);
+    this.destroy$.complete();
   }
 }

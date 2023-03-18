@@ -82,3 +82,22 @@ export interface ITitleData {
   shortFilm: boolean;
   completed: boolean;
 }
+
+export interface ITitleSeasons {
+  total: number;
+  items: [
+    {
+      number: number;
+      episodes: [
+        {
+          seasonNumber: number;
+          episodeNumber: number;
+          nameRu: string;
+          nameEn: string;
+          synopsis: string;
+          releaseDate: string;
+        }
+      ];
+    }
+  ];
+}

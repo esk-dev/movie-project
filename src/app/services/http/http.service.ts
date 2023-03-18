@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {
   ITitleData,
   IApiResponse,
+  ITitleSeasons,
 } from '../../models/kinopoisk-base-api/kinopoisk-base-api.interface';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -27,17 +28,24 @@ export class HttpService {
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      'X-API-KEY': '47745a43-0a1c-4f70-acc2-a31f207f8e4b',
+      'X-API-KEY': environment.API_KEY,
     }),
   };
 
-  public fetch<T>(
+  private fetch<T>(
     endpoint: string,
     term?: string,
     query?: string
   ): Observable<T> {
     return this.http.get<T>(
       `${environment.API_BASE_URL}${endpoint}${term}${query}`,
+      this.httpOptions
+    );
+  }
+
+  private fetchById<T>(term: number, endpoint: string): Observable<T> {
+    return this.http.get<T>(
+      `${environment.API_BASE_URL}/${term}/${endpoint}`,
       this.httpOptions
     );
   }
@@ -55,5 +63,9 @@ export class HttpService {
 
   public fetchTitleDetails(titelId: number): Observable<ITitleData> {
     return this.fetch<ITitleData>(`${titelId}`);
+  }
+
+  public fetchTitleSeasons(titelId: number): Observable<ITitleSeasons> {
+    return this.fetch<ITitleSeasons>(`/${titelId}`, '/seasons');
   }
 }

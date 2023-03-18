@@ -2,18 +2,18 @@
 @use "src/styles/colors/variables" as colors;
 @use "sass:map";
 
-$shadow-color: map-get($map: colors.$light-primary,
-        $key: default,
-    );
+$shadow-color: map-get(
+  $map: colors.$light-primary,
+  $key: default,
+);
 
-    
 $transition: all 0.25s ease-in-out 0.1s;
-// .block-container {
-//     width: auto;
-// }
-// .category-container {
-//     margin-top: 20px;
-//     h2 {
-//      margin-left: 35px;
-//     } 
-// }
+.block-container {
+  .category-title {
+    font-size: 28px;
+    margin-left: 20px;
+  }
+  .category-container {
+    
+  }
+}
