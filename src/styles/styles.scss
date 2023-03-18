@@ -8,11 +8,6 @@
 @use "./mixins/media-query" as media-mixins;
 @use "sass:map";
 
-//ngx-owl-carousel
-
-@import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
-@import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
-
 @include mat.core(typography.$custom-typography);
 
 @include mat.core-theme(light.$light-theme);
