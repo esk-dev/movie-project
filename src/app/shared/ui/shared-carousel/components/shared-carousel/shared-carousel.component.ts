@@ -1,9 +1,12 @@
 import {
+  AfterContentInit,
+  AfterViewChecked,
   AfterViewInit,
   Component,
   ElementRef,
   Input,
   OnDestroy,
+  OnInit,
   ViewChild,
 } from '@angular/core';
 import {
@@ -19,7 +22,9 @@ type PerView = number | 'auto';
   templateUrl: './shared-carousel.component.html',
   styleUrls: ['./shared-carousel.component.scss'],
 })
-export class SharedCarouselComponent implements AfterViewInit, OnDestroy {
+export class SharedCarouselComponent
+  implements AfterViewInit, AfterViewChecked, OnDestroy
+{
   // @Output() handleClick = new EventEmitter<any>();
 
   @ViewChild('sliderRef') sliderRef!: ElementRef<HTMLElement>;
@@ -34,9 +39,9 @@ export class SharedCarouselComponent implements AfterViewInit, OnDestroy {
 
   currentSlide: number = 0;
 
-  initialSlide: number = 0;
+  initialSlide: number = 1;
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     this.slider = new KeenSlider(this.sliderRef.nativeElement, {
       breakpoints: {
         '(min-width: 0px and max-width: 768px)': {
@@ -62,9 +67,14 @@ export class SharedCarouselComponent implements AfterViewInit, OnDestroy {
     });
 
     this.slider.on('slideChanged', (e) => {
-      console.log(e);
       this.currentSlide = e.track.details.abs;
     });
+  }
+
+  ngAfterViewChecked(): void {
+    if (this.slider && !this.slider.slides.length) {
+      this.slider.update();
+    }
   }
 
   ngOnDestroy() {
