@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   API_KEY: 'k_pzhascv1',
+  API_BASE_URL: 'https://kinopoiskapiunofficial.tech/api/v2.2/films',
 };
 
 /* k_uh02f834

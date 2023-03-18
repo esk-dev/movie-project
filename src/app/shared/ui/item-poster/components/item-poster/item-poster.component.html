@@ -1,12 +1,18 @@
-<img
+<!-- <img
   class="category-item__image"
-  [src]="categoryItem.image"
+  [src]="categoryItem.posterUrl"
   alt="categoryItem.title"
 />
+</div> -->
 <div
-  [@inOutAnimation]
-  class="category-item__card_content"
-  *ngIf="canShowContent$ | async"
+  class="category-item__image"
+  [ngStyle]="{ 'background-image': 'url(' + categoryItem.posterUrl + ')' }"
 >
-  <div>{{ categoryItem.title }} {{ categoryItem.year }}</div>
+  <div
+    [@inOutAnimation]
+    class="category-item__card_content"
+    *ngIf="canShowContent$ | async"
+  >
+    <div>{{ categoryItem.nameEn }} {{ categoryItem.year }}</div>
+  </div>
 </div>

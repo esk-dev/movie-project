@@ -54,7 +54,6 @@ export class SharedCarouselComponent implements AfterViewInit, OnDestroy {
           mode: 'free-snap',
         },
       },
-      mode: 'free-snap',
       initial: this.initialSlide,
       slides: {
         perView: this.slidesPerView[2],

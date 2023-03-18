@@ -18,7 +18,7 @@ export class TitleComponent implements OnInit {
     this.activatedRoute.params
       .pipe(
         map((params: Params) => params['id']),
-        switchMap((titleId: string) =>
+        switchMap((titleId: number) =>
           this.moviesService.loadTitleDetails(titleId)
         )
       )

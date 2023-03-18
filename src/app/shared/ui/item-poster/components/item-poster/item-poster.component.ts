@@ -8,7 +8,7 @@ import {
   Output,
 } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { ITopItem } from 'src/app/models';
+import { ITopMovie } from 'src/app/models/kinopoisk-base-api/kinopoisk-base-api.interface';
 
 @Component({
   selector: 'app-item-poster',
@@ -22,14 +22,14 @@ import { ITopItem } from 'src/app/models';
       ]),
       transition(':leave', [
         style({ opacity: 1 }),
-        animate('0.25s 0.1s ease-in-out', style({ opacity: 0 })),
+        animate('0.25s ease-in-out', style({ opacity: 0 })),
       ]),
     ]),
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ItemPosterComponent {
-  @Input() categoryItem!: ITopItem;
+  @Input() categoryItem!: ITopMovie;
 
   @Output() handleClick = new EventEmitter();
 

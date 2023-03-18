@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { ITopMovies, ITopItem, ITitleData } from 'src/app/models';
+import { map, Observable } from 'rxjs';
+import {
+  ITopMovie,
+  ITitleData,
+  IApiResponse,
+} from 'src/app/models/kinopoisk-base-api/kinopoisk-base-api.interface';
 import { HttpService } from 'src/app/services/http/http.service';
 
 @Injectable({
@@ -10,13 +13,25 @@ import { HttpService } from 'src/app/services/http/http.service';
 export class MoviesService {
   constructor(private httpService: HttpService) {}
 
-  public loadTopMovies(): Observable<ITopItem[]> {
+  public loadTopMovies(pageNumber: number): Observable<ITopMovie[]> {
     return this.httpService
-      .fetchTopMovies()
-      .pipe(map((array: ITopMovies) => array.items.slice(0, 10)));
+      .fetchTopMovies('TOP_250_BEST_FILMS', pageNumber)
+      .pipe(map((response: IApiResponse) => response.films));
   }
 
-  public loadTitleDetails(titleId: string): Observable<ITitleData> {
+  public loadTopOneThousandMovies(pageNumber: number): Observable<ITopMovie[]> {
+    return this.httpService
+      .fetchTopMovies('TOP_100_POPULAR_FILMS', pageNumber)
+      .pipe(map((response: IApiResponse) => response.films));
+  }
+
+  public loadTopAwaitMovies(pageNumber: number): Observable<ITopMovie[]> {
+    return this.httpService
+      .fetchTopMovies('TOP_AWAIT_FILMS', pageNumber)
+      .pipe(map((response: IApiResponse) => response.films));
+  }
+
+  public loadTitleDetails(titleId: number): Observable<ITitleData> {
     return this.httpService.fetchTitleDetails(titleId);
   }
 }

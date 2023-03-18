@@ -1,15 +1,41 @@
 <div class="block-container">
   <div class="category-container">
-    <h2>Top movies</h2>
-    <app-shared-carousel [slidesPerView]="[1, 5, 7]">
-      <ng-container *ngFor="let item of topMovies | async">
+    <h2>Top 250 movies</h2>
+    <app-shared-carousel [slidesPerView]="[1, 5, 6.5]">
+      <ng-container *ngFor="let item of topMovies$ | async">
         <app-item-poster
           [categoryItem]="item"
           class="keen-slider__slide custom-element"
           data-keen-slider-clickable="true"
-          (click)="onClick(item.id)"
+          (click)="onClick(item.filmId)"
         ></app-item-poster>
       </ng-container>
     </app-shared-carousel>
   </div>
+  <!-- <div class="category-container">
+    <h2>Top Await Movies</h2>
+    <app-shared-carousel [slidesPerView]="[1, 5, 7]">
+      <ng-container *ngFor="let item of topAwaitMovies$ | async">
+        <app-item-poster
+          [categoryItem]="item"
+          class="keen-slider__slide custom-element"
+          data-keen-slider-clickable="true"
+          (click)="onClick(item.filmId)"
+        ></app-item-poster>
+      </ng-container>
+    </app-shared-carousel>
+  </div>
+  <div class="category-container">
+    <h2>Top 100 Movies</h2>
+    <app-shared-carousel [slidesPerView]="[1, 5, 7]">
+      <ng-container *ngFor="let item of topOneThousandMovies$ | async">
+        <app-item-poster
+          [categoryItem]="item"
+          class="keen-slider__slide custom-element"
+          data-keen-slider-clickable="true"
+          (click)="onClick(item.filmId)"
+        ></app-item-poster>
+      </ng-container>
+    </app-shared-carousel>
+  </div> -->
 </div>
