@@ -7,6 +7,7 @@ import {
   Input,
   OnDestroy,
   Output,
+  SimpleChanges,
   ViewChild,
 } from '@angular/core';
 import {
@@ -45,6 +46,7 @@ export class SharedCarouselComponent
 
   public ngAfterViewInit(): void {
     this.slider = new KeenSlider(this.sliderRef.nativeElement, {
+      renderMode: 'performance',
       initial: this.initialSlide,
       slides: {
         perView: this.slidesPerView[0],
@@ -52,14 +54,18 @@ export class SharedCarouselComponent
       },
       breakpoints: {
         '(min-width: 768px)': {
+          renderMode: 'performance',
           slides: {
+            origin: 0.025,
             perView: this.slidesPerView[1],
             spacing: 5,
           },
           mode: 'free-snap',
         },
         '(min-width: 1024px)': {
+          renderMode: 'performance',
           slides: {
+            origin: 0.025,
             perView: this.slidesPerView[2],
             spacing: 5,
           },
@@ -89,15 +95,9 @@ export class SharedCarouselComponent
     const lastIdx = e.track.details.maxIdx;
     const currIdx = e.track.details.abs;
     const distance = lastIdx - currIdx;
-    if (distance <= 3) {
+    if (distance <= this.slidesPerView[2]) {
       this.lastSlideEvent.emit();
       this.slider.update();
     }
   }
 }
-/**
- * <ArrowLeft
-  onClick={(e) => e.stopPropagation() || slider.moveToSlide(slider.details().absoluteSlide - 2)}
-  disabled={false} //{currentSlide === 0}
-/>
- */

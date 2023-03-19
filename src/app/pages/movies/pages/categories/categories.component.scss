@@ -9,9 +9,10 @@ $shadow-color: map-get(
 
 $transition: all 0.25s ease-in-out 0.1s;
 .block-container {
+  margin-bottom: 40px;
   .category-title {
     font-size: 28px;
-    margin-left: 20px;
+    margin-left: 40px;
   }
   .category-container {
     

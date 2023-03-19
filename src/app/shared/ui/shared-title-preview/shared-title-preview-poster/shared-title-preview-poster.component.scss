@@ -16,22 +16,20 @@
 .title-preview__content {
   display: flex;
   flex-flow: column nowrap;
-  row-gap: 10px;
-  // font-weight: 600;
-  width: 40vw;
-  // line-height: normal;
-  // .title-preview__name {
-  //   font-size: 42px;
-  // }
+  row-gap: 5px;
+  width: 35vw;
 
-  // .info {
-  //   font-size: 24px;
-  // }
+  .title-preview__name {
+    font-size: 32px;
+  }
 
-  // .title-preview__description {
-  //   font-size: 18px;
-  //   width: 80%;
-  // }
+  .info {
+    font-size: 20px;
+  }
+
+  .title-preview__description {
+    width: 80%;
+  }
 
   .title-preview__action {
     button {

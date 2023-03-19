@@ -4,6 +4,9 @@
 <span class="arrow arrow--left" (click)="slider.prev()" *ngIf="currentSlide">
   <fa-icon class="fa-icon" [icon]="faArrowLeft"></fa-icon>
 </span>
-<span class="arrow arrow--right" (click)="slider.next()">
+<span
+  class="arrow arrow--right"
+  (click)="slider.moveToIdx(currentSlide + +slidesPerView[2])"
+>
   <fa-icon class="fa-icon" [icon]="faArrowRight"></fa-icon>
 </span>
