@@ -43,9 +43,9 @@ export class HttpService {
     );
   }
 
-  private fetchById<T>(term: number, endpoint: string): Observable<T> {
+  private fetchById<T>(term: number, endpoint?: string): Observable<T> {
     return this.http.get<T>(
-      `${environment.API_BASE_URL}/${term}/${endpoint}`,
+      `${environment.API_BASE_URL}/` + term,
       this.httpOptions
     );
   }
@@ -62,7 +62,7 @@ export class HttpService {
   }
 
   public fetchTitleDetails(titelId: number): Observable<ITitleData> {
-    return this.fetch<ITitleData>(`${titelId}`);
+    return this.fetchById<ITitleData>(titelId);
   }
 
   public fetchTitleSeasons(titelId: number): Observable<ITitleSeasons> {

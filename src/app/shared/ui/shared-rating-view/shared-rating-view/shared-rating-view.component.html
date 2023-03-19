@@ -1,0 +1,52 @@
+<div>
+  <span>
+    Kinopoisk:
+    <span appRatingColor [rating]="titleData.ratingKinopoisk">
+      {{ titleData.ratingKinopoisk }}
+    </span>
+    <span>/ {{ titleData.ratingKinopoiskVoteCount | number : "1.0-0" }} </span>
+  </span>
+</div>
+<ng-container *ngIf="extended">
+  <div>
+    <span>
+      GoodReview:
+      <span appRatingColor [rating]="titleData.ratingGoodReview">
+        {{ titleData.ratingGoodReview }}
+      </span>
+      <span
+        >/ {{ titleData.ratingGoodReviewVoteCount | number : "1.0-0" }}
+      </span>
+    </span>
+  </div>
+  <div>
+    <span>
+      IMDB:
+      <span appRatingColor [rating]="titleData.ratingImdb">
+        {{ titleData.ratingImdb }}
+      </span>
+      <span>/ {{ titleData.ratingImdbVoteCount | number : "1.0-0" }} </span>
+    </span>
+  </div>
+  <div>
+    <span>
+      FilmCritics:
+      <span appRatingColor [rating]="titleData.ratingFilmCritics">
+        {{ titleData.ratingFilmCritics }}
+      </span>
+      <span
+        >/ {{ titleData.ratingFilmCriticsVoteCount | number : "1.0-0" }}
+      </span>
+    </span>
+  </div>
+</ng-container>
+<!-- 
+ratingGoodReview
+ratingGoodReviewVoteCount
+ratingKinopoisk
+ratingKinopoiskVoteCount
+ratingImdb
+ratingImdbVoteCount
+ratingFilmCritics
+ratingFilmCriticsVoteCount
+-->

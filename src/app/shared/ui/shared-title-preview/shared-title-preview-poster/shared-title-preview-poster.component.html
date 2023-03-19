@@ -1,0 +1,28 @@
+<ng-container *ngIf="titleData | async as title">
+  <div
+    class="title-preview__container"
+    [ngStyle]="{
+      background:
+        'linear-gradient(to right, rgb(20, 20, 20, 0.8) 30%, transparent 70%) 0% 0% / cover, linear-gradient(to right, rgb(40, 40, 40, 0.9) 1%, transparent 99%), 100% 30% / cover url(' +
+        title.coverUrl +
+        ') no-repeat'
+    }"
+  >
+    <div class="title-preview__content">
+      <span class="mat-h1 title-preview__name">
+        {{ title.nameEn ? title.nameEn : title.nameRu }}
+      </span>
+      <shared-rating-view
+        [titleData]="title"
+        class="mat-body-strong info"
+      ></shared-rating-view>
+      <p class="mat-body-strong title-preview__description">
+        {{ title.shortDescription }}
+      </p>
+      <div class="title-preview__action">
+        <button mat-flat-button color="primary">Смотреть</button>
+        <button mat-stroked-button color="primary">Смотреть</button>
+      </div>
+    </div>
+  </div>
+</ng-container>

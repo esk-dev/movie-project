@@ -7,7 +7,10 @@ import {
   switchMap,
   takeUntil,
 } from 'rxjs';
-import { ITopMovie } from 'src/app/models/kinopoisk-base-api/kinopoisk-base-api.interface';
+import {
+  ITitleData,
+  ITopMovie,
+} from 'src/app/models/kinopoisk-base-api/kinopoisk-base-api.interface';
 import { MoviesService } from '../../services/movies.service';
 
 @Component({
@@ -16,6 +19,8 @@ import { MoviesService } from '../../services/movies.service';
   styleUrls: ['./categories.component.scss'],
 })
 export class CategoriesComponent implements OnInit, OnDestroy {
+  public titleData$!: Observable<ITitleData>;
+
   public topMovies: ITopMovie[] = [];
 
   public oneThousandMovies: ITopMovie[] = [];
@@ -51,7 +56,7 @@ export class CategoriesComponent implements OnInit, OnDestroy {
         takeUntil(this.destroy$)
       )
       .subscribe((data: ITopMovie[]) => this.topMovies.push(...data));
-
+    this.titleData$ = this.moviesService.loadTitleDetails(3498);
     // this.currentOneThousandMoviesPack$
     //   .pipe(
     //     switchMap((numberOfPage: number) =>

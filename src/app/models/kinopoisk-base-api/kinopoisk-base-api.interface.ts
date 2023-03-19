@@ -101,3 +101,19 @@ export interface ITitleSeasons {
     }
   ];
 }
+
+export interface ITitleRating {
+  reviewsCount: number;
+  ratingGoodReview: number;
+  ratingGoodReviewVoteCount: number;
+  ratingKinopoisk: number;
+  ratingKinopoiskVoteCount: number;
+  ratingImdb: number;
+  ratingImdbVoteCount: number;
+  ratingFilmCritics: number;
+  ratingFilmCriticsVoteCount: number;
+  ratingAwait: number;
+  ratingAwaitCount: number;
+  ratingRfCritics: number;
+  ratingRfCriticsVoteCount: number;
+}

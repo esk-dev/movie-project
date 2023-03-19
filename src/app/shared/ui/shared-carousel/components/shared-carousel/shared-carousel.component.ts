@@ -95,3 +95,9 @@ export class SharedCarouselComponent
     }
   }
 }
+/**
+ * <ArrowLeft
+  onClick={(e) => e.stopPropagation() || slider.moveToSlide(slider.details().absoluteSlide - 2)}
+  disabled={false} //{currentSlide === 0}
+/>
+ */

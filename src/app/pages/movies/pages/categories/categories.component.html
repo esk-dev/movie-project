@@ -1,4 +1,9 @@
 <div class="block-container">
+  <shared-title-preview-poster
+    [titleData]="titleData$"
+  ></shared-title-preview-poster>
+</div>
+<div class="block-container">
   <app-link
     class="category-title"
     [link]="{ path: '/#category', name: 'Top 250 movies' }"
@@ -6,7 +11,7 @@
   <div class="category-container">
     <app-shared-carousel
       (lastSlideEvent)="loadMoreSlides()"
-      [slidesPerView]="[1, 3, 10]"
+      [slidesPerView]="[1, 3, 7]"
     >
       <ng-container *ngFor="let item of topMovies">
         <app-item-poster
@@ -19,7 +24,7 @@
     </app-shared-carousel>
   </div>
 </div>
-  <!-- <div class="category-container">
+<!-- <div class="category-container">
     <h2>Top Await Movies</h2>
     <app-shared-carousel [slidesPerView]="[1, 5, 7]">
       <ng-container *ngFor="let item of topAwaitMovies$ | async">
@@ -45,4 +50,3 @@
       </ng-container>
     </app-shared-carousel>
   </div> -->
-
