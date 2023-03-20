@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SharedTitlePreviewPosterComponent } from './shared-title-preview-poster/shared-title-preview-poster.component';
+import { SharedTitlePreviewCoverComponent } from './shared-title-preview-cover/shared-title-preview-cover.component';
 import { SharedRatingViewModule } from '../shared-rating-view/shared-rating-view.module';
 import { MatButtonModule } from '@angular/material/button';
 @NgModule({
-  declarations: [SharedTitlePreviewPosterComponent],
+  declarations: [SharedTitlePreviewCoverComponent],
   imports: [CommonModule, MatButtonModule, SharedRatingViewModule],
-  exports: [SharedTitlePreviewPosterComponent],
+  exports: [SharedTitlePreviewCoverComponent],
 })
 export class SharedTitlePreviewModule {}

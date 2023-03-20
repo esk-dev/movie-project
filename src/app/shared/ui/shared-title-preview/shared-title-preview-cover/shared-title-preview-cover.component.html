@@ -20,8 +20,12 @@
         {{ title.shortDescription }}
       </p>
       <div class="title-preview__action">
-        <button mat-flat-button color="primary">Смотреть</button>
-        <button mat-stroked-button color="primary">Смотреть</button>
+        <button mat-flat-button (click)="openTitleDetails()" color="primary">
+          Смотреть
+        </button>
+        <button mat-stroked-button (click)="openTitleDetails()" color="primary">
+          Подробнее
+        </button>
       </div>
     </div>
   </div>

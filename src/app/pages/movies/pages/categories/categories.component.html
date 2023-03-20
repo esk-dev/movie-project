@@ -1,7 +1,7 @@
 <div class="block-container">
-  <shared-title-preview-poster
+  <shared-title-preview-cover
     [titleData]="titleData$"
-  ></shared-title-preview-poster>
+  ></shared-title-preview-cover>
 </div>
 <div class="block-container">
   <app-link
@@ -14,12 +14,12 @@
       [slidesPerView]="[1, 3, 7]"
     >
       <ng-container *ngFor="let item of topMovies">
-        <app-item-poster
+        <shared-title-poster
           [categoryItem]="item"
           class="keen-slider__slide custom-element"
           data-keen-slider-clickable="true"
           (click)="onClick(item.filmId)"
-        ></app-item-poster>
+        ></shared-title-poster>
       </ng-container>
     </app-shared-carousel>
   </div>

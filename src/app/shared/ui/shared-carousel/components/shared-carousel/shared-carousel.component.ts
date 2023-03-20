@@ -49,11 +49,20 @@ export class SharedCarouselComponent
       renderMode: 'performance',
       initial: this.initialSlide,
       slides: {
-        perView: this.slidesPerView[0],
+        perView: 1,
         spacing: 2,
       },
       breakpoints: {
-        '(min-width: 768px)': {
+        '(min-width: 425px)': {
+          renderMode: 'performance',
+          slides: {
+            origin: 0.025,
+            perView: this.slidesPerView[0],
+            spacing: 5,
+          },
+          mode: 'free-snap',
+        },
+        '(min-width: 767px)': {
           renderMode: 'performance',
           slides: {
             origin: 0.025,
@@ -62,7 +71,7 @@ export class SharedCarouselComponent
           },
           mode: 'free-snap',
         },
-        '(min-width: 1024px)': {
+        '(min-width: 1023px)': {
           renderMode: 'performance',
           slides: {
             origin: 0.025,
@@ -74,6 +83,7 @@ export class SharedCarouselComponent
       },
       slideChanged: (e) => {
         this.currentSlide = e.track.details.abs;
+        console.log(this.slider);
       },
       animationEnded: (e) => {
         this.handleEndOfSLider(e);

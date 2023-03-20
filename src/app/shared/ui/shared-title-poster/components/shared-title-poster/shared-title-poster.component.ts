@@ -11,9 +11,9 @@ import { BehaviorSubject } from 'rxjs';
 import { ITopMovie } from 'src/app/models/kinopoisk-base-api/kinopoisk-base-api.interface';
 
 @Component({
-  selector: 'app-item-poster',
-  templateUrl: './item-poster.component.html',
-  styleUrls: ['./item-poster.component.scss'],
+  selector: 'shared-title-poster',
+  templateUrl: './shared-title-poster.component.html',
+  styleUrls: ['./shared-title-poster.component.scss'],
   animations: [
     trigger('inOutAnimation', [
       transition(':enter', [
@@ -28,7 +28,7 @@ import { ITopMovie } from 'src/app/models/kinopoisk-base-api/kinopoisk-base-api.
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ItemPosterComponent {
+export class SharedTitlePosterComponent {
   @Input() categoryItem!: ITopMovie;
 
   @Output() handleClick = new EventEmitter();
