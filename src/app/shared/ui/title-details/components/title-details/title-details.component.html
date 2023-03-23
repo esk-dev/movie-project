@@ -1,1 +1,9 @@
-<p>title-details works!</p>
+<shared-title-preview-cover
+  class="title-details__cover-overlay"
+  [withContent]="false"
+  [titleData]="titleData$"
+>
+</shared-title-preview-cover>
+<div class="title-details__content-layout">
+  {{ titleData$ | async | json }}
+</div>

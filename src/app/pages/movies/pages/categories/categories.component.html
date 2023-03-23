@@ -1,14 +1,16 @@
-<div class="block-container">
+<div class="block-container preview">
   <shared-title-preview-cover
+    (strokedButtonEmit)="openTitleDetails()"
+    (flatButtonEmit)="openTitleDetails()"
     [titleData]="titleData$"
   ></shared-title-preview-cover>
 </div>
 <div class="block-container">
-  <app-link
+  <!-- <app-link
     class="category-title"
     [link]="{ path: '/#category', name: 'Top 250 movies' }"
-  ></app-link>
-  <div class="category-container">
+  ></app-link> -->
+  <!-- <div class="category-container">
     <app-shared-carousel
       (lastSlideEvent)="loadMoreSlides()"
       [slidesPerView]="[1, 3, 7]"
@@ -22,7 +24,7 @@
         ></shared-title-poster>
       </ng-container>
     </app-shared-carousel>
-  </div>
+  </div> -->
 </div>
 <!-- <div class="category-container">
     <h2>Top Await Movies</h2>

@@ -1,17 +1,13 @@
-<div mat-dialog-title>Dynamic Dialog</div>
-
-<div mat-dialog-content>
-  This dialog allows other components to be injected into this space:
-
-  <div class="injection-space" *ngIf="!!dynamicComponents$">
-    <ng-container
-      *ngComponentOutlet="dynamicComponents$ | async"
-    ></ng-container>
-  </div>
-</div>
-
-<div align="start" mat-dialog-actions>
-  <button mat-flat-button color="accent" [mat-dialog-close]>
-    Wow, that was cool!
+<div class="mat-dialog-title" mat-dialog-title>
+  <button
+    class="mat-dialog-action"
+    mat-icon-button
+    color="primary"
+    [mat-dialog-close]
+  >
+    <i class="fa-solid fa-xmark fa-lg"></i>
   </button>
+</div>
+<div mat-dialog-content class="injection-space" *ngIf="!!dynamicComponents$">
+  <ng-container *ngComponentOutlet="dynamicComponents$ | async"></ng-container>
 </div>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { SharedModalComponent } from './shared-modal/shared-modal.component';
 
 @Injectable({
@@ -9,13 +9,23 @@ import { SharedModalComponent } from './shared-modal/shared-modal.component';
 export class SharedModalService {
   constructor(private dialog: MatDialog) {}
 
-  public passedData$: Subject<Observable<any>> = new Subject();
+  private passedData$: BehaviorSubject<Observable<any>> = new BehaviorSubject(
+    {} as Observable<any>
+  );
+
+  public get dataFromModal$(): Observable<any> {
+    return this.passedData$.getValue();
+  }
 
   public showModal(
     dynamicComponents$: Observable<unknown>,
     passedData: Observable<any>
   ) {
-    this.dialog.open(SharedModalComponent, { data: dynamicComponents$ });
+    this.dialog.open(SharedModalComponent, {
+      data: dynamicComponents$,
+      width: '40%',
+      height: '65vh',
+    });
     this.passedData$.next(passedData);
   }
 }

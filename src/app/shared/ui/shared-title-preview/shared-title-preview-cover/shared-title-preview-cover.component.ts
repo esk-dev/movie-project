@@ -1,8 +1,8 @@
-import { Component, Input } from '@angular/core';
-import { from, Observable } from 'rxjs';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Observable } from 'rxjs';
 import { ITitleData } from 'src/app/models/kinopoisk-base-api/kinopoisk-base-api.interface';
-import { SharedModalService } from '../../shared-modal/shared-modal.service';
 
+type Page = 'fullPage' | 'smallPage' | 'modal';
 @Component({
   selector: 'shared-title-preview-cover',
   templateUrl: './shared-title-preview-cover.component.html',
@@ -11,15 +11,40 @@ import { SharedModalService } from '../../shared-modal/shared-modal.service';
 export class SharedTitlePreviewCoverComponent {
   @Input() public titleData!: Observable<ITitleData>;
 
-  constructor(private sharedModalService: SharedModalService) {}
+  @Input() public withContent: boolean = true;
 
-  private component$ = from(
-    import(
-      '../../title-details/components/title-details/title-details.component'
-    ).then((component) => component.TitleDetailsComponent)
-  );
+  @Input() public typeOfPage: Page = 'fullPage';
 
-  public openTitleDetails() {
-    this.sharedModalService.showModal(this.component$, this.titleData);
+  @Output() private flatButtonEmit = new EventEmitter<void>();
+
+  @Output() private strokedButtonEmit = new EventEmitter<void>();
+
+  // private backgroundStyle!: Object;
+
+  // public set type(v: Page) {
+  //   this.typeOfPage = v;
+
+  //   switch (v) {
+  //     case 'modal':
+  //       this.backgroundStyle = {
+  //         'background-image':
+  //           'linear-gradient(to right, rgba(48, 48, 48, 0.8) 10%, transparent 70%), linear-gradient(to right, rgba(48, 48, 48, 0.9) 1%, transparent 99%), url(' +
+  //           this.titleData.coverUrl +
+  //           ');',
+  //       };
+  //       break;
+  //     case 'smallPage':
+  //       break;
+  //     default:
+  //       break;
+  //   }
+  // }
+
+  public onFlatButton() {
+    this.flatButtonEmit.emit();
+  }
+
+  public onStrokedButton() {
+    this.strokedButtonEmit.emit();
   }
 }

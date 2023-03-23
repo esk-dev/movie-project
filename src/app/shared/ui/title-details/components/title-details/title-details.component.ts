@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ITitleData } from 'src/app/models/kinopoisk-base-api/kinopoisk-base-api.interface';
+import { SharedModalService } from '../../../shared-modal/shared-modal.service';
 
 @Component({
   selector: 'app-title-details',
@@ -6,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./title-details.component.scss'],
 })
 export class TitleDetailsComponent implements OnInit {
-  constructor() {}
+  public titleData$!: Observable<ITitleData>;
 
-  ngOnInit(): void {}
+  constructor(private sharedModalService: SharedModalService) {}
+
+  ngOnInit(): void {
+    this.titleData$ = this.sharedModalService.dataFromModal$;
+  }
 }

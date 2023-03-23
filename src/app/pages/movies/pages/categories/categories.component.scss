@@ -18,3 +18,7 @@ $transition: all 0.25s ease-in-out 0.1s;
     
   }
 }
+
+.preview {
+  height: calc(100vh - 7vh);
+}
