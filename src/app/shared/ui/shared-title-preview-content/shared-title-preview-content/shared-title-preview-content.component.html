@@ -1,0 +1,20 @@
+<ng-container *ngIf="titleData as title">
+  <span class="mat-h1 title-preview__name">
+    {{ title.nameEn ? title.nameEn : title.nameRu }}
+  </span>
+  <shared-rating-view
+    [titleData]="title"
+    class="mat-body-strong info"
+  ></shared-rating-view>
+  <p class="mat-body-strong title-preview__description">
+    {{ title.shortDescription }}
+  </p>
+  <div class="title-preview__action" *ngIf="action">
+    <button mat-flat-button (click)="onFlatButton()" color="primary">
+      Смотреть
+    </button>
+    <button mat-stroked-button (click)="onStrokedButton()" color="primary">
+      Подробнее
+    </button>
+  </div>
+</ng-container>

@@ -1,9 +1,12 @@
-<shared-title-preview-cover
-  class="title-details__cover-overlay"
-  [withContent]="false"
-  [titleData]="titleData$"
->
-</shared-title-preview-cover>
-<div class="title-details__content-layout">
-  {{ titleData$ | async | json }}
-</div>
+<ng-container *ngIf="titleData$ | async as titleData">
+  <shared-title-preview-cover
+    class="title-details__cover-overlay"
+    [typeOfPage]="'modal'"
+    [withAction]="false"
+    [titleData]="titleData"
+  >
+    <shared-title-preview-content
+      [titleData]="titleData"
+    ></shared-title-preview-content>
+  </shared-title-preview-cover>
+</ng-container>

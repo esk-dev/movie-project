@@ -12,30 +12,3 @@
   flex-flow: column nowrap;
   justify-content: flex-end;
 }
-
-.title-preview__content {
-  display: flex;
-  flex-flow: column nowrap;
-  row-gap: 5px;
-  width: 35vw;
-
-  .title-preview__name {
-    font-size: 32px;
-  }
-
-  .info {
-    font-size: 20px;
-  }
-
-  .title-preview__description {
-    width: 80%;
-  }
-
-  .title-preview__action {
-    button {
-      margin-right: 20px;
-      width: 20%;
-      font-weight: 600;
-    }
-  }
-}

@@ -23,8 +23,9 @@ export class SharedModalService {
   ) {
     this.dialog.open(SharedModalComponent, {
       data: dynamicComponents$,
-      width: '40%',
-      height: '65vh',
+      width: '90%',
+      maxWidth: '800px',
+      height: '90%',
     });
     this.passedData$.next(passedData);
   }

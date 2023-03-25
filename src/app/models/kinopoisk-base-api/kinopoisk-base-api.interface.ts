@@ -29,7 +29,7 @@ export interface IApiResponse {
  *
  */
 export interface ITitleData {
-  kinopoiskId: 301;
+  kinopoiskId: number;
   imdbId: string;
   nameRu: string;
   nameEn: string;

@@ -8,6 +8,10 @@ $shadow-color: map-get(
 );
 
 $transition: all 0.25s ease-in-out 0.1s;
+:host {
+  width: 100%;
+}
+
 .block-container {
   margin-bottom: 40px;
   .category-title {

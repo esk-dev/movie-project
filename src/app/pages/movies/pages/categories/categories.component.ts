@@ -6,6 +6,7 @@ import {
   Observable,
   Subject,
   switchMap,
+  take,
   takeUntil,
 } from 'rxjs';
 import {
@@ -53,8 +54,11 @@ export class CategoriesComponent implements OnInit, OnDestroy {
     this.router.navigate(['/title/', titleId]);
   }
 
-  public openTitleDetails() {
-    this.sharedModalService.showModal(this.component$, this.titleData$);
+  public openTitleDetails(titleId: number) {
+    this.sharedModalService.showModal(
+      this.component$,
+      this.moviesService.loadTitleDetails(titleId).pipe(take(1))
+    );
   }
 
   private component$ = from(
@@ -73,7 +77,7 @@ export class CategoriesComponent implements OnInit, OnDestroy {
       )
       .subscribe((data: ITopMovie[]) => this.topMovies.push(...data));
 
-    this.titleData$ = this.moviesService.loadTitleDetails(3498);
+    this.titleData$ = this.moviesService.loadTitleDetails(3498).pipe(take(1));
     // this.currentOneThousandMoviesPack$
     //   .pipe(
     //     switchMap((numberOfPage: number) =>

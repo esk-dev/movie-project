@@ -8,6 +8,7 @@ import { SharedTitlePreviewModule } from './ui/shared-title-preview/shared-title
 import { SharedRatingViewModule } from './ui/shared-rating-view/shared-rating-view.module';
 import { SharedModalModule } from './ui/shared-modal/shared-modal.module';
 import { TitleDetailsModule } from './ui/title-details/title-details.module';
+import { SharedTitlePreviewContentModule } from './ui/shared-title-preview-content/shared-title-preview-content.module';
 
 @NgModule({
   declarations: [],
@@ -20,6 +21,7 @@ import { TitleDetailsModule } from './ui/title-details/title-details.module';
     SharedRatingViewModule,
     SharedModalModule,
     TitleDetailsModule,
+    SharedTitlePreviewContentModule,
   ],
   exports: [
     CommonModule,

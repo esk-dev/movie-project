@@ -1,4 +1,25 @@
-<ng-container *ngIf="titleData | async as title">
+<ng-container *ngIf="titleData as title">
+  <ng-container [ngSwitch]="typeOfPage">
+    <ng-container *ngSwitchCase="'modal'">
+      <ng-container
+        *ngTemplateOutlet="
+          withoutGradient;
+          context: { $implicit: title, externalContent: externalContent }
+        "
+      ></ng-container>
+    </ng-container>
+    <ng-container *ngSwitchDefault>
+      <ng-container
+        *ngTemplateOutlet="
+          withGradient;
+          context: { $implicit: title, externalContent: externalContent }
+        "
+      ></ng-container>
+    </ng-container>
+  </ng-container>
+</ng-container>
+
+<ng-template #withGradient let-title>
   <div
     class="title-preview__container"
     [ngStyle]="{
@@ -9,24 +30,24 @@
     }"
   >
     <div class="title-preview__content">
-      <span class="mat-h1 title-preview__name">
-        {{ title.nameEn ? title.nameEn : title.nameRu }}
-      </span>
-      <shared-rating-view
-        [titleData]="title"
-        class="mat-body-strong info"
-      ></shared-rating-view>
-      <p class="mat-body-strong title-preview__description">
-        {{ title.shortDescription }}
-      </p>
-      <div class="title-preview__action">
-        <button mat-flat-button (click)="onFlatButton()" color="primary">
-          Смотреть
-        </button>
-        <button mat-stroked-button (click)="onStrokedButton()" color="primary">
-          Подробнее
-        </button>
-      </div>
+      <ng-container
+        *ngTemplateOutlet="externalContent; context: { $implicit: title }"
+      ></ng-container>
     </div>
   </div>
-</ng-container>
+</ng-template>
+
+<ng-template #withoutGradient let-title>
+  <div
+    class="title-preview__container"
+    [ngStyle]="{
+      background: '100% 30% / cover url(' + title.coverUrl + ') no-repeat'
+    }"
+  >
+    <div class="title-preview__content">
+      <ng-container
+        *ngTemplateOutlet="externalContent; context: { $implicit: title }"
+      ></ng-container>
+    </div>
+  </div>
+</ng-template>
