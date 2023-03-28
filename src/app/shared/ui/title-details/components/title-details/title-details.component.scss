@@ -1,5 +1,33 @@
-
+:host {
+    color: white;
+}
+.title-details__wrapper {
+    background-color: rgba(34, 34, 34, 1);
+    position: relative;
+}
 .title-details__cover-overlay{
     width: 100%;
-    height: 300px;
+    // height: 100%;
+}
+
+.title-details__content-container {
+   position: absolute;
+   top: 0;
+   bottom: 0;
+   right: 0;
+   left: 0;
+   padding: 20px;
+   margin-top: 50vh;
+   display: flex;
+   flex-flow: column nowrap;
+}
+
+.title-details__content-top {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    .rating-view {
+        align-items: end;
+    }
 }

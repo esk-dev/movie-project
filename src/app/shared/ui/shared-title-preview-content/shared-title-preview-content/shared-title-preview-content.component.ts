@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Observable } from 'rxjs';
 import { ITitleData } from 'src/app/models/kinopoisk-base-api/kinopoisk-base-api.interface';
 
 @Component({

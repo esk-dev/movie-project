@@ -2,10 +2,7 @@
   <span class="mat-h1 title-preview__name">
     {{ title.nameEn ? title.nameEn : title.nameRu }}
   </span>
-  <shared-rating-view
-    [titleData]="title"
-    class="mat-body-strong info"
-  ></shared-rating-view>
+  <ng-content></ng-content>
   <p class="mat-body-strong title-preview__description">
     {{ title.shortDescription }}
   </p>

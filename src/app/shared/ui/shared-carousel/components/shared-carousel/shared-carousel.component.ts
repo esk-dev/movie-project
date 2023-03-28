@@ -72,7 +72,7 @@ export class SharedCarouselComponent
           mode: 'free-snap',
         },
         '(min-width: 1023px)': {
-          renderMode: 'performance',
+          renderMode: 'precision',
           slides: {
             origin: 0.025,
             perView: this.slidesPerView[2],

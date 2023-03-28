@@ -3,7 +3,7 @@
     <ng-container *ngSwitchCase="'modal'">
       <ng-container
         *ngTemplateOutlet="
-          withoutGradient;
+          modal;
           context: { $implicit: title, externalContent: externalContent }
         "
       ></ng-container>
@@ -11,7 +11,7 @@
     <ng-container *ngSwitchDefault>
       <ng-container
         *ngTemplateOutlet="
-          withGradient;
+          fullPage;
           context: { $implicit: title, externalContent: externalContent }
         "
       ></ng-container>
@@ -19,12 +19,12 @@
   </ng-container>
 </ng-container>
 
-<ng-template #withGradient let-title>
+<ng-template #fullPage let-title>
   <div
     class="title-preview__container"
     [ngStyle]="{
       background:
-        'linear-gradient(to right, rgb(20, 20, 20, 0.8) 30%, transparent 70%) 0% 0% / cover, linear-gradient(to right, rgb(40, 40, 40, 0.9) 1%, transparent 99%), 100% 30% / cover url(' +
+        'linear-gradient(to right, rgb(33, 33, 33, 0.8) 30%, transparent 70%) 0% 0% / cover, linear-gradient(to right, rgb(48, 48, 48, 0.9) 1%, transparent 99%), 100% 30% / cover url(' +
         title.coverUrl +
         ') no-repeat'
     }"
@@ -37,11 +37,14 @@
   </div>
 </ng-template>
 
-<ng-template #withoutGradient let-title>
+<ng-template #modal let-title>
   <div
-    class="title-preview__container"
+    class="title-preview__container modal"
     [ngStyle]="{
-      background: '100% 30% / cover url(' + title.coverUrl + ') no-repeat'
+      background:
+        'linear-gradient(to top, rgb(33, 33, 33, 0.8) 30%, transparent 70%) 0% 0% / cover, linear-gradient(to top, rgb(48, 48, 48, 0.9) 1%, transparent 99%),100% 100% / cover url(' +
+        title.coverUrl +
+        ') no-repeat'
     }"
   >
     <div class="title-preview__content">

@@ -9,6 +9,7 @@ import { SharedRatingViewModule } from './ui/shared-rating-view/shared-rating-vi
 import { SharedModalModule } from './ui/shared-modal/shared-modal.module';
 import { TitleDetailsModule } from './ui/title-details/title-details.module';
 import { SharedTitlePreviewContentModule } from './ui/shared-title-preview-content/shared-title-preview-content.module';
+import { SharedButtonModule } from './ui/shared-button/shared-button.module';
 
 @NgModule({
   declarations: [],
@@ -22,6 +23,7 @@ import { SharedTitlePreviewContentModule } from './ui/shared-title-preview-conte
     SharedModalModule,
     TitleDetailsModule,
     SharedTitlePreviewContentModule,
+    SharedButtonModule,
   ],
   exports: [
     CommonModule,

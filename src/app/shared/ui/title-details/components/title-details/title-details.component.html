@@ -1,12 +1,21 @@
 <ng-container *ngIf="titleData$ | async as titleData">
-  <shared-title-preview-cover
-    class="title-details__cover-overlay"
-    [typeOfPage]="'modal'"
-    [withAction]="false"
-    [titleData]="titleData"
-  >
-    <shared-title-preview-content
+  <section class="title-details__wrapper">
+    <shared-title-preview-cover
+      class="title-details__cover-overlay"
+      [typeOfPage]="'modal'"
       [titleData]="titleData"
-    ></shared-title-preview-content>
-  </shared-title-preview-cover>
+    >
+    </shared-title-preview-cover>
+    <div class="title-details__content-container">
+      <div class="title-details__content-top">
+        <shared-title-preview-content [titleData]="titleData" [action]="false">
+        </shared-title-preview-content>
+        <shared-rating-view
+          class="rating-view"
+          [titleData]="titleData"
+          [extended]="true"
+        ></shared-rating-view>
+      </div>
+    </div>
+  </section>
 </ng-container>

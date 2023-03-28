@@ -1,7 +1,8 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 
 @Directive({
-  selector: '[appRatingColor]',
+  // eslint-disable-next-line @angular-eslint/directive-selector
+  selector: '[ratingColor]',
 })
 export class RatingColorDirective implements OnInit {
   @Input() rating!: number;

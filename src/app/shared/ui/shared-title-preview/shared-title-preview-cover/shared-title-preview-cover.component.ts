@@ -17,8 +17,6 @@ type Page = 'fullPage' | 'smallPage' | 'modal';
 export class SharedTitlePreviewCoverComponent {
   @Input() public titleData!: ITitleData;
 
-  @Input() public withAction: boolean = true;
-
   @Input() public typeOfPage: Page = 'fullPage';
 
   @Input() public externalContent!: TemplateRef<any>;
