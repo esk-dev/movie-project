@@ -16,4 +16,8 @@ export class TitleDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.titleData$ = this.sharedModalService.dataFromModal$;
   }
+
+  public onClick() {
+    console.log();
+  }
 }

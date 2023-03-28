@@ -1,17 +1,11 @@
 <ng-container *ngIf="titleData as title">
-  <span class="mat-h1 title-preview__name">
+  <h1 class="mat-h1 title-preview__name">
     {{ title.nameEn ? title.nameEn : title.nameRu }}
-  </span>
-  <ng-content></ng-content>
+  </h1>
   <p class="mat-body-strong title-preview__description">
-    {{ title.shortDescription }}
+    {{ fullDescription ? title.description : title.shortDescription }}
   </p>
-  <div class="title-preview__action" *ngIf="action">
-    <button mat-flat-button (click)="onFlatButton()" color="primary">
-      Смотреть
-    </button>
-    <button mat-stroked-button (click)="onStrokedButton()" color="primary">
-      Подробнее
-    </button>
+  <div class="title-preview__action">
+    <ng-content></ng-content>
   </div>
 </ng-container>

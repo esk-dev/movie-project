@@ -54,8 +54,13 @@
 </div> -->
 
 <ng-template #externalContent let-title>
-  <shared-title-preview-content
-    (flatButtonEmit)="openTitleDetails(title.kinopoiskId)"
-    [titleData]="title"
-  ></shared-title-preview-content>
+  <shared-title-preview-content [titleData]="title">
+    <button
+      mat-flat-button
+      (click)="openTitleDetails(title.kinopoiskId)"
+      color="accent"
+    >
+      Подробнее
+    </button>
+  </shared-title-preview-content>
 </ng-template>

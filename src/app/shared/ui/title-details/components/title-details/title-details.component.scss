@@ -27,7 +27,15 @@
     flex-direction: column;
     flex-wrap: wrap;
 
+    .content-top__action {
+        display: flex;
+        justify-content: space-between;
+    }
+
     .rating-view {
-        align-items: end;
+        display: inline-flex;
+        flex-flow: row nowrap;
+        column-gap: 5px;
+        
     }
 }

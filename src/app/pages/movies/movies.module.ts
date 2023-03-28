@@ -5,6 +5,7 @@ import { MoviesRoutingModule } from './movies-routing.module';
 import { SharedModule } from './../../shared/shared.module';
 import { LinkModule } from './../../layout/modules/link/link.module';
 import { SharedTitlePreviewContentModule } from 'src/app/shared/ui/shared-title-preview-content/shared-title-preview-content.module';
+import { MatButtonModule } from '@angular/material/button';
 @NgModule({
   declarations: [CategoriesComponent],
   imports: [
@@ -13,6 +14,7 @@ import { SharedTitlePreviewContentModule } from 'src/app/shared/ui/shared-title-
     SharedModule,
     LinkModule,
     SharedTitlePreviewContentModule,
+    MatButtonModule,
   ],
 })
 export class MoviesModule {}

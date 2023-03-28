@@ -8,7 +8,13 @@
     </shared-title-preview-cover>
     <div class="title-details__content-container">
       <div class="title-details__content-top">
-        <shared-title-preview-content [titleData]="titleData" [action]="false">
+        <shared-title-preview-content
+          [fullDescription]="true"
+          [titleData]="titleData"
+        >
+          <button mat-flat-button (click)="onClick()" color="primary">
+            Смотреть
+          </button>
         </shared-title-preview-content>
         <shared-rating-view
           class="rating-view"
