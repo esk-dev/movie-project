@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { faSearch, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
@@ -8,8 +7,6 @@ import { faSearch, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 })
 export class SearchBarComponent {
   public searchField: FormControl = new FormControl<string>('');
-
-  public faSearch: IconDefinition = faSearch;
 
   public onSubmit(): void {
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions

@@ -76,8 +76,8 @@ export interface ITitleData {
       genre: string;
     }
   ];
-  startYear: 1996;
-  endYear: 1996;
+  startYear: number;
+  endYear: number;
   serial: boolean;
   shortFilm: boolean;
   completed: boolean;

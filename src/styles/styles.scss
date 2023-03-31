@@ -4,11 +4,10 @@
 @use "./themes/light";
 @use "./themes/dark";
 @use "./colors/variables.scss" as colors;
-@use "./typography/config" as typography;
 @use "./mixins/media-query" as media-mixins;
 @use "sass:map";
 
-@include mat.core(typography.$custom-typography);
+@include mat.core();
 
 @include mat.core-theme(light.$light-theme);
 

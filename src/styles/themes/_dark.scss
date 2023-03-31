@@ -10,5 +10,6 @@ $dark-theme: mat.define-dark-theme(
       accent: var.$dark-accent,
       warn: var.$dark-warn,
     ),
+    typography: typography.$custom-typography,
   )
 );

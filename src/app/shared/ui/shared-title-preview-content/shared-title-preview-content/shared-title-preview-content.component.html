@@ -1,11 +1,16 @@
 <ng-container *ngIf="titleData as title">
-  <h1 class="mat-h1 title-preview__name">
+  <h1 class="title-preview__name">
     {{ title.nameEn ? title.nameEn : title.nameRu }}
   </h1>
-  <p class="mat-body-strong title-preview__description">
+  <span>
+    {{ titleData.year }} г. {{ titleData.filmLength }} мин.
+    {{ titleData.ratingMpaa | uppercase }}
+    <ng-content select="[rating]"></ng-content>
+  </span>
+  <p class="title-preview__description">
     {{ fullDescription ? title.description : title.shortDescription }}
   </p>
   <div class="title-preview__action">
-    <ng-content></ng-content>
+    <ng-content select="[action]"></ng-content>
   </div>
 </ng-container>

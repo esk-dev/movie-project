@@ -8,7 +8,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class SharedButtonComponent {
   @Input() public btnContext!: any;
 
-  @Input() public color: string = 'primary';
+  @Input() public color: string = '';
+
+  @Input() public iconDefinition = '';
 
   @Output() private buttonClickEmit = new EventEmitter<void>();
 

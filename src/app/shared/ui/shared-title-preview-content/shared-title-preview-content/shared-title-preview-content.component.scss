@@ -5,10 +5,6 @@
   row-gap: 5px;
 }
 
-.title-preview__name {
-  font-size: 32px;
-}
-
 .info {
   font-size: 20px;
 }
@@ -17,10 +13,16 @@
   width: 80%;
 }
 
+.title-preview__action {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: center;
+  width: 70%;
+}
+
 ::ng-deep .title-preview__action > button {
-  margin-right: 5%;
   min-width: 120px;
   max-width: 220px;
   width: 45%;
-  font-weight: 600;
 }

@@ -55,7 +55,13 @@
 
 <ng-template #externalContent let-title>
   <shared-title-preview-content [titleData]="title">
+    <shared-rating-view
+      [titleData]="title"
+      rating
+      [extended]="false"
+    ></shared-rating-view>
     <button
+      action
       mat-flat-button
       (click)="openTitleDetails(title.kinopoiskId)"
       color="accent"

@@ -5,6 +5,7 @@ import { SharedTitlePreviewModule } from '../shared-title-preview/shared-title-p
 import { SharedTitlePreviewContentModule } from '../shared-title-preview-content/shared-title-preview-content.module';
 import { SharedRatingViewModule } from '../shared-rating-view/shared-rating-view.module';
 import { MatButtonModule } from '@angular/material/button';
+import { SharedButtonModule } from '../shared-button/shared-button.module';
 @NgModule({
   declarations: [TitleDetailsComponent],
   imports: [
@@ -13,6 +14,7 @@ import { MatButtonModule } from '@angular/material/button';
     SharedTitlePreviewContentModule,
     SharedRatingViewModule,
     MatButtonModule,
+    SharedButtonModule,
   ],
   exports: [TitleDetailsComponent],
 })

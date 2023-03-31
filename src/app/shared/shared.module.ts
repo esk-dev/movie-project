@@ -31,6 +31,7 @@ import { SharedButtonModule } from './ui/shared-button/shared-button.module';
     SharedTitlePosterModule,
     LoadingViewModule,
     SharedTitlePreviewModule,
+    SharedRatingViewModule,
   ],
 })
 export class SharedModule {}

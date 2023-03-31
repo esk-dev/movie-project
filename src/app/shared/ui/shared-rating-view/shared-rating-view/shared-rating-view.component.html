@@ -1,12 +1,12 @@
-<div mat-body-strong>
+<span>
   Kinopoisk:
   <span ratingColor [rating]="titleData.ratingKinopoisk">
     {{ titleData.ratingKinopoisk }}
   </span>
   <span> / {{ titleData.ratingKinopoiskVoteCount | number : "1.0-0" }} </span>
-</div>
+</span>
 <ng-container *ngIf="extended">
-  <div mat-body-strong>
+  <span>
     GoodReview:
     <span ratingColor [rating]="titleData.ratingGoodReview">
       {{ titleData.ratingGoodReview }}
@@ -14,15 +14,15 @@
     <span>
       / {{ titleData.ratingGoodReviewVoteCount | number : "1.0-0" }}
     </span>
-  </div>
-  <div mat-body-strong>
+  </span>
+  <span>
     IMDB:
     <span ratingColor [rating]="titleData.ratingImdb">
       {{ titleData.ratingImdb }}
     </span>
     <span> / {{ titleData.ratingImdbVoteCount | number : "1.0-0" }} </span>
-  </div>
-  <div mat-body-strong>
+  </span>
+  <span>
     FilmCritics:
     <span ratingColor [rating]="titleData.ratingFilmCritics">
       {{ titleData.ratingFilmCritics }}
@@ -30,7 +30,7 @@
     <span>
       / {{ titleData.ratingFilmCriticsVoteCount | number : "1.0-0" }}
     </span>
-  </div>
+  </span>
 </ng-container>
 <!-- 
 ratingGoodReview
