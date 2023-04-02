@@ -12,12 +12,6 @@
           [fullDescription]="true"
           [titleData]="titleData"
         >
-          <shared-rating-view
-            rating
-            class="rating-view"
-            [titleData]="titleData"
-            [extended]="true"
-          ></shared-rating-view>
           <ng-container action>
             <button mat-flat-button (click)="onClick()">
               <i class="fa-solid fa-play"></i>
@@ -32,6 +26,11 @@
             ></shared-button>
           </ng-container>
         </shared-title-preview-content>
+        <shared-rating-view
+          class="rating-view"
+          [titleData]="titleData"
+          [extended]="true"
+        ></shared-rating-view>
       </div>
     </div>
   </section>

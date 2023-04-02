@@ -34,7 +34,10 @@ $shadow-color: map-get(
     padding: 10px;
     width: 100%;
     height: 100%;
-    z-index: 2;
+    
+    .category-item__card-text {
+      width: inherit;
+    }
   }
 
   &:hover,
@@ -43,7 +46,7 @@ $shadow-color: map-get(
     filter: drop-shadow(2px 0px 10px $shadow-color);
 
     .category-item__card_content {
-      backdrop-filter: brightness(0.5);
+      backdrop-filter: brightness(0.4);
     }
   }
 }

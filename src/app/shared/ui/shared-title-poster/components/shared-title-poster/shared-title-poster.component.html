@@ -7,7 +7,7 @@
     class="category-item__card_content"
     *ngIf="canShowContent$ | async"
   >
-    <div>
+    <div class="category-item__card-text">
       {{ categoryItem.nameEn ? categoryItem.nameEn : categoryItem.nameRu }}
     </div>
     <span>

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { ITitleData } from 'src/app/models/kinopoisk-base-api/kinopoisk-base-api.interface';
 
 @Component({
@@ -9,5 +10,19 @@ import { ITitleData } from 'src/app/models/kinopoisk-base-api/kinopoisk-base-api
 export class SharedTitlePreviewContentComponent {
   @Input() public titleData!: ITitleData;
 
-  @Input() public fullDescription: boolean = false;
+  @Input()
+  set fullDescription(value: boolean) {
+    this.isReadMore.next(value);
+    this.isFullDescription = value;
+  }
+
+  public isFullDescription!: boolean;
+
+  public isReadMore: BehaviorSubject<boolean> = new BehaviorSubject(
+    this.isFullDescription
+  );
+
+  public showText(): void {
+    this.isReadMore.next(!this.isReadMore.value);
+  }
 }

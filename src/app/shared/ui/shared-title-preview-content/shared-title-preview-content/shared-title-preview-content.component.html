@@ -1,3 +1,4 @@
+<!-- eslint-disable prettier/prettier -->
 <ng-container *ngIf="titleData as title">
   <h1 class="title-preview__name">
     {{ title.nameEn ? title.nameEn : title.nameRu }}
@@ -8,7 +9,14 @@
     <ng-content select="[rating]"></ng-content>
   </span>
   <p class="title-preview__description">
-    {{ fullDescription ? title.description : title.shortDescription }}
+    {{
+      isFullDescription
+        ? ( (isReadMore | async) ? (title.description | slice : 0 : 70) : title.description)
+        : title.shortDescription
+    }}
+    <span class="caption" *ngIf="isFullDescription" (click)="showText()">{{
+      (isReadMore | async) ? "Show More" : "Show less"
+    }}</span>
   </p>
   <div class="title-preview__action">
     <ng-content select="[action]"></ng-content>

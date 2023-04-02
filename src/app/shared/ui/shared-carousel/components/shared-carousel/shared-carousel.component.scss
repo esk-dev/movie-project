@@ -1,29 +1,23 @@
 :host {
-    position: relative;
-    &:hover {
-        .arrow {
-            opacity: 1;
-        }
-    }
+  position: relative;
 }
 
-.arrow {
+.custom-arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
-    width: 55px;
+    width: 40px;
     height: 100%;
     cursor: pointer;
     color: rgb(199, 199, 199);
-    opacity: 0;
     background: rgba(0, 0, 0, 0.5);
     transition: all 0.15s ease-in-out;
     border: none;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 24px;
+    font-size: 32px;
     &:hover {
         color: rgb(255, 255, 255);
     }

@@ -7,6 +7,9 @@
 @use "./mixins/media-query" as media-mixins;
 @use "sass:map";
 
+@use "@glidejs/glide/src/assets/sass/glide.core" as *;
+@use "@glidejs/glide/src/assets/sass/glide.theme" as *;
+
 @include mat.core();
 
 @include mat.core-theme(light.$light-theme);

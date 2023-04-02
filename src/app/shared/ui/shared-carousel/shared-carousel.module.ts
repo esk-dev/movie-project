@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { SharedCarouselComponent } from './components/shared-carousel/shared-carousel.component';
+import { NgxGlideModule } from 'ngx-glide';
 import { LoadingViewModule } from '../loading-view/loading-view.module';
+import { SharedCarouselComponent } from './components/shared-carousel/shared-carousel.component';
 @NgModule({
   declarations: [SharedCarouselComponent],
-  imports: [CommonModule, FontAwesomeModule, LoadingViewModule],
+  imports: [CommonModule, LoadingViewModule, NgxGlideModule],
   exports: [SharedCarouselComponent],
   providers: [],
 })

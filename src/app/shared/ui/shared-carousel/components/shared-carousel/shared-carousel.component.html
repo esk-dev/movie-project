@@ -1,12 +1,43 @@
-<div class="keen-slider" #sliderRef>
-  <ng-content #slides></ng-content>
-</div>
-<span class="arrow arrow--left" (click)="slider.prev()" *ngIf="currentSlide">
-  <fa-icon class="fa-icon" [icon]="faArrowLeft"></fa-icon>
-</span>
-<span
-  class="arrow arrow--right"
-  (click)="slider.moveToIdx(currentSlide + +slidesPerView[1])"
->
-  <fa-icon class="fa-icon" [icon]="faArrowRight"></fa-icon>
-</span>
+<ng-container *ngIf="slideData && slideData.length > 0">
+  <ngx-glide
+    #ngxGlide
+    [perView]="5"
+    [arrowLeftTemplate]="arrowLeftTemplate"
+    [arrowRightTemplate]="arrowRightTemplate"
+    [autoplay]="isAutoplay ? autoplay : false"
+    [breakpoints]="{
+      '425': {
+        perView: 1,
+        isAutoplay: true,
+        autoplay: 2500,
+        focusAt: 'center',
+        showArrows: false,
+        showBullets: true
+      },
+      '768': { perView: 3, focusAt: 0 }
+    }"
+    [focusAt]="isCenter ? 'center' : focusAt"
+    [gap]="gap"
+    [listenToEvents]="true"
+    [perView]="perView"
+    [rewind]="true"
+    [showBullets]="showBullets"
+    [type]="type"
+    (runEnded)="runEnded($event)"
+  >
+    <ng-container
+      *ngTemplateOutlet="slideView; context: { $implicit: slideData }"
+    ></ng-container>
+  </ngx-glide>
+</ng-container>
+
+<ng-template #arrowLeftTemplate>
+  <span class="custom-arrow arrow--left">
+    <i class="fa-solid fa-arrow-left"></i>
+  </span>
+</ng-template>
+<ng-template #arrowRightTemplate>
+  <div class="custom-arrow arrow--right">
+    <i class="fa-solid fa-arrow-right"></i>
+  </div>
+</ng-template>

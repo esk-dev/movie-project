@@ -5,6 +5,20 @@
   row-gap: 5px;
 }
 
+.limitTextHeight {
+  // height: 50px;
+  // overflow: hidden;
+}
+
+.caption {
+  color: rgb(163, 163, 163);
+  cursor: pointer;
+  
+  &:hover {
+    color: rgb(241, 241, 241);
+  }
+}
+
 .info {
   font-size: 20px;
 }

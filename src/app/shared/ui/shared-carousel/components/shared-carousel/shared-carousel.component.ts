@@ -1,113 +1,50 @@
-import {
-  AfterViewChecked,
-  AfterViewInit,
-  Component,
-  ElementRef,
-  EventEmitter,
-  Input,
-  OnDestroy,
-  Output,
-  SimpleChanges,
-  ViewChild,
-} from '@angular/core';
-import {
-  faArrowLeft,
-  faArrowRight,
-  IconDefinition,
-} from '@fortawesome/free-solid-svg-icons';
-import KeenSlider, { KeenSliderInstance } from 'keen-slider';
+import { Component, Input, TemplateRef, ViewChild } from '@angular/core';
+import { NgxGlideComponent } from 'ngx-glide';
 
-type PerView = number | 'auto';
+type Type = 'carousel' | 'slider';
 @Component({
-  selector: 'app-shared-carousel',
+  selector: 'shared-carousel',
   templateUrl: './shared-carousel.component.html',
   styleUrls: ['./shared-carousel.component.scss'],
 })
-export class SharedCarouselComponent
-  implements AfterViewInit, AfterViewChecked, OnDestroy
-{
-  @ViewChild('sliderRef') sliderRef!: ElementRef<HTMLElement>;
+export class SharedCarouselComponent {
+  @ViewChild('ngxGlide') ngxGlide!: NgxGlideComponent;
 
-  @Output() public lastSlideEvent = new EventEmitter<void>();
+  @Input() slideView: TemplateRef<any>;
 
-  @Input() public slidesPerView: PerView[] = [];
+  @Input() slideData: any[];
 
-  public faArrowRight: IconDefinition = faArrowRight;
+  @Input() focusAt: number = 0.14;
 
-  public faArrowLeft: IconDefinition = faArrowLeft;
+  @Input() isAutoplay: boolean = false;
 
-  public slider: KeenSliderInstance = {} as KeenSliderInstance;
+  @Input() isCenter: boolean = false;
 
-  public currentSlide: number = 0;
+  @Input() showBullets: boolean = false;
 
-  public initialSlide: number = 1;
+  @Input() type: Type = 'slider';
 
-  public isLoad: boolean = false;
+  @Input() perView: number = 6;
 
-  public ngAfterViewInit(): void {
-    this.slider = new KeenSlider(this.sliderRef.nativeElement, {
-      renderMode: 'performance',
-      initial: this.initialSlide,
-      slides: {
-        perView: 1,
-        spacing: 2,
-      },
-      breakpoints: {
-        '(min-width: 425px)': {
-          renderMode: 'performance',
-          slides: {
-            origin: 0.025,
-            perView: this.slidesPerView[0],
-            spacing: 5,
-          },
-          mode: 'free-snap',
-        },
-        '(min-width: 767px)': {
-          renderMode: 'performance',
-          slides: {
-            origin: 0.025,
-            perView: this.slidesPerView[1],
-            spacing: 5,
-          },
-          mode: 'free-snap',
-        },
-        '(min-width: 1023px)': {
-          renderMode: 'precision',
-          slides: {
-            origin: 0.025,
-            perView: this.slidesPerView[2],
-            spacing: 5,
-          },
-          mode: 'free-snap',
-        },
-      },
-      slideChanged: (e) => {
-        this.currentSlide = e.track.details.abs;
-        console.log(this.slider);
-      },
-      animationEnded: (e) => {
-        this.handleEndOfSLider(e);
-      },
-    });
-  }
+  @Input() gap: number = 10;
 
-  public ngAfterViewChecked(): void {
-    if (this.slider && !this.slider.slides.length) {
-      this.slider.update();
+  @Input() autoplay: number | boolean = false;
+
+  @Input() rewind: boolean = true;
+
+  @Input() hoverpause: boolean = false;
+
+  @Input() showCustomArrows: boolean = true;
+
+  @Input() showArrows: boolean = true;
+
+  recreate(): void {
+    if (this.ngxGlide) {
+      this.ngxGlide.recreate();
     }
   }
 
-  public ngOnDestroy() {
-    this.slider.destroy();
-  }
-
-  private handleEndOfSLider(e: KeenSliderInstance): void {
-    const lastIdx = e.track.details.maxIdx;
-    const currIdx = e.track.details.abs;
-    const distance = lastIdx - currIdx;
-    if (distance <= this.slidesPerView[2]) {
-      this.lastSlideEvent.emit();
-      this.slider.update();
-    }
+  runEnded(data: any): void {
+    console.log(data);
   }
 }

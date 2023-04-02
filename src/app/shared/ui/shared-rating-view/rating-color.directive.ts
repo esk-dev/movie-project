@@ -16,13 +16,13 @@ export class RatingColorDirective implements OnInit {
   private checkRating(rating: number): string {
     switch (true) {
       case rating >= 7:
-        return 'green';
+        return 'rgb(70, 211, 105)';
         break;
       case rating <= 7:
-        return 'blue';
+        return 'rgb(70 102 211)';
         break;
       case rating <= 5:
-        return 'red';
+        return 'rgb(211 70 70)';
         break;
       default:
         return 'blue';
