@@ -24,7 +24,7 @@ export class SharedCarouselComponent {
 
   @Input() type: Type = 'slider';
 
-  @Input() perView: number = 6;
+  @Input() perView: number = 5;
 
   @Input() gap: number = 10;
 

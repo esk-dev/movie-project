@@ -1,20 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CategoriesComponent } from './pages/categories/categories.component';
-import { MoviesRoutingModule } from './movies-routing.module';
-import { SharedModule } from './../../shared/shared.module';
-import { LinkModule } from './../../layout/modules/link/link.module';
-import { SharedTitlePreviewContentModule } from 'src/app/shared/ui/shared-title-preview-content/shared-title-preview-content.module';
 import { MatButtonModule } from '@angular/material/button';
+import { SharedModule } from './../../shared/shared.module';
+import { MoviesRoutingModule } from './movies-routing.module';
+import { LinkModule } from './../../layout/modules/link/link.module';
+import { CategoryComponent } from './pages/category/category.component';
+import { CategoriesComponent } from './pages/categories/categories.component';
+import { SharedTitlePreviewContentModule } from 'src/app/shared/ui/shared-title-preview-content/shared-title-preview-content.module';
 @NgModule({
-  declarations: [CategoriesComponent],
+  declarations: [CategoriesComponent, CategoryComponent],
   imports: [
-    CommonModule,
-    MoviesRoutingModule,
-    SharedModule,
     LinkModule,
-    SharedTitlePreviewContentModule,
+    SharedModule,
+    CommonModule,
     MatButtonModule,
+    MoviesRoutingModule,
+    SharedTitlePreviewContentModule,
   ],
 })
 export class MoviesModule {}

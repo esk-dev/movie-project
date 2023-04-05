@@ -8,13 +8,13 @@ import {
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
-enum TOPS {
+export enum TOPS {
   TOP_250_BEST_FILMS = 'TOP_250_BEST_FILMS',
   TOP_100_POPULAR_FILMS = 'TOP_100_POPULAR_FILMS',
   TOP_AWAIT_FILMS = 'TOP_AWAIT_FILMS',
 }
 
-type TopTypes =
+export type TopTypes =
   | 'TOP_250_BEST_FILMS'
   | 'TOP_100_POPULAR_FILMS'
   | 'TOP_AWAIT_FILMS';

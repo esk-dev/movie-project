@@ -8,10 +8,16 @@
 <div class="block-container">
   <app-link
     class="category-title"
-    [link]="{ path: '/#category', name: 'Top 250 movies' }"
+    [link]="{
+      path: '/category/' + tops.TOP_250_BEST_FILMS,
+      name: 'Top 250 movies'
+    }"
   ></app-link>
   <div class="category-container">
-    <shared-carousel [slideView]="categoriesSlides" [slideData]="topMovies">
+    <shared-carousel
+      [slideView]="categoriesSlides"
+      [slideData]="topMovies$ | async"
+    >
     </shared-carousel>
   </div>
 </div>
