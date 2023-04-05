@@ -15,7 +15,7 @@ import {
 } from 'src/app/models/kinopoisk-base-api/kinopoisk-base-api.interface';
 import { SharedModalService } from 'src/app/shared/ui/shared-modal/shared-modal.service';
 import { MoviesService } from '../../services/movies.service';
-
+import { TOPS } from 'src/app/services/http/http.service';
 @Component({
   selector: 'app-categories',
   templateUrl: './categories.component.html',
@@ -24,19 +24,13 @@ import { MoviesService } from '../../services/movies.service';
 export class CategoriesComponent implements OnInit, OnDestroy {
   public titleData$!: Observable<ITitleData>;
 
-  public topMovies: ITopMovie[] = [];
+  public topMovies$: Observable<ITopMovie[]>;
 
   public oneThousandMovies: ITopMovie[] = [];
 
   public awaitMovies: ITopMovie[] = [];
 
-  private currentMoviesPack$: BehaviorSubject<number> = new BehaviorSubject(1);
-
-  private currentOneThousandMoviesPack$: BehaviorSubject<number> =
-    new BehaviorSubject(1);
-
-  private currentAwaitMoviesPack$: BehaviorSubject<number> =
-    new BehaviorSubject(1);
+  public tops = TOPS;
 
   private destroy$: Subject<boolean> = new Subject();
 
@@ -45,10 +39,6 @@ export class CategoriesComponent implements OnInit, OnDestroy {
     private router: Router,
     private sharedModalService: SharedModalService
   ) {}
-
-  public loadMoreSlides() {
-    this.currentMoviesPack$.next(this.currentMoviesPack$.value + 1);
-  }
 
   public onClick(titleId: number) {
     this.router.navigate(['/title/', titleId]);
@@ -68,33 +58,11 @@ export class CategoriesComponent implements OnInit, OnDestroy {
   );
 
   ngOnInit(): void {
-    this.currentMoviesPack$
-      .pipe(
-        switchMap((numberOfPage: number) =>
-          this.moviesService.loadTopMovies(numberOfPage)
-        ),
-        takeUntil(this.destroy$)
-      )
-      .subscribe((data: ITopMovie[]) => this.topMovies.push(...data));
+    this.topMovies$ = this.moviesService
+      .loadTopMovies(1)
+      .pipe(takeUntil(this.destroy$));
 
     this.titleData$ = this.moviesService.loadTitleDetails(3498).pipe(take(1));
-    // this.currentOneThousandMoviesPack$
-    //   .pipe(
-    //     switchMap((numberOfPage: number) =>
-    //       this.moviesService.loadTopOneThousandMovies(numberOfPage)
-    //     ),
-    //     takeUntil(this.destroy$)
-    //   )
-    //   .subscribe((data: ITopMovie[]) => this.oneThousandMovies.push(...data));
-
-    // this.currentAwaitMoviesPack$
-    //   .pipe(
-    //     switchMap((numberOfPage: number) =>
-    //       this.moviesService.loadTopAwaitMovies(numberOfPage)
-    //     ),
-    //     takeUntil(this.destroy$)
-    //   )
-    //   .subscribe((data: ITopMovie[]) => this.awaitMovies.push(...data));
   }
 
   ngOnDestroy(): void {

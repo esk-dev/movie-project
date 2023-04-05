@@ -5,7 +5,7 @@ import {
   ITitleData,
   IApiResponse,
 } from 'src/app/models/kinopoisk-base-api/kinopoisk-base-api.interface';
-import { HttpService } from 'src/app/services/http/http.service';
+import { HttpService, TopTypes } from 'src/app/services/http/http.service';
 
 @Injectable({
   providedIn: 'root',
@@ -16,6 +16,12 @@ export class MoviesService {
   public loadTopMovies(pageNumber: number): Observable<ITopMovie[]> {
     return this.httpService
       .fetchTopMovies('TOP_250_BEST_FILMS', pageNumber)
+      .pipe(map((response: IApiResponse) => response.films));
+  }
+
+  public loadTop(type: TopTypes, pageNumber: number): Observable<ITopMovie[]> {
+    return this.httpService
+      .fetchTopMovies(type, pageNumber)
       .pipe(map((response: IApiResponse) => response.films));
   }
 

@@ -1,0 +1,7 @@
+<ng-container *ngFor="let title of topItems$ | async">
+  <shared-title-poster
+    [categoryItem]="title"
+    class="custom-element"
+    (click)="openTitleDetails(title.filmId)"
+  ></shared-title-poster>
+</ng-container>
