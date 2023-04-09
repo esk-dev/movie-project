@@ -13,10 +13,10 @@
       name: 'Top 250 movies'
     }"
   ></app-link>
-  <div class="category-container">
+  <div class="category-container" *ngIf="topBestFilms$ | async as topBestFilms">
     <shared-carousel
       [slideView]="categoriesSlides"
-      [slideData]="topMovies$ | async"
+      [slideData]="topBestFilms.films"
     >
     </shared-carousel>
   </div>

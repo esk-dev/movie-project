@@ -8,7 +8,7 @@ import {
   Output,
 } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { ITopMovie } from 'src/app/core/models/kinopoisk-base-api/kinopoisk-base-api.interface';
+import { ITopFilm } from 'src/app/core/models/top.interface';
 
 @Component({
   selector: 'shared-title-poster',
@@ -29,7 +29,7 @@ import { ITopMovie } from 'src/app/core/models/kinopoisk-base-api/kinopoisk-base
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SharedTitlePosterComponent {
-  @Input() categoryItem!: ITopMovie;
+  @Input() categoryItem!: ITopFilm;
 
   @Output() handleClick = new EventEmitter();
 

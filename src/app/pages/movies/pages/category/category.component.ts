@@ -1,29 +1,80 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MoviesService } from '../../services/movies.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { ITopMovie } from 'src/app/core/models/kinopoisk-base-api/kinopoisk-base-api.interface';
-import { Observable, from, map, switchMap, take } from 'rxjs';
+import {
+  BehaviorSubject,
+  Observable,
+  Subject,
+  filter,
+  first,
+  from,
+  map,
+  switchMap,
+  take,
+  takeUntil,
+  tap,
+} from 'rxjs';
 import { SharedModalService } from 'src/app/shared/ui/shared-modal/shared-modal.service';
+import { TopFilmsQuery, TopFilmsService } from 'src/app/core/store/top-films';
+import { ITopFilm, ITopFilms, TOPS } from 'src/app/core/models/top.interface';
 
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
   styleUrls: ['./category.component.scss'],
 })
-export class CategoryComponent implements OnInit {
-  public topItems$: Observable<ITopMovie[]>;
+export class CategoryComponent implements OnInit, OnDestroy {
+  public type: TOPS = null;
+
+  public topItems$: Observable<ITopFilms>;
+
+  public pagePagination$: BehaviorSubject<number> = new BehaviorSubject(1);
+
+  private destroy$: Subject<boolean> = new Subject();
 
   constructor(
+    private topFilmsService: TopFilmsService,
+    private topFilmsQuery: TopFilmsQuery,
     private moviesService: MoviesService,
     private sharedModalService: SharedModalService,
     private route: ActivatedRoute
   ) {}
 
   public ngOnInit(): void {
-    this.topItems$ = this.route.params.pipe(
-      map((params: Params) => params['categoryType']),
-      switchMap((parameter) => this.moviesService.loadTop(parameter, 1))
-    );
+    this.route.params
+      .pipe(
+        map((params: Params) => params['categoryType']),
+        tap((parameter) => {
+          this.type = parameter;
+          // return this.topFilmsService.getTopFilms(parameter, 1);
+        }),
+        take(1)
+      )
+      .subscribe(() => {
+        this.topItems$ = this.topFilmsQuery.queryTopFilms$(this.type);
+      });
+
+    this.pagePagination$
+      .pipe(
+        filter((page: number) => page !== 1),
+        switchMap((page: number) => this.getMoreItems(page)),
+        takeUntil(this.destroy$)
+      )
+      .subscribe();
+  }
+
+  public ngOnDestroy(): void {
+    this.destroy$.next(true);
+    this.destroy$.complete();
+  }
+
+  public nextPage(): void {
+    this.pagePagination$.next(this.pagePagination$.value + 1);
+  }
+
+  public getMoreItems(page: number): Observable<ITopFilms> {
+    return this.topFilmsService.getTopFilms(this.type, page);
   }
 
   public openTitleDetails(titleId: number) {
