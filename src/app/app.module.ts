@@ -4,6 +4,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
+
 import { AppComponent } from './app.component';
 
 // Feature Modules
@@ -22,6 +24,7 @@ import { MoviesModule, SeriesModule, MainModule } from './pages/index';
     MoviesModule,
     SeriesModule,
     MainModule,
+    AkitaNgDevtools.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

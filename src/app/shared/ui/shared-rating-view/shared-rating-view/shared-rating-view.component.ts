@@ -5,7 +5,7 @@ import {
   OnInit,
   SimpleChanges,
 } from '@angular/core';
-import { ITitleData } from 'src/app/models/kinopoisk-base-api/kinopoisk-base-api.interface';
+import { ITitleData } from 'src/app/core/models/kinopoisk-base-api/kinopoisk-base-api.interface';
 
 @Component({
   selector: 'shared-rating-view',

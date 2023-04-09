@@ -8,9 +8,8 @@ describe('SharedRatingViewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SharedRatingViewComponent ]
-    })
-    .compileComponents();
+      declarations: [SharedRatingViewComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(SharedRatingViewComponent);
     component = fixture.componentInstance;

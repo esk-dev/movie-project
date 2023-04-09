@@ -4,7 +4,7 @@ import {
   ITopMovie,
   ITitleData,
   IApiResponse,
-} from 'src/app/models/kinopoisk-base-api/kinopoisk-base-api.interface';
+} from 'src/app/core/models/kinopoisk-base-api/kinopoisk-base-api.interface';
 import { HttpService, TopTypes } from 'src/app/services/http/http.service';
 
 @Injectable({

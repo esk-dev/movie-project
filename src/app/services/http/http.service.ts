@@ -4,7 +4,7 @@ import {
   ITitleData,
   IApiResponse,
   ITitleSeasons,
-} from '../../models/kinopoisk-base-api/kinopoisk-base-api.interface';
+} from '../../core/models/kinopoisk-base-api/kinopoisk-base-api.interface';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 

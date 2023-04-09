@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MoviesService } from '../../services/movies.service';
 import { ActivatedRoute, Params } from '@angular/router';
-import { ITopMovie } from 'src/app/models/kinopoisk-base-api/kinopoisk-base-api.interface';
+import { ITopMovie } from 'src/app/core/models/kinopoisk-base-api/kinopoisk-base-api.interface';
 import { Observable, from, map, switchMap, take } from 'rxjs';
 import { SharedModalService } from 'src/app/shared/ui/shared-modal/shared-modal.service';
 

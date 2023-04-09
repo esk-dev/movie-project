@@ -8,9 +8,8 @@ describe('SharedButtonComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SharedButtonComponent ]
-    })
-    .compileComponents();
+      declarations: [SharedButtonComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(SharedButtonComponent);
     component = fixture.componentInstance;

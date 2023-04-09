@@ -1,21 +1,14 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {
-  BehaviorSubject,
-  from,
-  Observable,
-  Subject,
-  switchMap,
-  take,
-  takeUntil,
-} from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { from, Observable, Subject, take } from 'rxjs';
+import { TOPS } from 'src/app/core/models/top.interface';
+import { MoviesService } from '../../services/movies.service';
 import {
   ITitleData,
   ITopMovie,
-} from 'src/app/models/kinopoisk-base-api/kinopoisk-base-api.interface';
+} from 'src/app/core/models/kinopoisk-base-api/kinopoisk-base-api.interface';
 import { SharedModalService } from 'src/app/shared/ui/shared-modal/shared-modal.service';
-import { MoviesService } from '../../services/movies.service';
-import { TOPS } from 'src/app/services/http/http.service';
+import { TopFilmsService } from 'src/app/core/store/top-films';
 @Component({
   selector: 'app-categories',
   templateUrl: './categories.component.html',
@@ -35,6 +28,7 @@ export class CategoriesComponent implements OnInit, OnDestroy {
   private destroy$: Subject<boolean> = new Subject();
 
   constructor(
+    private topFilmsService: TopFilmsService,
     private moviesService: MoviesService,
     private router: Router,
     private sharedModalService: SharedModalService
@@ -58,9 +52,10 @@ export class CategoriesComponent implements OnInit, OnDestroy {
   );
 
   ngOnInit(): void {
-    this.topMovies$ = this.moviesService
-      .loadTopMovies(1)
-      .pipe(takeUntil(this.destroy$));
+    this.topFilmsService.getTop().subscribe();
+    // this.topMovies$ = this.topService
+    //   .getTop('TOP_250_BEST_FILMS')
+    //   .pipe(takeUntil(this.destroy$));
 
     this.titleData$ = this.moviesService.loadTitleDetails(3498).pipe(take(1));
   }
