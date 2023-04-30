@@ -1,4 +1,13 @@
-import { Component, Input, TemplateRef, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnChanges,
+  SimpleChanges,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
 import { NgxGlideComponent } from 'ngx-glide';
 
 type Type = 'carousel' | 'slider';
@@ -6,8 +15,9 @@ type Type = 'carousel' | 'slider';
   selector: 'shared-carousel',
   templateUrl: './shared-carousel.component.html',
   styleUrls: ['./shared-carousel.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SharedCarouselComponent {
+export class SharedCarouselComponent implements OnChanges, AfterViewInit {
   @ViewChild('ngxGlide') ngxGlide!: NgxGlideComponent;
 
   @Input() slideView: TemplateRef<any>;
@@ -37,6 +47,14 @@ export class SharedCarouselComponent {
   @Input() showCustomArrows: boolean = true;
 
   @Input() showArrows: boolean = true;
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes);
+  }
+
+  ngAfterViewInit(): void {
+    this.recreate();
+  }
 
   recreate(): void {
     if (this.ngxGlide) {

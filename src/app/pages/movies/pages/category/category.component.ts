@@ -42,18 +42,13 @@ export class CategoryComponent implements OnInit, OnDestroy {
   ) {}
 
   public ngOnInit(): void {
-    this.route.params
-      .pipe(
-        map((params: Params) => params['categoryType']),
-        tap((parameter) => {
-          this.type = parameter;
-          // return this.topFilmsService.getTopFilms(parameter, 1);
-        }),
-        take(1)
-      )
-      .subscribe(() => {
-        this.topItems$ = this.topFilmsQuery.queryTopFilms$(this.type);
-      });
+    this.topItems$ = this.route.params.pipe(
+      map((params: Params) => params['categoryType']),
+      switchMap((parameter) => {
+        this.type = parameter;
+        return this.topFilmsQuery.queryTopFilms$(parameter);
+      })
+    );
 
     this.pagePagination$
       .pipe(

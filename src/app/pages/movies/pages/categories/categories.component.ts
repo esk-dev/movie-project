@@ -1,14 +1,25 @@
 import { Router } from '@angular/router';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { from, Observable, Subject, take, takeUntil } from 'rxjs';
+import {
+  distinctUntilChanged,
+  filter,
+  from,
+  Observable,
+  Subject,
+  take,
+  takeUntil,
+  tap,
+} from 'rxjs';
 import { ITopFilms, TOPS } from 'src/app/core/models/top.interface';
 import { MoviesService } from '../../services/movies.service';
-import {
-  ITitleData,
-  ITopMovie,
-} from 'src/app/core/models/kinopoisk-base-api/kinopoisk-base-api.interface';
+import { ITitleData } from 'src/app/core/models/kinopoisk-base-api/kinopoisk-base-api.interface';
 import { SharedModalService } from 'src/app/shared/ui/shared-modal/shared-modal.service';
-import { TopFilmsQuery, TopFilmsService } from 'src/app/core/store/top-films';
+import {
+  TopFilmsModel,
+  TopFilmsQuery,
+  TopFilmsService,
+  TopFilmsStore,
+} from 'src/app/core/store/top-films';
 @Component({
   selector: 'app-categories',
   templateUrl: './categories.component.html',
@@ -17,14 +28,11 @@ import { TopFilmsQuery, TopFilmsService } from 'src/app/core/store/top-films';
 export class CategoriesComponent implements OnInit, OnDestroy {
   public titleData$!: Observable<ITitleData>;
 
-  public topBestFilms$: Observable<ITopFilms> =
-    this.topFilmsQuery.topBestFilms$;
+  public topBestFilms$: Observable<ITopFilms>;
 
-  public topPopularFilms$: Observable<ITopFilms> =
-    this.topFilmsQuery.topPopularFilms$;
+  public topPopularFilms$: Observable<ITopFilms>;
 
-  public topAwaitFilms$: Observable<ITopFilms> =
-    this.topFilmsQuery.topAwaitFilms$;
+  public topAwaitFilms$: Observable<ITopFilms>;
 
   public tops = TOPS;
 
@@ -37,10 +45,9 @@ export class CategoriesComponent implements OnInit, OnDestroy {
   );
 
   constructor(
-    private topFilmsService: TopFilmsService,
     private topFilmsQuery: TopFilmsQuery,
     private moviesService: MoviesService,
-    private router: Router,
+    private topFilmsService: TopFilmsService,
     private sharedModalService: SharedModalService
   ) {}
 
@@ -54,6 +61,16 @@ export class CategoriesComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.topFilmsService.getTops().pipe(takeUntil(this.destroy$)).subscribe();
     this.titleData$ = this.moviesService.loadTitleDetails(3498).pipe(take(1));
+
+    this.topBestFilms$ = this.topFilmsQuery.topBestFilms$.pipe(
+      filter((response: TopFilmsModel) => !!response),
+      distinctUntilChanged(),
+      tap((v) => console.log(v))
+    );
+
+    this.topPopularFilms$ = this.topFilmsQuery.topPopularFilms$;
+
+    this.topAwaitFilms$ = this.topFilmsQuery.topAwaitFilms$;
   }
 
   ngOnDestroy(): void {

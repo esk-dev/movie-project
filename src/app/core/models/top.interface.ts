@@ -33,6 +33,6 @@ export interface ITopFilm {
 }
 
 export interface ITopFilms {
-  pageCount: number;
+  pagesCount: number;
   films: ITopFilm[];
 }

@@ -13,12 +13,31 @@
       name: 'Top 250 movies'
     }"
   ></app-link>
-  <div class="category-container" *ngIf="topBestFilms$ | async as topBestFilms">
+  <div class="category-container">
     <shared-carousel
       [slideView]="categoriesSlides"
-      [slideData]="topBestFilms.films"
+      [slideData]="(topBestFilms$ | async)?.films"
     >
     </shared-carousel>
+  </div>
+</div>
+
+<div class="block-container">
+  <app-link
+    class="category-title"
+    [link]="{
+      path: '/category/' + tops.TOP_100_POPULAR_FILMS,
+      name: 'Top 100 Popular'
+    }"
+  ></app-link>
+  <div class="category-container">
+    <ng-container *ngIf="topPopularFilms$ | async">
+      <shared-carousel
+        [slideView]="categoriesSlides"
+        [slideData]="(topPopularFilms$ | async)?.films"
+      >
+      </shared-carousel>
+    </ng-container>
   </div>
 </div>
 

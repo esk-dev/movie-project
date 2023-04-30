@@ -1,5 +1,5 @@
-<section class="category-container" *ngIf="topItems$ | async as topItems">
-  <ng-container *ngFor="let title of topItems.films">
+<section class="category-container">
+  <ng-container *ngFor="let title of (topItems$ | async)?.films">
     <shared-title-poster
       [categoryItem]="title"
       class="custom-element"
@@ -7,6 +7,13 @@
     ></shared-title-poster>
   </ng-container>
 </section>
-<button mat-icon-button (click)="nextPage()">
+<button
+  *ngIf="
+    (topItems$ | async)?.pagesCount > 1 &&
+    (topItems$ | async)?.pagesCount > pagePagination$.value
+  "
+  mat-icon-button
+  (click)="nextPage()"
+>
   <i class="fa-solid fa-square-plus"></i>
 </button>
