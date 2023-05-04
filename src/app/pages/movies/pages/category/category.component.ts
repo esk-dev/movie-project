@@ -69,7 +69,7 @@ export class CategoryComponent implements OnInit, OnDestroy {
   }
 
   public getMoreItems(page: number): Observable<ITopFilms> {
-    return this.topFilmsService.getTopFilms(this.type, page);
+    return this.topFilmsService.loadTopFilms(this.type, page);
   }
 
   public openTitleDetails(titleId: number) {

@@ -1,4 +1,3 @@
-import { Router } from '@angular/router';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   distinctUntilChanged,
@@ -18,7 +17,6 @@ import {
   TopFilmsModel,
   TopFilmsQuery,
   TopFilmsService,
-  TopFilmsStore,
 } from 'src/app/core/store/top-films';
 @Component({
   selector: 'app-categories',
@@ -31,8 +29,6 @@ export class CategoriesComponent implements OnInit, OnDestroy {
   public topBestFilms$: Observable<ITopFilms>;
 
   public topPopularFilms$: Observable<ITopFilms>;
-
-  public topAwaitFilms$: Observable<ITopFilms>;
 
   public tops = TOPS;
 
@@ -59,7 +55,7 @@ export class CategoriesComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.topFilmsService.getTops().pipe(takeUntil(this.destroy$)).subscribe();
+    this.topFilmsService.loadTops().pipe(takeUntil(this.destroy$)).subscribe();
     this.titleData$ = this.moviesService.loadTitleDetails(3498).pipe(take(1));
 
     this.topBestFilms$ = this.topFilmsQuery.topBestFilms$.pipe(
@@ -69,8 +65,6 @@ export class CategoriesComponent implements OnInit, OnDestroy {
     );
 
     this.topPopularFilms$ = this.topFilmsQuery.topPopularFilms$;
-
-    this.topAwaitFilms$ = this.topFilmsQuery.topAwaitFilms$;
   }
 
   ngOnDestroy(): void {

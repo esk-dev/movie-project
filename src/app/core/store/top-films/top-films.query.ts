@@ -19,10 +19,6 @@ export class TopFilmsQuery extends QueryEntity<TopFilmsState> {
     TOPS.TOP_100_POPULAR_FILMS
   );
 
-  public topAwaitFilms$: Observable<TopFilmsModel> = this.selectEntity(
-    TOPS.TOP_AWAIT_FILMS
-  );
-
   public queryTopFilms$(type: TOPS): Observable<TopFilmsModel> {
     return this.selectEntity(type);
   }

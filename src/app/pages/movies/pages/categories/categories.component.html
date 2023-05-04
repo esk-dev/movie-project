@@ -31,13 +31,11 @@
     }"
   ></app-link>
   <div class="category-container">
-    <ng-container *ngIf="topPopularFilms$ | async">
-      <shared-carousel
-        [slideView]="categoriesSlides"
-        [slideData]="(topPopularFilms$ | async)?.films"
-      >
-      </shared-carousel>
-    </ng-container>
+    <shared-carousel
+      [slideView]="categoriesSlides"
+      [slideData]="(topPopularFilms$ | async)?.films"
+    >
+    </shared-carousel>
   </div>
 </div>
 
