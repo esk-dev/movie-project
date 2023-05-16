@@ -1,5 +1,5 @@
 import { Component, Input, TemplateRef } from '@angular/core';
-import { ITitleData } from 'src/app/core/models/kinopoisk-base-api/kinopoisk-base-api.interface';
+import { ITitleData } from 'src/app/core/old-models/kinopoisk-base-api/kinopoisk-base-api.interface';
 
 type Page = 'fullPage' | 'smallPage' | 'modal';
 @Component({

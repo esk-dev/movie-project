@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ITitleData } from 'src/app/core/models/kinopoisk-base-api/kinopoisk-base-api.interface';
+import { ITitleData } from 'src/app/core/old-models/kinopoisk-base-api/kinopoisk-base-api.interface';
 import { SharedModalService } from '../../../shared-modal/shared-modal.service';
 
 @Component({

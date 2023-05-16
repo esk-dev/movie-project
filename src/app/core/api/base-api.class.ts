@@ -2,7 +2,9 @@
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-
+/**
+ * Для старого апи
+ */
 export interface IBaseApi {
   readonly _urn: string;
   readonly _model: string;

@@ -10,9 +10,20 @@ import { SharedModalModule } from './ui/shared-modal/shared-modal.module';
 import { TitleDetailsModule } from './ui/title-details/title-details.module';
 import { SharedTitlePreviewContentModule } from './ui/shared-title-preview-content/shared-title-preview-content.module';
 import { SharedButtonModule } from './ui/shared-button/shared-button.module';
+import { MediaCardComponent } from './ui/media-card/media-card.component';
+import { BackgroundComponent } from './ui/background/background.component';
+import { MediaDetailsComponent } from './ui/media-details/media-details.component';
+import { MediaCardBackgroundPosterComponent } from './ui/media-card-background-poster/media-card-background-poster.component';
+import { MediaRatingComponent } from './ui/media-rating/media-rating.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    MediaCardComponent,
+    BackgroundComponent,
+    MediaDetailsComponent,
+    MediaCardBackgroundPosterComponent,
+    MediaRatingComponent,
+  ],
   imports: [
     CommonModule,
     SharedCarouselModule,
@@ -32,6 +43,11 @@ import { SharedButtonModule } from './ui/shared-button/shared-button.module';
     LoadingViewModule,
     SharedTitlePreviewModule,
     SharedRatingViewModule,
+    MediaCardComponent,
+    BackgroundComponent,
+    MediaDetailsComponent,
+    MediaCardBackgroundPosterComponent,
+    MediaRatingComponent,
   ],
 })
 export class SharedModule {}

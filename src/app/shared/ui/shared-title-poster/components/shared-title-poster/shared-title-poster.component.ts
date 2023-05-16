@@ -8,7 +8,7 @@ import {
   Output,
 } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { ITopFilm } from 'src/app/core/models/top.interface';
+import { ITopFilm } from 'src/app/core/old-models/top.interface';
 
 @Component({
   selector: 'shared-title-poster',

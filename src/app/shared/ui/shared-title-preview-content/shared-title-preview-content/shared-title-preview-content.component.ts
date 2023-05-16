@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { ITitleData } from 'src/app/core/models/kinopoisk-base-api/kinopoisk-base-api.interface';
+import { ITitleData } from 'src/app/core/old-models/kinopoisk-base-api/kinopoisk-base-api.interface';
 
 @Component({
   selector: 'shared-title-preview-content',

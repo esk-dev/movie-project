@@ -10,8 +10,6 @@ import { AppComponent } from './app.component';
 
 // Feature Modules
 import { LayoutModule } from './layout/layout.module';
-// Pages Modules
-import { MoviesModule, SeriesModule, MainModule } from './pages/index';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,9 +19,6 @@ import { MoviesModule, SeriesModule, MainModule } from './pages/index';
     BrowserAnimationsModule,
     HttpClientModule,
     LayoutModule,
-    MoviesModule,
-    SeriesModule,
-    MainModule,
     AkitaNgDevtools.forRoot(),
   ],
   providers: [],
