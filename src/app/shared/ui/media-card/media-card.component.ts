@@ -1,5 +1,8 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { IAnimeResult, IMovieResult } from '@consumet/extensions';
+import {
+  IAnimeResult,
+  IMovieResult,
+} from 'src/app/core/models/models.interface';
 
 @Component({
   selector: 'media-card',

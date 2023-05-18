@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import {
   SearchingMedia,
   SearchingMediaQuery,
   SearchingMediaService,
 } from '../state';
-import { Observable, take } from 'rxjs';
-import { IAnimeResult, IMovieResult } from '@consumet/extensions';
 
 @Injectable({
   providedIn: 'root',
@@ -20,12 +19,10 @@ export class SearchingMediaFacade {
     query: string,
     page: number = 1
   ): Observable<SearchingMedia> {
-    return this.searchingMediaService
-      .getSearchResult(query, page)
-      .pipe(take(1));
+    return this.searchingMediaService.getSearchResult(query, page);
   }
 
-  public searchResult$(): Observable<IMovieResult[]> {
+  public searchResult$(): Observable<SearchingMedia[]> {
     return this.searchingMediaQuery.selectAllSearchingResults();
   }
 }

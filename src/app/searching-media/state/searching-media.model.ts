@@ -1,5 +1,5 @@
 import { ID } from '@datorama/akita';
-import { ISearch, IMovieResult, IAnimeResult } from '@consumet/extensions';
+import { IMovieResult, ISearch } from 'src/app/core/models/models.interface';
 
 export interface SearchingMedia extends ISearch<IMovieResult> {
   id?: ID;

@@ -6,6 +6,8 @@ export const environment = {
   production: false,
   API_KEY: '6ae40fbb-1a62-4d9f-bb73-417c4a272eaa',
   API_BASE_URL: 'https://kinopoiskapiunofficial.tech/api/v2.2/films',
+  META_BASE_URL: 'https://api.consumet.org/meta',
+  MOVIE_STREAM_BASE_URL: 'https://api.consumet.org/movies',
 };
 
 /* k_uh02f834

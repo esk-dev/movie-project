@@ -4,9 +4,8 @@ import {
   SearchingMediaStore,
   SearchingMediaState,
 } from './searching-media.store';
-import { Observable, map } from 'rxjs';
+import { Observable } from 'rxjs';
 import { SearchingMedia } from './searching-media.model';
-import { IMovieResult } from '@consumet/extensions';
 
 @Injectable({ providedIn: 'root' })
 export class SearchingMediaQuery extends QueryEntity<SearchingMediaState> {
@@ -14,9 +13,7 @@ export class SearchingMediaQuery extends QueryEntity<SearchingMediaState> {
     super(store);
   }
 
-  public selectAllSearchingResults(): Observable<IMovieResult[]> {
-    return this.select('searchingMedia').pipe(
-      map((entity: SearchingMedia) => entity.results)
-    );
+  public selectAllSearchingResults(): Observable<SearchingMedia[]> {
+    return this.selectAll();
   }
 }

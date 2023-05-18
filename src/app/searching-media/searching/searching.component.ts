@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SearchingMediaFacade } from '../services/search.facade';
+import { switchMap } from 'rxjs';
 
 @Component({
   templateUrl: './searching.component.html',
@@ -7,11 +8,12 @@ import { SearchingMediaFacade } from '../services/search.facade';
 })
 export class SearchingComponent {
   constructor(private searchingMediaFacade: SearchingMediaFacade) {
-    this.getSearch('avengers');
+    this.getSearch('avengers')
+      .pipe(switchMap(() => this.searchingMediaFacade.searchResult$()))
+      .subscribe((v) => console.log(v));
   }
 
   public getSearch(query: string) {
-    this.searchingMediaFacade.startSearch$(query, 1).subscribe();
-    this.searchingMediaFacade.searchResult$().subscribe((v) => console.log(v));
+    return this.searchingMediaFacade.startSearch$(query, 1);
   }
 }
