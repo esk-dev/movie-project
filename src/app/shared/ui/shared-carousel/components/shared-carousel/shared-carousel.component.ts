@@ -20,9 +20,9 @@ type Type = 'carousel' | 'slider';
 export class SharedCarouselComponent implements OnChanges, AfterViewInit {
   @ViewChild('ngxGlide') ngxGlide!: NgxGlideComponent;
 
-  @Input() slideView: TemplateRef<any>;
+  @Input() slideView!: TemplateRef<any>;
 
-  @Input() slideData: any[];
+  @Input() slideData!: any[];
 
   @Input() focusAt: number = 0.14;
 
