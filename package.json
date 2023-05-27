@@ -8,7 +8,9 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "lint": "ng lint --fix",
-    "test": "ng test",
+    "test": "jest --verbose",
+    "test:watch": "jest --watch",
+    "test:ci": "jest --runInBand",
     "prepare": "husky install"
   },
   "private": true,

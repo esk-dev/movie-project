@@ -86,9 +86,7 @@
               "doctype",
               "styleTransform",
               "matchMedia"
-            ],
-            "tsConfig": "tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"]
+            ]
           }
         },
         "lint": {
