@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 
 // Feature Modules
 import { LayoutModule } from './layout/layout.module';
+import { UiModule } from './ui/ui.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,6 +21,7 @@ import { LayoutModule } from './layout/layout.module';
     HttpClientModule,
     LayoutModule,
     AkitaNgDevtools.forRoot(),
+    UiModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
