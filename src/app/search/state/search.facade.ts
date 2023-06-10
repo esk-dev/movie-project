@@ -18,6 +18,8 @@ export class SearchFacadeService {
     return this.searchService.search(query, page);
   }
 
+  // public fetchMediaDetails$();
+
   public searchResult$(): Observable<IMovieResult[]> {
     return this.searchQuery.searchedResult$;
   }

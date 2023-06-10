@@ -6,8 +6,7 @@ import { SearchRoutingModule } from './search-routing.module';
 import { SearchComponent } from './components/search/search.component';
 import { UiModule } from '../ui/ui.module';
 import { MatButtonModule } from '@angular/material/button';
-// import { FormsModule } from '@angular/forms';
-// import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [SearchComponent],
   imports: [
@@ -16,8 +15,6 @@ import { MatButtonModule } from '@angular/material/button';
     SharedModule,
     UiModule,
     MatButtonModule,
-    // FormsModule,
-    // ReactiveFormsModule,
   ],
 })
 export class SearchModule {}

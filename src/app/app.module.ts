@@ -11,7 +11,7 @@ import { AppComponent } from './app.component';
 // Feature Modules
 import { LayoutModule } from './layout/layout.module';
 import { UiModule } from './ui/ui.module';
-
+import { SharedModule } from '@shared/shared.module';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -22,6 +22,7 @@ import { UiModule } from './ui/ui.module';
     LayoutModule,
     AkitaNgDevtools.forRoot(),
     UiModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

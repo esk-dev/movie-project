@@ -19,7 +19,7 @@ export class SearchService {
     query: string,
     page: number = 1
   ): Observable<ISearch<IMovieResult>> {
-    return this.tmdbService.search(query, page).pipe(
+    return this.filxHqService.search(query, page).pipe(
       map((response: ISearch<IMovieResult>) => ({
         id: response.currentPage ?? 1,
         ...response,

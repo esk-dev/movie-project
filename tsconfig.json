@@ -22,9 +22,9 @@
     "module": "es2020",
     "lib": ["es2020", "dom"],
     "paths": {
-      "@models/*": ["app/core/models/*"],
-      "@shared-module/*": ["app/shared/*"],
-      "@ui-kit/*": ["app/ui/*"]
+      "@models/*": ["src/app/core/models/*"],
+      "@shared/*": ["src/app/shared/*"],
+      "@ui-kit/*": ["src/app/ui/*"]
     }
   },
   "angularCompilerOptions": {
