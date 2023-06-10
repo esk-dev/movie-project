@@ -1,5 +1,3 @@
-import { TvType } from '../models/models.interface';
-
 export const TV_TYPES: Record<string, string> = {
   TVSERIES: 'Сериал',
   MOVIE: 'Фильм',
