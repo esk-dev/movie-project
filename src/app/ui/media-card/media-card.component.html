@@ -1,8 +1,11 @@
-<ui-media-card-background-poster [posterUrl]="mediaResult.image">
+<media-card-background-poster
+  (click)="onClick(mediaResult)"
+  [posterUrl]="mediaResult.image"
+>
   <div style="width: inherit">
     {{ mediaResult.title }}
   </div>
   <span>
     {{ mediaResult.releaseDate }}
   </span>
-</ui-media-card-background-poster>
+</media-card-background-poster>

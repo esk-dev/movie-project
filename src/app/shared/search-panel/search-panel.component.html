@@ -1,0 +1,36 @@
+<div class="search-form">
+  <div class="select_area">
+    <ng-container *ngIf="withSelector; else spacer">
+      <button class="select_input-btn" mat-button [matMenuTriggerFor]="menu">
+        {{ selected || "Выбери что нужно найти" }}
+        <i class="fa-solid fa-angles-down"></i>
+      </button>
+      <mat-menu #menu="matMenu">
+        <ng-container *ngFor="let option of TV_TYPES | keyvalue">
+          <button mat-menu-item (click)="onSelect(option.key)">
+            {{ option.value }}
+          </button>
+        </ng-container>
+      </mat-menu>
+    </ng-container>
+    <ng-template #spacer>
+      <i class="fa-solid fa-film"></i>
+      <span>Искать везде</span>
+    </ng-template>
+  </div>
+
+  <div class="line"></div>
+
+  <div class="search_input-and-btn">
+    <input
+      [(ngModel)]="value.search"
+      (input)="onInput($event)"
+      class="form-control"
+      placeholder="Найти фильм или сериал .."
+      [disabled]="disabled"
+    />
+    <span class="search_btn">
+      <ng-content> </ng-content>
+    </span>
+  </div>
+</div>

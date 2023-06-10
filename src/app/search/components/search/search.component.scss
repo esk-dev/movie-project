@@ -1,0 +1,20 @@
+:host {
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.search-panel_container {
+  
+}
+
+div {
+  display: grid;
+  justify-items: stretch;
+  align-items: center;
+  justify-content: space-between;
+  grid-template-columns: repeat(4, 24%);
+  grid-gap: 1%;
+  margin-top: 3rem;
+}

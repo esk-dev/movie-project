@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faSpinner, IconDefinition } from '@fortawesome/free-solid-svg-icons';
@@ -7,7 +8,7 @@ import { faSpinner, IconDefinition } from '@fortawesome/free-solid-svg-icons';
   templateUrl: './loading-view.component.html',
   styleUrls: ['./loading-view.component.scss'],
   standalone: true,
-  imports: [FontAwesomeModule],
+  imports: [CommonModule, FontAwesomeModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoadingViewComponent {

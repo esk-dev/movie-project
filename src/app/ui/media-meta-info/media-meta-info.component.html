@@ -1,12 +1,13 @@
 <span ratingColor [rating]="rating">
   {{ rating }}
+  <i class="fa-solid fa-percent" style="color: #424242"></i>
 </span>
-<span>
+<span *ngIf="duration">
   {{ duration }}
 </span>
-<span>
+<span *ngIf="totalEpisodes">
   {{ totalEpisodes }}
 </span>
-<span>
+<span *ngIf="releaseDate">
   {{ releaseDate }}
 </span>

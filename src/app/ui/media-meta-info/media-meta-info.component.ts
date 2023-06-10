@@ -1,12 +1,15 @@
+import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+
 import { RatingColorDirective } from './rating-color.directive';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @Component({
-  selector: 'ui-media-meta-info',
+  selector: 'media-meta-info',
   templateUrl: './media-meta-info.component.html',
   styleUrls: ['./media-meta-info.component.scss'],
   standalone: true,
-  imports: [RatingColorDirective],
+  imports: [CommonModule, FontAwesomeModule, RatingColorDirective],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MediaMetaInfoComponent {
@@ -14,10 +17,10 @@ export class MediaMetaInfoComponent {
   public rating!: number;
 
   @Input()
-  public duration!: number;
+  public duration!: string;
 
   @Input()
-  public releaseDate!: number;
+  public releaseDate!: string;
 
   @Input()
   public totalEpisodes!: number;

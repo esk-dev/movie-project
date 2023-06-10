@@ -8,7 +8,7 @@ $shadow-color: map-get(
 );
 
 .media-card__background-poster {
-  transition: filter 0.25s ease-in-out 0.1s;
+  transition: filter 0.25s ease-in-out;
   width: 100%;
   height: 100%;
   background-repeat: no-repeat;
@@ -17,7 +17,7 @@ $shadow-color: map-get(
 }
 
 .media-card__content {
-  transition: all 0.25s ease-in-out 0.1s;
+  transition: all 0.25s ease-in-out;
   color: white;
   font-size: 14px;
   font-weight: 600;
@@ -35,7 +35,7 @@ $shadow-color: map-get(
   &:hover,
   &:active,
   &:focus {
-    filter: drop-shadow(2px 0px 10px $shadow-color);
+    filter: drop-shadow(2px 0px 6px $shadow-color);
 
     .media-card__content {
       backdrop-filter: brightness(0.4);

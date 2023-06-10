@@ -1,0 +1,73 @@
+@use "./../../../styles/colors/variables" as colors;
+
+$default-text-color: map-get(colors.$dark-primary, default);
+$focused-text-color: map-get(colors.$light-accent, default);
+:host {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.search-form {
+  padding-left: 25px;
+  display: flex;
+  align-items: center;
+  margin: auto;
+  width: 612px;
+  height: 54px;
+  background-color: white;
+  border-radius: 25px;
+  box-shadow: 0px 10px 38px 0px rgba(0, 0, 0, 0.1);
+  color: $default-text-color;
+}
+
+.select_area {
+  display: flex;
+  column-gap: 15px;
+  align-items: center;
+  width: 25%;
+  color: inherit;
+}
+
+.select_input-btn {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 25px;
+  color: inherit;
+}
+
+.line {
+  margin-left: 15px;
+  border-left: 1px solid #d8d8d8;
+  height: 40px;
+}
+
+.form-control {
+  width: 100%;
+  border: none;
+  margin-left: 15px;
+  font-size: 16px;
+}
+
+.search_input-and-btn {
+  width: 410px;
+  display: flex;
+  align-items: center;
+}
+
+.search_btn {
+  color: inherit;
+  will-change: transform;
+  transition: transform 0.2s ease-in-out;
+  transform: translate(-55px, 0);
+}
+
+.form-control:focus {
+  outline: none !important;
+}
+
+.form-control:focus + .search_btn {
+  transform: translate(0, 0);
+  color: $focused-text-color;
+}

@@ -9,7 +9,7 @@ import { MediaDetailsComponent } from './media-details/media-details.component';
 import { MediaPreviewComponent } from './media-preview/media-preview.component';
 import { MediaMetaInfoComponent } from './media-meta-info/media-meta-info.component';
 import { MediaDescriptionComponent } from './media-description/media-description.component';
-import { MediaCardBackgroundPosterComponent } from './media-card-background-poster/media-card-background-poster.component';
+import { MediaCardBackgroundPosterComponent } from './media-card/media-card-background-poster/media-card-background-poster.component';
 
 @NgModule({
   declarations: [],

@@ -5,7 +5,10 @@ export interface MovieProjectEntity {
 export const MovieProjectEntities: MovieProjectEntity = {
   searchingMedia: 'searching-media',
 };
-
+export interface SearchPanelValue {
+  selector: string;
+  search: string;
+}
 export interface IProviderStats {
   name: string;
   baseUrl: string;

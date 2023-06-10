@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MediaPreviewComponent } from './media-preview.component';
+import { SearchPanelComponent } from './search-panel.component';
 
-describe('MediaPreviewComponent', () => {
-  let component: MediaPreviewComponent;
-  let fixture: ComponentFixture<MediaPreviewComponent>;
+describe('SearchPanelComponent', () => {
+  let component: SearchPanelComponent;
+  let fixture: ComponentFixture<SearchPanelComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MediaPreviewComponent],
+      imports: [SearchPanelComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(MediaPreviewComponent);
+    fixture = TestBed.createComponent(SearchPanelComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
