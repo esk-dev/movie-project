@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 
-import { SearchQuery } from './search.query';
-import { SearchService } from './search.service';
+import { SearchQuery } from '@core/store/search/search.query';
+import { SearchService } from '@core/store/search/search.service';
 import { IMovieResult } from 'src/app/core/models/models.interface';
 
 @Injectable({
@@ -15,10 +15,8 @@ export class SearchFacadeService {
   ) {}
 
   public startSearch$(query: string, page: number = 1): Observable<any> {
-    return this.searchService.search(query, page);
+    return this.searchService.searchInFlixHq(query, page);
   }
-
-  // public fetchMediaDetails$();
 
   public searchResult$(): Observable<IMovieResult[]> {
     return this.searchQuery.searchedResult$;

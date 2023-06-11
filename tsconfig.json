@@ -24,7 +24,8 @@
     "paths": {
       "@models/*": ["src/app/core/models/*"],
       "@shared/*": ["src/app/shared/*"],
-      "@ui-kit/*": ["src/app/ui/*"]
+      "@ui-kit/*": ["src/app/ui/*"],
+      "@core/*": ["src/app/core/*"]
     }
   },
   "angularCompilerOptions": {

@@ -32,7 +32,7 @@ export interface IAnimeResult {
   cover?: string;
   status?: MediaStatus;
   rating?: number;
-  type?: MediaFormat;
+  type?: MediaFormat | TvType;
   releaseDate?: string;
   [x: string]: unknown;
 }
@@ -236,7 +236,7 @@ export interface IMovieResult {
   url?: string;
   image?: string;
   releaseDate?: string;
-  type?: TvType;
+  type?: TvType | MediaFormat;
   [x: string]: unknown;
 }
 export interface INewsFeed extends INews {

@@ -1,11 +1,12 @@
-import { Observable, from, take } from 'rxjs';
+import { Observable, from } from 'rxjs';
 import { Component } from '@angular/core';
-import { SearchFacadeService } from '../../state';
+import { Actions } from '@datorama/akita-ng-effects';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { SearchFacadeService } from '../../services/search.facade';
 import { IMovieResult } from 'src/app/core/models/models.interface';
 import { SharedModalService } from '@shared/ui/shared-modal/shared-modal.service';
 import { MediaDetailsComponent } from '@ui-kit/media-details/media-details.component';
-// import { SearchedMeta } from '../../interface/searched-meta.interface';
+import { searchInFlixHq } from '@core/store/search/search.actions';
 
 @Component({
   selector: 'app-search',
@@ -29,6 +30,7 @@ export class SearchComponent {
 
   constructor(
     private fb: FormBuilder,
+    private actions: Actions,
     private sharedModalService: SharedModalService,
     private searchFacadeService: SearchFacadeService
   ) {
@@ -42,9 +44,6 @@ export class SearchComponent {
   }
 
   public startSearch(query: string, page: number): void {
-    this.searchFacadeService
-      .startSearch$(query, page)
-      .pipe(take(1))
-      .subscribe();
+    this.actions.dispatch(searchInFlixHq({ query, page }));
   }
 }
