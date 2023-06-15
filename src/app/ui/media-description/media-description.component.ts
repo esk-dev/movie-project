@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({
-  selector: 'ui-media-description',
+  selector: 'media-description',
   templateUrl: './media-description.component.html',
   styleUrls: ['./media-description.component.scss'],
   standalone: true,

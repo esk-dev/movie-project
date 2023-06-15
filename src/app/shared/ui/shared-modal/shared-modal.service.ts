@@ -10,16 +10,16 @@ export class SharedModalService {
   constructor(private dialog: MatDialog) {}
 
   private passedData$: BehaviorSubject<Observable<any>> = new BehaviorSubject(
-    {} as Observable<any>
+    null
   );
 
-  public get dataFromModal$(): Observable<any> {
+  get dataFromModal$() {
     return this.passedData$.getValue();
   }
 
-  public showModal(
+  public showModal<T>(
     dynamicComponents$: Observable<unknown>,
-    passedData: Observable<any>
+    passedData$?: Observable<T>
   ) {
     this.dialog.open(SharedModalComponent, {
       data: dynamicComponents$,
@@ -27,6 +27,6 @@ export class SharedModalService {
       maxWidth: '800px',
       height: '90%',
     });
-    this.passedData$.next(passedData);
+    this.passedData$.next(passedData$ ?? null);
   }
 }

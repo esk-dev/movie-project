@@ -1,1 +1,14 @@
-<p>media-preview works!</p>
+<ng-container>
+  <h1>{{ mediaResult.title }}</h1>
+  <media-meta-info
+    [rating]="mediaResult.rating"
+    [duration]="mediaResult.duration"
+    [releaseDate]="mediaResult.releaseDate"
+    [totalEpisodes]="mediaResult.totalEpisodes"
+  ></media-meta-info>
+  <media-description
+    [isFullDescription]="false"
+    [mediaDescription]="mediaResult.description"
+  >
+  </media-description>
+</ng-container>

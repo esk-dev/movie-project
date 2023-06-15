@@ -1,1 +1,56 @@
-<p>background works!</p>
+<ng-container *ngIf="mediaData as media">
+  <ng-container [ngSwitch]="typeOfPage">
+    <ng-container *ngSwitchCase="'modal'">
+      <ng-container
+        *ngTemplateOutlet="
+          modal;
+          context: { $implicit: media, externalContent: externalContent }
+        "
+      ></ng-container>
+    </ng-container>
+    <ng-container *ngSwitchDefault>
+      <ng-container
+        *ngTemplateOutlet="
+          fullPage;
+          context: { $implicit: media, externalContent: externalContent }
+        "
+      ></ng-container>
+    </ng-container>
+  </ng-container>
+</ng-container>
+
+<ng-template #fullPage let-title>
+  <div
+    class="title-preview__container"
+    [ngStyle]="{
+      background:
+        'linear-gradient(to right, rgb(33, 33, 33, 0.8) 30%, transparent 70%) 0% 0% / cover, linear-gradient(to right, rgb(48, 48, 48, 0.9) 1%, transparent 99%), 100% 30% / cover url(' +
+        title.coverUrl +
+        ') no-repeat'
+    }"
+  >
+    <div class="title-preview__content">
+      <ng-container
+        *ngTemplateOutlet="externalContent; context: { $implicit: title }"
+      ></ng-container>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #modal let-title>
+  <div
+    class="title-preview__container modal"
+    [ngStyle]="{
+      background:
+        'linear-gradient(to top, rgb(33, 33, 33, 0.8) 30%, transparent 70%) 0% 0% / cover, linear-gradient(to top, rgb(48, 48, 48, 0.9) 1%, transparent 99%), 100% 0 / cover url(' +
+        title.coverUrl +
+        ') no-repeat'
+    }"
+  >
+    <div class="title-preview__content">
+      <ng-container
+        *ngTemplateOutlet="externalContent; context: { $implicit: title }"
+      ></ng-container>
+    </div>
+  </div>
+</ng-template>

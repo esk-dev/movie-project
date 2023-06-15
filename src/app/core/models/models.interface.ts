@@ -1,11 +1,7 @@
-export interface MovieProjectEntity {
-  [key: string]: string;
+export interface SearchPanelValue {
+  selector: string;
+  search: string;
 }
-
-export const MovieProjectEntities: MovieProjectEntity = {
-  searchingMedia: 'searching-media',
-};
-
 export interface IProviderStats {
   name: string;
   baseUrl: string;
@@ -21,28 +17,7 @@ export interface ITitle {
   native?: string;
   userPreferred?: string;
 }
-export interface IAnimeResult {
-  id: string;
-  title: string | ITitle;
-  url?: string;
-  image?: string;
-  cover?: string;
-  status?: MediaStatus;
-  rating?: number;
-  type?: MediaFormat;
-  releaseDate?: string;
-  [x: string]: unknown;
-}
-export interface ISearch<T> {
-  currentPage?: number;
-  hasNextPage?: boolean;
-  totalPages?: number;
-  /**
-   * total results must include results from all pages
-   */
-  totalResults?: number;
-  results: T[];
-}
+
 export interface Trailer {
   id: string;
   site?: string;
@@ -65,65 +40,7 @@ export declare enum MediaFormat {
   NOVEL = 'NOVEL',
   ONE_SHOT = 'ONE_SHOT',
 }
-export interface IAnimeInfo extends IAnimeResult {
-  malId?: number | string;
-  genres?: string[];
-  description?: string;
-  status?: MediaStatus;
-  totalEpisodes?: number;
-  /**
-   * @deprecated use `hasSub` or `hasDub` instead
-   */
-  subOrDub?: SubOrSub;
-  hasSub?: boolean;
-  hasDub?: boolean;
-  synonyms?: string[];
-  /**
-   * two letter representation of coutnry: e.g JP for japan
-   */
-  countryOfOrigin?: string;
-  isAdult?: boolean;
-  isLicensed?: boolean;
-  /**
-   * `FALL`, `WINTER`, `SPRING`, `SUMMER`
-   */
-  season?: string;
-  studios?: string[];
-  color?: string;
-  cover?: string;
-  trailer?: Trailer;
-  episodes?: IAnimeEpisode[];
-  startDate?: FuzzyDate;
-  endDate?: FuzzyDate;
-  recommendations?: IAnimeResult[];
-  relations?: IAnimeResult[];
-}
-export interface IAnimeEpisodeV2 {
-  [x: string]: {
-    id: string;
-    season_number: number;
-    title: string;
-    image: string;
-    description: string;
-    releaseDate: string;
-    isHD: boolean;
-    isAdult: boolean;
-    isDubbed: boolean;
-    isSubbed: boolean;
-    duration: number;
-  }[];
-}
-export interface IAnimeEpisode {
-  id: string;
-  number: number;
-  title?: string;
-  description?: string;
-  isFiller?: boolean;
-  url?: string;
-  image?: string;
-  releaseDate?: string;
-  [x: string]: unknown;
-}
+
 export interface IEpisodeServer {
   name: string;
   url: string;
@@ -216,26 +133,6 @@ export declare enum TvType {
   MOVIE = 'Movie',
   ANIME = 'Anime',
 }
-export interface IMovieEpisode {
-  id: string;
-  title: string;
-  url?: string;
-  number?: number;
-  season?: number;
-  description?: string;
-  image?: string;
-  releaseDate?: string;
-  [x: string]: unknown;
-}
-export interface IMovieResult {
-  id: string;
-  title: string | ITitle;
-  url?: string;
-  image?: string;
-  releaseDate?: string;
-  type?: TvType;
-  [x: string]: unknown;
-}
 export interface INewsFeed extends INews {
   /** topics of the feed */
   topics: Topics[];
@@ -266,25 +163,7 @@ interface INewsFeedPreview {
   /** some contents of the feed */
   full: string;
 }
-export interface IMovieInfo extends IMovieResult {
-  cover?: string;
-  recommendations?: IMovieResult[];
-  genres?: string[];
-  description?: string;
-  rating?: number;
-  status?: MediaStatus;
-  duration?: string;
-  production?: string;
-  casts?: string[];
-  tags?: string[];
-  totalEpisodes?: number;
-  seasons?: {
-    season: number;
-    image?: string;
-    episodes: IMovieEpisode[];
-  }[];
-  episodes?: IMovieEpisode[];
-}
+
 export declare enum Genres {
   ACTION = 'Action',
   ADVENTURE = 'Adventure',

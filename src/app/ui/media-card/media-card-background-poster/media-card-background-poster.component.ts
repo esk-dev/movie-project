@@ -9,7 +9,7 @@ import {
 import { BehaviorSubject } from 'rxjs';
 
 @Component({
-  selector: 'ui-media-card-background-poster',
+  selector: 'media-card-background-poster',
   templateUrl: './media-card-background-poster.component.html',
   styleUrls: ['./media-card-background-poster.component.scss'],
   standalone: true,

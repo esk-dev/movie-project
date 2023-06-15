@@ -1,0 +1,13 @@
+:host {
+  display: block;
+  width: 80%;
+}
+
+.caption {
+  color: rgb(163, 163, 163);
+  cursor: pointer;
+  
+  &:hover {
+    color: rgb(241, 241, 241);
+  }
+}
