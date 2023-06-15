@@ -7,8 +7,7 @@ import {
   Output,
 } from '@angular/core';
 import { MediaCardBackgroundPosterComponent } from './media-card-background-poster/media-card-background-poster.component';
-
-import { IMovieResult } from 'src/app/core/models/models.interface';
+import { IMovieResult } from '@models/movie.interface';
 
 @Component({
   selector: 'media-card',

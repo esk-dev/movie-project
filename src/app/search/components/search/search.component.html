@@ -11,7 +11,11 @@
 <div>
   <ng-container *ngIf="searchedResult$ | async as result">
     <ng-container *ngFor="let media of result">
-      <media-card [mediaResult]="media"> </media-card>
+      <media-card
+        (toMediaDetails)="openTitleDetails($event.id)"
+        [mediaResult]="media"
+      >
+      </media-card>
     </ng-container>
   </ng-container>
 </div>

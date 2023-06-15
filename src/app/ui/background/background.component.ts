@@ -5,8 +5,7 @@ import {
   Input,
   TemplateRef,
 } from '@angular/core';
-import { IMovieInfo } from 'src/app/core/models/models.interface';
-
+import { IMovieInfo } from '@models/movie.interface';
 type Page = 'fullPage' | 'smallPage' | 'modal';
 
 @Component({

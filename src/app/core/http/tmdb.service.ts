@@ -1,8 +1,9 @@
-import { Inject, Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { TMDB_API_URL } from '../tokens/tokens';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { IMovieResult, ISearch } from '../models/models.interface';
+import { Inject, Injectable } from '@angular/core';
+import { ISearch } from '@models/search.interface';
+import { IMovieResult } from '@models/movie.interface';
 
 @Injectable({
   providedIn: 'root',

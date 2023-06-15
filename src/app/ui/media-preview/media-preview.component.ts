@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
-import { IMovieInfo } from 'src/app/core/models/models.interface';
+import { IMovieInfo } from '@models/movie.interface';
 import { MediaMetaInfoComponent } from '../media-meta-info/media-meta-info.component';
 import { MediaDescriptionComponent } from '../media-description/media-description.component';
 

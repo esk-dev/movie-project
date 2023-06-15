@@ -1,12 +1,12 @@
+import { BehaviorSubject } from 'rxjs';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { PROJECT_EFFECTS } from './store/project-effects';
-
-import { BehaviorSubject } from 'rxjs';
-import { PROVIDER_TOKEN, Providers } from './tokens/tokens';
 import { AkitaNgDevtools } from '@datorama/akita-ngdevtools';
 import { AkitaNgEffectsModule } from '@datorama/akita-ng-effects';
+
+import { PROVIDER_TOKEN, Providers } from './tokens/tokens';
 
 @NgModule({
   declarations: [],
@@ -18,7 +18,7 @@ import { AkitaNgEffectsModule } from '@datorama/akita-ng-effects';
   providers: [
     {
       provide: PROVIDER_TOKEN,
-      useValue: new BehaviorSubject<Providers>('TMDB'),
+      useValue: new BehaviorSubject<Providers>('FLIXHQ'),
     },
   ],
 })

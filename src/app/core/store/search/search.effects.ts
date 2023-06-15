@@ -3,8 +3,10 @@ import { Injectable } from '@angular/core';
 import { SearchStore } from './search.store';
 import { SearchService } from './search.service';
 import { searchInFlixHq } from './search.actions';
-import { IMovieResult, ISearch } from '@models/models.interface';
 import { Actions, Effect, ofType } from '@datorama/akita-ng-effects';
+
+import { ISearch } from '@models/search.interface';
+import { IMovieResult } from '@models/movie.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -22,6 +24,8 @@ export class SearchEffects {
     switchMap(({ query, page }) =>
       this.searchService.searchInFlixHq(query, page)
     ),
-    tap((entity: ISearch<IMovieResult>) => this.store.set({ 1: entity }))
+    tap((entity: ISearch<IMovieResult>) =>
+      this.store.set({ [entity.currentPage]: entity })
+    )
   );
 }

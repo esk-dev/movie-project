@@ -1,12 +1,13 @@
 import { Observable, from } from 'rxjs';
 import { Component } from '@angular/core';
 import { Actions } from '@datorama/akita-ng-effects';
+import { IMovieInfo, IMovieResult } from '@models/movie.interface';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { SearchFacadeService } from '../../services/search.facade';
-import { IMovieResult } from 'src/app/core/models/models.interface';
-import { SharedModalService } from '@shared/ui/shared-modal/shared-modal.service';
-import { MediaDetailsComponent } from '@ui-kit/media-details/media-details.component';
 import { searchInFlixHq } from '@core/store/search/search.actions';
+import { SearchFacadeService } from '../../services/search.facade';
+import { SharedModalService } from '@shared/ui/shared-modal/shared-modal.service';
+import { MediaDetailsComponent } from '@shared/media-details/media-details.component';
+import { fecthMovieInfo } from '@core/store/movie/movie.actions';
 
 @Component({
   selector: 'app-search',
@@ -21,7 +22,7 @@ export class SearchComponent {
 
   private mediaDetailsComponent$: Observable<typeof MediaDetailsComponent> =
     from(
-      import('@ui-kit/media-details/media-details.component').then(
+      import('@shared/media-details/media-details.component').then(
         (component) => component.MediaDetailsComponent
       )
     );
@@ -39,8 +40,12 @@ export class SearchComponent {
     });
   }
 
-  public openTitleDetails() {
-    // this.sharedModalService.showModal(this.mediaDetailsComponent$, );
+  public openTitleDetails(movieId: string) {
+    this.actions.dispatch(fecthMovieInfo({ movieId }));
+    this.sharedModalService.showModal<IMovieInfo>(
+      this.mediaDetailsComponent$,
+      this.searchFacadeService.getMovieMeta(movieId)
+    );
   }
 
   public startSearch(query: string, page: number): void {
