@@ -6,7 +6,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { searchInFlixHq } from '@core/store/search/search.actions';
 import { SearchFacadeService } from '../../services/search.facade';
 import { SharedModalService } from '@shared/ui/shared-modal/shared-modal.service';
-import { MediaDetailsComponent } from '@shared/media-details/media-details.component';
+import { MediaDetailsComponent } from '@shared/components/media-details/media-details.component';
 import { fecthMovieInfo } from '@core/store/movie/movie.actions';
 
 @Component({
@@ -22,7 +22,7 @@ export class SearchComponent {
 
   private mediaDetailsComponent$: Observable<typeof MediaDetailsComponent> =
     from(
-      import('@shared/media-details/media-details.component').then(
+      import('@shared/components/media-details/media-details.component').then(
         (component) => component.MediaDetailsComponent
       )
     );

@@ -1,4 +1,10 @@
-import { Directive, ElementRef, Input, OnInit } from '@angular/core';
+import {
+  Directive,
+  ElementRef,
+  HostBinding,
+  Input,
+  OnInit,
+} from '@angular/core';
 
 @Directive({
   // eslint-disable-next-line @angular-eslint/directive-selector
@@ -6,12 +12,16 @@ import { Directive, ElementRef, Input, OnInit } from '@angular/core';
   standalone: true,
 })
 export class RatingColorDirective implements OnInit {
+  @HostBinding('style.border-radius') borderRadius = '0.25rem';
+
+  @HostBinding('style.padding') padding = '2px 5px';
+
   @Input() rating!: number;
 
   constructor(private el: ElementRef) {}
 
   ngOnInit(): void {
-    this.el.nativeElement.style.color = this.checkRating(this.rating);
+    this.el.nativeElement.style.backgroundColor = this.checkRating(this.rating);
   }
 
   private checkRating(rating: number): string {
