@@ -1,0 +1,9 @@
+<button mat-icon-button>
+  <i
+    *ngIf="!isMediaInBookmark; else inBookmarks"
+    class="fa-regular fa-bookmark"
+  ></i>
+</button>
+<ng-template #inBookmarks>
+  <i class="fa-solid fa-bookmark"></i>
+</ng-template>

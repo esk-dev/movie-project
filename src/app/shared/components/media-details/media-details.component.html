@@ -1,5 +1,43 @@
-<ng-container *ngIf="mediaInfo$ | async as mediaInfo">
-  <div backgroundContent [contentUrl]="mediaInfo?.cover">
-    <media-preview [mediaResult]="mediaInfo"></media-preview>
+<ng-container *ngIf="mediaInfo$ | async as mediaInfo; else loader">
+  <div backgroundContent [contentUrl]="mediaInfo?.cover"></div>
+  <div class="media-preview-container">
+    <div class="media-preview">
+      <h1>{{ mediaInfo.title }}</h1>
+      <media-meta-info
+        [rating]="mediaInfo.rating"
+        [duration]="mediaInfo.duration"
+        [releaseDate]="mediaInfo.releaseDate"
+        [totalEpisodes]="mediaInfo.totalEpisodes"
+      ></media-meta-info>
+      <div class="media-preview-actions">
+        <button mat-flat-button color="accent">Смотреть</button>
+        <button mat-flat-button color="accent">Трейлер</button>
+        <bookmark></bookmark>
+      </div>
+    </div>
+    <div class="media-preview-detail-info">
+      <div class="description">
+        <h3>Description</h3>
+        <media-description
+          [isFullDescription]="false"
+          [mediaDescription]="mediaInfo.description"
+        >
+        </media-description>
+      </div>
+      <div class="chips">
+        <div>
+          <h3>Cast</h3>
+          <chips [chips]="mediaInfo.casts"></chips>
+        </div>
+        <div>
+          <h3>Genres</h3>
+          <chips [chips]="mediaInfo.genres"></chips>
+        </div>
+      </div>
+    </div>
   </div>
 </ng-container>
+
+<ng-template #loader>
+  <mat-spinner class="loader"></mat-spinner>
+</ng-template>

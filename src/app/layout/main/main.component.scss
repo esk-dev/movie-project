@@ -29,18 +29,19 @@ main {
   flex-direction: column;
   height: 100%;
   width: 100%;
+  padding: 0 1rem;
   // & > * {
   //   width: 100%;
   // }
 
   @include media-mixins.media-handset() {
     // height: 86vh;
-    overflow-y: auto;
+    // overflow-y: auto;
   }
 
   @include media-mixins.media-tablet() {
     // height: 86vh;
-    overflow-y: auto;
+    // overflow-y: auto;
     flex-direction: row;
   }
 }

@@ -12,6 +12,10 @@
     padding: 0;
     margin: 0 auto;
     height: 100%;
+
+    &::-webkit-scrollbar{
+      display: none;
+    }
   }
 }
 .mat-dialog-title {

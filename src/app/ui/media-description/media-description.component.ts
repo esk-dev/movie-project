@@ -17,9 +17,7 @@ export class MediaDescriptionComponent {
   @Input()
   public isFullDescription: boolean = false;
 
-  public isReadMore: BehaviorSubject<boolean> = new BehaviorSubject(
-    this.isFullDescription
-  );
+  public isReadMore: BehaviorSubject<boolean> = new BehaviorSubject(true);
 
   public showText(): void {
     this.isReadMore.next(!this.isReadMore.value);

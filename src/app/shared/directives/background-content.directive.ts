@@ -22,6 +22,9 @@ export class BackgroundContentDirective implements OnInit {
 
   @HostBinding('style.position') position: string = 'relative';
 
+  @HostBinding('style.box-shadow') boxShadow: string =
+    'inset 0px -30px 20px -10px var(--mdc-dialog-container-color)';
+
   constructor(private el: ElementRef) {}
 
   ngOnInit(): void {

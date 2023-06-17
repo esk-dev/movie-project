@@ -1,12 +1,12 @@
 <p>
   {{
-    isFullDescription
+    !isFullDescription
       ? (isReadMore | async)
         ? (mediaDescription | slice : 0 : 70)
         : mediaDescription
       : mediaDescription
   }}
-  <span class="caption" *ngIf="isFullDescription" (click)="showText()">{{
-    (isReadMore | async) ? "Show More" : "Show less"
+  <span class="caption" *ngIf="!isFullDescription" (click)="showText()">{{
+    (isReadMore | async) ? "...Show More" : "Show less"
   }}</span>
 </p>

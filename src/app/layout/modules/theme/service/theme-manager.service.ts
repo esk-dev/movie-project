@@ -6,9 +6,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class ThemeManagerService {
   private renderer: Renderer2;
 
-  private isDark: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
-    false
-  );
+  private isDark: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
 
   public isDark$: Observable<boolean> = this.isDark.asObservable();
 
@@ -25,9 +23,4 @@ export class ThemeManagerService {
       this.isDark.next(true);
     }
   }
-
-  // private initTheme() {
-  //   this.getColorTheme();
-  //   this.renderer.addClass(document.body, this.colorTheme);
-  // }
 }

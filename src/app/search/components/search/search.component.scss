@@ -1,8 +1,21 @@
+@use "sass:map";
+@use "src/styles/mixins/media-query" as media-mixins;
+@use "src/styles/colors/variables" as colors;
+
+
 :host {
   width: 50%;
   margin: 0 auto;
   display: flex;
   flex-flow: column nowrap;
+
+  @include media-mixins.media-tablet() {
+    width: 100%;
+  }
+
+  @include media-mixins.media-handset() {
+    width: 100%;
+  }
 }
 
 .search-panel_container {
@@ -14,7 +27,17 @@ div {
   justify-items: stretch;
   align-items: center;
   justify-content: space-between;
-  grid-template-columns: repeat(4, 24%);
-  grid-gap: 1%;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 0.8rem;
   margin-top: 3rem;
+
+  @include media-mixins.media-tablet() {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include media-mixins.media-handset() {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: stretch;
+  }
 }

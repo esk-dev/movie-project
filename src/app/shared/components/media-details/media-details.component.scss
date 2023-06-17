@@ -1,7 +1,41 @@
-media-preview {
-  left: 0;
-  right: 0;
-  bottom: 0;
-  position: absolute;
+.media-preview-container {
   margin: 1rem 1.8rem;
+  transform: translate(0px, -215px);
+}
+.media-preview {
+  display: flex;
+  flex-flow: column nowrap;
+  row-gap: 5px;
+}
+
+h1, media-meta-info {
+  color: white;
+}
+.media-preview-actions {
+  display: flex;
+  margin-top: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+  column-gap: 1rem;
+  color: white;
+  flex-flow: row nowrap;
+}
+.media-preview-detail-info {
+  display: grid;
+  grid-template-columns: 80% 20%;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "description chips"
+    "description chips"
+    ". chips";
+
+  .description {
+    // flex: 1 1 80%;
+    grid-area: description;
+  }
+
+  .chips {
+    // flex: 1 1 20%;
+    grid-area: chips;
+  }
 }
