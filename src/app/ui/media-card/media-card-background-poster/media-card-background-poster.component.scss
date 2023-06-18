@@ -36,6 +36,7 @@ $shadow-color: map-get(
   &:active,
   &:focus {
     filter: drop-shadow(2px 0px 6px $shadow-color);
+    transform: scale(1.2);
 
     .media-card__content {
       backdrop-filter: brightness(0.4);

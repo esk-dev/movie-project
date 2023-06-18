@@ -1,13 +1,13 @@
 import { Observable, from } from 'rxjs';
 import { Component } from '@angular/core';
 import { Actions } from '@datorama/akita-ng-effects';
-import { IMovieInfo, IMovieResult } from '@models/movie.interface';
+import { Search } from '@core/store/search/search.model';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { searchInFlixHq } from '@core/store/search/search.actions';
-import { SearchFacadeService } from '../../services/search.facade';
-import { SharedModalService } from '@shared/ui/shared-modal/shared-modal.service';
-import { MediaDetailsComponent } from '@shared/components/media-details/media-details.component';
 import { fecthMovieInfo } from '@core/store/movie/movie.actions';
+import { IMovieInfo } from '@models/movie.interface';
+import { SearchFacadeService } from '../../../core/store/search/search.facade';
+import { SharedModalService } from '@shared/shared-modal/shared-modal.service';
+import { MediaDetailsComponent } from '@shared/components/media-details/media-details.component';
 
 @Component({
   selector: 'app-search',
@@ -17,8 +17,10 @@ import { fecthMovieInfo } from '@core/store/movie/movie.actions';
 export class SearchComponent {
   public form: FormGroup = null;
 
-  public searchedResult$: Observable<IMovieResult[]> =
-    this.searchFacadeService.searchResult$();
+  public searchedResult$: Observable<Search[]> =
+    this.searchFacadeService.getResult$;
+
+  // public search$: Observable<Search> = this.searchFacadeService.$;
 
   private mediaDetailsComponent$: Observable<typeof MediaDetailsComponent> =
     from(
@@ -27,7 +29,8 @@ export class SearchComponent {
       )
     );
 
-  // public searchedMeta$: Observable<SearchedMeta> = this.searchFacadeService;
+  public isLoading$: Observable<boolean> =
+    this.searchFacadeService.getIsLoading$;
 
   constructor(
     private fb: FormBuilder,
@@ -43,12 +46,22 @@ export class SearchComponent {
   public openTitleDetails(movieId: string) {
     this.actions.dispatch(fecthMovieInfo({ movieId }));
     this.sharedModalService.showModal<IMovieInfo>(
-      this.mediaDetailsComponent$,
-      this.searchFacadeService.getMovieMeta(movieId)
+      this.mediaDetailsComponent$
+      // this.searchFacadeService.getMovieMeta(movieId)
     );
   }
 
   public startSearch(query: string, page: number): void {
-    this.actions.dispatch(searchInFlixHq({ query, page }));
+    this.searchFacadeService.search(query, page);
+  }
+
+  public nextPage(): void {
+    if (this.searchFacadeService.getHasNextPage()) {
+      let nextPage = this.searchFacadeService.getCurrentPage();
+      this.searchFacadeService.search(
+        this.searchFacadeService.getQuery(),
+        ++nextPage
+      );
+    }
   }
 }

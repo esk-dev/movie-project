@@ -7,6 +7,9 @@ import { SearchComponent } from './components/search/search.component';
 import { UiModule } from '../ui/ui.module';
 import { MatButtonModule } from '@angular/material/button';
 
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+
 @NgModule({
   declarations: [SearchComponent],
   imports: [
@@ -15,6 +18,8 @@ import { MatButtonModule } from '@angular/material/button';
     SharedModule,
     UiModule,
     MatButtonModule,
+    NgxSkeletonLoaderModule,
+    InfiniteScrollModule,
   ],
 })
 export class SearchModule {}

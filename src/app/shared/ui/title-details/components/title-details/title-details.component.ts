@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ITitleData } from 'src/app/core/old-models/kinopoisk-base-api/kinopoisk-base-api.interface';
-import { SharedModalService } from '../../../shared-modal/shared-modal.service';
+import { SharedModalService } from '../../../../shared-modal/shared-modal.service';
 
 @Component({
   selector: 'app-title-details',

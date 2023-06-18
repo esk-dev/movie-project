@@ -6,5 +6,6 @@ export interface ISearch<T> {
    * total results must include results from all pages
    */
   totalResults?: number;
+  query?: string;
   results: T[];
 }

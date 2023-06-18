@@ -2,20 +2,41 @@
   <search-panel formControlName="searchInput">
     <button
       mat-icon-button
-      (click)="startSearch(form.get('searchInput').value?.search, 1)"
+      (click)="startSearch(form.get('searchInput').value, 1)"
     >
       <i class="fas fa-search"></i>
     </button>
   </search-panel>
 </form>
-<div>
-  <ng-container *ngIf="searchedResult$ | async as result">
-    <ng-container *ngFor="let media of result">
-      <media-card
-        (toMediaDetails)="openTitleDetails($event.id)"
-        [mediaResult]="media"
-      >
-      </media-card>
+<ng-container *ngIf="isLoading$ | async">
+  <ngx-skeleton-loader
+    count="1"
+    appearance="line"
+    [theme]="{
+      margin: 0,
+      padding: 0,
+      'border-radius': '0.6rem'
+    }"
+  >
+  </ngx-skeleton-loader>
+</ng-container>
+<div
+  infiniteScroll
+  [infiniteScrollDistance]="0.1"
+  [infiniteScrollThrottle]="50"
+  (scrolled)="nextPage()"
+  class="search-container"
+>
+  <media-card
+    *ngFor="let media of searchedResult$ | async"
+    (toMediaDetails)="openTitleDetails($event.id)"
+    [mediaResult]="media"
+  >
+  </media-card>
+
+  <!-- <ng-container *ngIf="search$ | async as search">
+    <ng-container *ngIf="search.hasNextPage">
+      <button (click)="nextPage(search.query)">more</button>
     </ng-container>
-  </ng-container>
+  </ng-container> -->
 </div>

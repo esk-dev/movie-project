@@ -12,7 +12,7 @@ import { PROVIDER_TOKEN, Providers } from './tokens/tokens';
   declarations: [],
   imports: [
     CommonModule,
-    AkitaNgDevtools.forRoot({ maxAge: 25 }),
+    AkitaNgDevtools.forRoot({ maxAge: 15 }),
     AkitaNgEffectsModule.forRoot(PROJECT_EFFECTS),
   ],
   providers: [

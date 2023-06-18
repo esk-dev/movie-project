@@ -3,6 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 import { AppComponent } from './app.component';
 
@@ -22,6 +23,9 @@ import { SharedModule } from '@shared/shared.module';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    NgxSkeletonLoaderModule.forRoot({
+      animation: 'progress',
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -8,16 +8,13 @@ import {
 import {
   ChangeDetectionStrategy,
   Component,
-  EventEmitter,
   Input,
-  Output,
   forwardRef,
 } from '@angular/core';
 
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { TV_TYPES } from 'src/app/core/constants/tv-types.const';
-import { SearchPanelValue } from 'src/app/core/models/models.interface';
 
 @Component({
   selector: 'search-panel',
@@ -43,10 +40,7 @@ export class SearchPanelComponent implements ControlValueAccessor {
     false
   );
 
-  private _value: SearchPanelValue = {
-    selector: null,
-    search: null,
-  };
+  private _value: string;
 
   private _disabled: boolean = false;
 
@@ -58,11 +52,6 @@ export class SearchPanelComponent implements ControlValueAccessor {
     return this._disabled;
   }
 
-  @Output() searchEmit: EventEmitter<any> = new EventEmitter();
-
-  @Input()
-  public withSelector: boolean = false;
-
   @Input()
   set value(val) {
     this._value = val;
@@ -73,7 +62,7 @@ export class SearchPanelComponent implements ControlValueAccessor {
   public onTouched: () => void;
 
   writeValue(value: any): void {
-    this.value.search = value;
+    this.value = value;
   }
 
   registerOnChange(fn: () => void): void {
@@ -98,14 +87,7 @@ export class SearchPanelComponent implements ControlValueAccessor {
 
   onInput(event: Event) {
     const newValue = (event.target as HTMLInputElement).value;
-    this.value.search = newValue;
-    this.onChange(this.value);
-    this.onTouched();
-  }
-
-  onSelect(value: string): void {
-    this.selected = this.TV_TYPES[value];
-    this.value.selector = value;
+    this.value = newValue;
     this.onChange(this.value);
     this.onTouched();
   }

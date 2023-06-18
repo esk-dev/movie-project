@@ -22,18 +22,12 @@
   
 }
 
-div {
+.search-container {
   display: grid;
   justify-items: stretch;
   align-items: center;
   justify-content: space-between;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 0.8rem;
-  margin-top: 3rem;
-
-  @include media-mixins.media-tablet() {
-    grid-template-columns: repeat(2, 1fr);
-  }
 
   @include media-mixins.media-handset() {
     display: flex;
