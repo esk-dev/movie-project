@@ -61,6 +61,10 @@ $focused-text-color: map-get(colors.$light-accent, default);
   will-change: transform;
   transition: transform 0.2s ease-in-out;
   transform: translate(-35px, 0);
+
+  button:disabled {
+    color: inherit;
+  }
 }
 
 .form-control:focus {

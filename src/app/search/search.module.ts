@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { StickyDirective } from '@shared/directives/sticky/sticky.directive';
 
 @NgModule({
   declarations: [SearchComponent],
@@ -20,6 +21,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     MatButtonModule,
     NgxSkeletonLoaderModule,
     InfiniteScrollModule,
+    StickyDirective,
   ],
 })
 export class SearchModule {}

@@ -1,4 +1,4 @@
-import { catchError, switchMap, tap } from 'rxjs';
+import { catchError, finalize, switchMap, tap } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { initSearch, initSearchSuccess } from './search.actions';
 import { Actions, Effect, ofType } from '@datorama/akita-ng-effects';
@@ -23,6 +23,7 @@ export class SearchEffects {
   @Effect()
   initSearch$ = this.actions$.pipe(
     ofType(initSearch),
+    tap(() => this.store.setLoading(true)),
     switchMap(({ query, page }) => this.service.search(query, page)),
     catchError((error: any) => {
       // this.actions$.dispatch(initSearchFailure(error));
@@ -30,15 +31,18 @@ export class SearchEffects {
     }),
     tap((response: ISearch<IMovieResult>) => {
       this.actions$.dispatch(initSearchSuccess(response));
-    })
+    }),
+    finalize(() => console.log('finally'))
   );
 
   @Effect()
   initSearchSuccess$ = this.actions$.pipe(
     ofType(initSearchSuccess),
     tap((state: ISearch<IMovieResult>) => {
-      this.service.updateSearch(state);
-    })
+      this.store.updateState(state);
+    }),
+    tap(() => this.store.setLoading(false)),
+    finalize(() => console.log('finally'))
   );
 
   // @Effect()

@@ -5,7 +5,7 @@ import { Inject, Injectable } from '@angular/core';
 import { FLIXHQ_API_URL } from '../tokens/tokens';
 import { ISearch } from '@models/search.interface';
 import { IEpisodeServer, ISource } from '../models/models.interface';
-import { IMovieResult, IMovieInfo } from '@models/movie.interface';
+import { IMovieResult, IMovieInfo, Servers } from '@models/movie.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -61,7 +61,7 @@ export class FlixHqService {
   public getMovieEpisodeStreamingLinks(
     episodeId: string,
     mediaId: string,
-    server: 'mixdrop' | 'vidcloud' | 'upcloud' = 'mixdrop'
+    server: Servers = 'mixdrop'
   ): Observable<ISource> {
     return this.http.get<ISource>(`
       ${this.URL}/watch?episodeId=${episodeId}&mediaId=${mediaId}&server=${server}

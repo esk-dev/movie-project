@@ -1,12 +1,14 @@
-import { Component } from '@angular/core';
-import { trigger, transition, style, animate } from '@angular/animations';
-import { ThemeManagerService } from '../service/theme-manager.service';
-import {
-  faMoon,
-  faSun,
-  IconDefinition,
-} from '@fortawesome/free-solid-svg-icons';
 import { Observable } from 'rxjs';
+import { Component } from '@angular/core';
+import {
+  trigger,
+  transition,
+  style,
+  animate,
+  stagger,
+  query,
+} from '@angular/animations';
+import { ThemeManagerService } from '../service/theme-manager.service';
 
 @Component({
   selector: 'app-theme-toggle',
@@ -15,28 +17,33 @@ import { Observable } from 'rxjs';
   animations: [
     trigger('fadeSlideInOut', [
       transition(':enter', [
-        style({ opacity: 0, transform: 'translateY(20px)' }),
-        // animate(
-        //   '0.2s cubic-bezier(0.59, 0.32, 0.38, 1.13)',
-        //   style({ opacity: 1, transform: 'translateY(-2.5px)' })
-        // ),
-        // animate('0.05s ease-in-out', style({ transform: 'translateY(4.5px)' })),
-        animate('0.1s ease-in', style({ transform: 'translateY(0)' })),
+        query(':self', [
+          style({
+            opacity: 0,
+            transform: 'translate(10px, 0)',
+          }),
+          stagger(3, [
+            animate(
+              '0.2s 0.2s ease-in',
+              style({
+                opacity: 1,
+                transform: 'translate(0, 0)',
+              })
+            ),
+          ]),
+        ]),
       ]),
       transition(':leave', [
+        style({ opacity: 1, transform: 'scale(1)' }),
         animate(
           '0.2s cubic-bezier(0.59, 0.32, 0.38, 1.13)',
-          style({ opacity: 0, transform: 'translateY(-15px)' })
+          style({ opacity: 0, transform: 'scale(0)' })
         ),
       ]),
     ]),
   ],
 })
 export class ThemeToggleComponent {
-  public faMoon: IconDefinition = faMoon;
-
-  public faSun: IconDefinition = faSun;
-
   constructor(private themeManager: ThemeManagerService) {}
 
   public isDark$: Observable<boolean> = this.themeManager.isDark$;

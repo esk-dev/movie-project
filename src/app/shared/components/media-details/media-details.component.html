@@ -1,5 +1,9 @@
 <ng-container *ngIf="mediaInfo$ | async as mediaInfo; else loader">
-  <div backgroundContent [contentUrl]="mediaInfo?.cover"></div>
+  <div
+    [@inOutAnimation]
+    backgroundContent
+    [contentUrl]="mediaInfo?.cover"
+  ></div>
   <div class="media-preview-container">
     <div class="media-preview">
       <h1>{{ mediaInfo.title }}</h1>
@@ -39,5 +43,5 @@
 </ng-container>
 
 <ng-template #loader>
-  <mat-spinner class="loader"></mat-spinner>
+  <mat-spinner style="margin: 50% auto" class="loader-content"></mat-spinner>
 </ng-template>

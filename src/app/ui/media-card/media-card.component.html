@@ -1,11 +1,13 @@
-<media-card-background-poster
-  (click)="onClick(mediaResult)"
-  [posterUrl]="mediaResult.image"
->
-  <div style="width: inherit">
-    {{ mediaResult.title }}
-  </div>
-  <span>
-    {{ mediaResult.releaseDate }}
-  </span>
-</media-card-background-poster>
+<ng-container *ngIf="mediaResult.image">
+  <media-card-background-poster
+    (click)="onClick(mediaResult)"
+    [posterUrl]="mediaResult.image"
+  >
+    <div style="width: inherit">
+      {{ mediaResult.title }}
+    </div>
+    <span>
+      {{ mediaResult.releaseDate }}
+    </span>
+  </media-card-background-poster>
+</ng-container>

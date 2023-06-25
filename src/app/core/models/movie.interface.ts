@@ -41,3 +41,5 @@ export interface IMovieEpisode {
   releaseDate?: string;
   [x: string]: unknown;
 }
+
+export type Servers = 'mixdrop' | 'vidcloud' | 'upcloud';

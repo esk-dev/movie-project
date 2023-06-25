@@ -35,6 +35,9 @@ body {
   box-sizing: border-box;
 }
 
+* {
+  // transition: 0.5 color ease-out;
+}
 .keen-slider__slide {
   display: flex;
   align-items: center;
@@ -42,6 +45,7 @@ body {
   max-height: 100vh;
 }
 
-.loader {
-  margin: 45% auto;
+.loader-content {
+  margin: auto;
+  font-size: 32px;
 }

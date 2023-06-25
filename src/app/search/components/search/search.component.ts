@@ -1,26 +1,29 @@
 import { Observable, from } from 'rxjs';
 import { Component } from '@angular/core';
-import { Actions } from '@datorama/akita-ng-effects';
-import { Search } from '@core/store/search/search.model';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { fecthMovieInfo } from '@core/store/movie/movie.actions';
 import { IMovieInfo } from '@models/movie.interface';
-import { SearchFacadeService } from '../../../core/store/search/search.facade';
+import { Search } from '@core/store/search/search.model';
+import { MovieFacade } from '@core/store/movie/movie.facade';
+import { SearchFacade } from '@core/store/search/search.facade';
+import { stickyAnimation } from '@shared/animations/sticky.animation';
+import { fadeSlideInOut } from '@shared/animations/fade-in-out.animation';
 import { SharedModalService } from '@shared/shared-modal/shared-modal.service';
 import { MediaDetailsComponent } from '@shared/components/media-details/media-details.component';
-
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
+  animations: [fadeSlideInOut, stickyAnimation],
 })
 export class SearchComponent {
-  public form: FormGroup = null;
+  public disabledBtn: boolean = true;
 
   public searchedResult$: Observable<Search[]> =
-    this.searchFacadeService.getResult$;
+    this.searchFacade.selectResult$;
 
-  // public search$: Observable<Search> = this.searchFacadeService.$;
+  public hasNextPage$: Observable<boolean> =
+    this.searchFacade.selectHasNextPage$;
+
+  public isLoading$: Observable<boolean> = this.searchFacade.selectIsLoading$;
 
   private mediaDetailsComponent$: Observable<typeof MediaDetailsComponent> =
     from(
@@ -29,39 +32,28 @@ export class SearchComponent {
       )
     );
 
-  public isLoading$: Observable<boolean> =
-    this.searchFacadeService.getIsLoading$;
-
   constructor(
-    private fb: FormBuilder,
-    private actions: Actions,
-    private sharedModalService: SharedModalService,
-    private searchFacadeService: SearchFacadeService
-  ) {
-    this.form = this.fb.group({
-      searchInput: this.fb.control(''),
-    });
-  }
+    private movieFacade: MovieFacade,
+    private searchFacade: SearchFacade,
+    private sharedModalService: SharedModalService
+  ) {}
 
   public openTitleDetails(movieId: string) {
-    this.actions.dispatch(fecthMovieInfo({ movieId }));
+    this.movieFacade.fetchMovieInfo(movieId);
     this.sharedModalService.showModal<IMovieInfo>(
-      this.mediaDetailsComponent$
-      // this.searchFacadeService.getMovieMeta(movieId)
+      this.mediaDetailsComponent$,
+      this.movieFacade.selectMovieInfo(movieId)
     );
   }
 
-  public startSearch(query: string, page: number): void {
-    this.searchFacadeService.search(query, page);
+  public initSearch(query: string, page: number): void {
+    this.searchFacade.initSearch(query, page);
   }
 
   public nextPage(): void {
-    if (this.searchFacadeService.getHasNextPage()) {
-      let nextPage = this.searchFacadeService.getCurrentPage();
-      this.searchFacadeService.search(
-        this.searchFacadeService.getQuery(),
-        ++nextPage
-      );
+    if (this.searchFacade.getHasNextPage()) {
+      let nextPage = this.searchFacade.getCurrentPage();
+      this.searchFacade.nextPage(this.searchFacade.getQuery(), ++nextPage);
     }
   }
 }

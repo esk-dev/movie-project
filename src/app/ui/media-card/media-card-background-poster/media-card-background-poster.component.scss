@@ -11,9 +11,7 @@ $shadow-color: map-get(
   transition: filter 0.25s ease-in-out;
   width: 100%;
   height: 100%;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  background-position: 100%;
+  border-radius: 0.6rem;
 }
 
 .media-card__content {
@@ -29,17 +27,26 @@ $shadow-color: map-get(
   padding: 10px;
   width: 100%;
   height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 0.6rem;
 }
 
 :host {
+  display: block;
+  position: relative;
+  width: auto;
+  height: 100%;
+  transition: filter 0.25s ease-in-out;
   &:hover,
   &:active,
   &:focus {
     filter: drop-shadow(2px 0px 6px $shadow-color);
-    transform: scale(1.2);
-
-    .media-card__content {
-      backdrop-filter: brightness(0.4);
+    
+    .media-card__background-poster {
+      filter: brightness(0.4);
     }
   }
 }

@@ -1,12 +1,9 @@
-<div
+<img
   class="media-card__background-poster"
-  [ngStyle]="{ 'background-image': 'url(' + posterUrl + ')' }"
->
-  <div
-    [@inOutAnimation]
-    class="media-card__content"
-    *ngIf="showContent$ | async"
-  >
-    <ng-content></ng-content>
-  </div>
+  [src]="posterUrl"
+  [@inOutAnimation]
+  (load)="hideLoader()"
+/>
+<div [@inOutAnimation] class="media-card__content" *ngIf="showContent$ | async">
+  <ng-content></ng-content>
 </div>

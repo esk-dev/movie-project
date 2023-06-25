@@ -21,14 +21,18 @@
 
   <div class="search_input-and-btn">
     <input
-      [(ngModel)]="value"
-      (input)="onInput($event)"
+      #searchBox
+      (input)="doSearch()"
+      (keyup)="doSearch()"
+      (focus)="doFocus()"
+      (blur)="onBlur()"
       class="form-control"
       placeholder="Найти фильм или сериал .."
-      [disabled]="disabled"
     />
     <span class="search_btn">
-      <ng-content> </ng-content>
+      <button [disabled]="!isOnFocus" mat-icon-button (click)="doSearch()">
+        <i class="fas fa-search"></i>
+      </button>
     </span>
   </div>
 </div>
