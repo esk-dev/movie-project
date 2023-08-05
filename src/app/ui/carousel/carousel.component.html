@@ -1,0 +1,36 @@
+<ng-container *ngIf="slideData && slideData.length > 0">
+  <div [ngStyle]="{ width: width, height: height }" class="carousel">
+    <ngx-glide
+      #ngxGlide
+      [perView]="carouselProps.perView"
+      [breakpoints]="{ '768': { perView: 1 }, '1200': { perView: 2 } }"
+      [arrowLeftTemplate]="arrowLeftTemplate"
+      [arrowRightTemplate]="arrowRightTemplate"
+      [showBullets]="carouselProps.bullets"
+      [type]="carouselProps.type"
+      [gap]="carouselProps.gap"
+      [autoplay]="carouselProps.autoplayTiming ?? false"
+      [focusAt]="'center'"
+      [peek]="carouselProps.peek"
+    >
+      <ng-container *ngFor="let slide of slideData">
+        <div [ngStyle]="{ height: height }" class="slides">
+          <ng-container
+            *ngTemplateOutlet="slideView; context: { $implicit: slide }"
+          ></ng-container>
+        </div>
+      </ng-container>
+    </ngx-glide>
+  </div>
+</ng-container>
+
+<ng-template #arrowLeftTemplate>
+  <span class="custom-arrow arrow--left">
+    <i class="fa-solid fa-arrow-left"></i>
+  </span>
+</ng-template>
+<ng-template #arrowRightTemplate>
+  <span class="custom-arrow arrow--right">
+    <i class="fa-solid fa-arrow-right"></i>
+  </span>
+</ng-template>

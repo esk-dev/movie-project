@@ -1,0 +1,42 @@
+.carousel {
+  position: relative;
+}
+
+.slides {
+  width: 100%;
+}
+
+.custom-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  width: 40px;
+  height: 150px;
+  cursor: pointer;
+  color: rgb(199, 199, 199);
+  background: rgba(0, 0, 0, 0.5);
+  transition: all 0.15s ease-in-out;
+  border: none;
+  border-radius: 0.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
+  &:hover {
+      color: rgb(255, 255, 255);
+    }
+}
+
+.arrow--left {
+  left: 15px;
+}
+
+.arrow--right {
+  left: auto;
+  right: 15px;
+}
+
+.arrow--disabled {
+  fill: rgba(255, 255, 255, 0.5);
+}

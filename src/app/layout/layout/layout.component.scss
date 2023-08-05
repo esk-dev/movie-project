@@ -17,7 +17,7 @@
 }
 
 .header {
-  height: 7vh;
+  // height: 7vh;
 
   @include media-mixins.media-tablet() {
   }
@@ -47,5 +47,5 @@ main {
 }
 
 .footer {
-  height: 7vh;
+  // height: 7vh;
 }

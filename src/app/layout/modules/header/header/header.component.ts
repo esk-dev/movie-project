@@ -10,7 +10,7 @@ import { Link } from '@models/layout.interface';
 import { ROUTES_TOKEN } from '@core/tokens/tokens';
 
 @Component({
-  selector: 'app-header',
+  selector: 'header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

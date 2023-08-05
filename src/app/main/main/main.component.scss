@@ -1,0 +1,12 @@
+:host {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.slider-item {
+  display: block;
+  z-index: 1000;
+  margin: 1rem auto;
+}

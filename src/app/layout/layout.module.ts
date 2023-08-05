@@ -1,17 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MainComponent } from './main/main.component';
+import { LayoutComponent } from './layout/layout.component';
 import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { ThemeModule } from './modules';
 import { HeaderModule } from './modules';
 import { DynamicIslandModule } from './modules';
-import { SearchBarModule } from 'src/app/features/search-bar/search-bar.module';
 import { LinkModule } from './modules';
 
 @NgModule({
-  declarations: [MainComponent],
+  declarations: [LayoutComponent],
   imports: [
     CommonModule,
     ThemeModule,
@@ -20,9 +19,8 @@ import { LinkModule } from './modules';
     MatCardModule,
     HeaderModule,
     DynamicIslandModule,
-    SearchBarModule,
     LinkModule,
   ],
-  exports: [MainComponent],
+  exports: [LayoutComponent],
 })
 export class LayoutModule {}

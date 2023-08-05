@@ -1,0 +1,19 @@
+<carousel
+  style="margin: 0 -1rem"
+  [height]="'500px'"
+  [slideData]="movies$ | async"
+  [slideView]="slideView"
+  [carouselProps]="{
+    arrows: true,
+    bullets: false,
+    perView: 5,
+    autoplayTiming: 5000,
+    gap: 10,
+    type: 'carousel',
+    peek: 150,
+  }"
+>
+  <ng-template #slideView let-slide>
+    <media-card class="slider-item" [mediaResult]="slide"> </media-card>
+  </ng-template>
+</carousel>

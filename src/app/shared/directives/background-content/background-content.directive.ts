@@ -16,6 +16,8 @@ export class BackgroundContentDirective implements OnInit {
 
   @Input() minHeight: string;
 
+  @Input() withGradient: boolean = true;
+
   @HostBinding('style.background') private background: string;
 
   @HostBinding('style.min-height') private _minHeight: string;
@@ -25,13 +27,16 @@ export class BackgroundContentDirective implements OnInit {
   @HostBinding('style.box-shadow') boxShadow: string =
     'inset 0px -30px 20px -10px var(--mdc-dialog-container-color)';
 
+  @HostBinding('style.background-size') backgroundSize: string = 'cover';
+
   constructor(private el: ElementRef) {}
 
   ngOnInit(): void {
-    this.background =
-      'linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(55,55,55,0.7) 70%, rgba(0,0,0,0.9) 100%), no-repeat center/100% url(' +
-      this.contentUrl +
-      ')';
+    this.background = this.withGradient
+      ? 'linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(55,55,55,0.7) 70%, rgba(0,0,0,0.9) 100%), no-repeat center center url(' +
+        this.contentUrl +
+        ')'
+      : 'center center no-repeat fixed url(' + this.contentUrl + ')';
 
     this._minHeight = this.minHeight ?? '50%';
   }
